@@ -6,28 +6,22 @@ import NavBar from "./components/NavBar/NavBar";
 import Jumbotron from "./components/Jumbotron/Jumbotron";
 import NoMatch from "./pages/NoMatch";
 
-class App extends React.Component {
-  state = {
-    highestScore: 0
-  };
-  render() {
-    return (
-      <div className="App">
-        <Router>
-          <div>
-        
+function App() {
+  return (
+    <Router>
+      <div>
         <Switch>
-          <Route exact path="/" component={NavBar} />
-          <Route exact path="/logIn" component={NavBar} />
-          <Route exact path="/logIn/:id" component={NavBar} />
+          <Route exact path="/" component={Jumbotron} />
+          <Route exact path="/login" component={Jumbotron} />
+          {/* projects page */}
+          <Route exact path="/projects/:id" component={Jumbotron} />
+          {/* display estimates */}
+          <Route exact path="/projects/:id/:projectID" component={Jumbotron} />
           <Route component={NoMatch} />
         </Switch>
-        </div>
-        </Router>
-        <Jumbotron />
       </div>
-    );
-  }
+    </Router>
+  );
 }
 
 export default App;
