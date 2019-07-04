@@ -1,64 +1,62 @@
 import React, { Component } from "react";
 import DeleteBtn from "../components/DeleteBtn";
-import Jumbotron from "../components/Jumbotron";
+// import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 
-class Books extends Component {
+class Users extends Component {
   state = {
-    books: [],
-    title: "",
-    author: "",
-    synopsis: ""
+    Users: [],
   };
 
   componentDidMount() {
-    this.loadBooks();
+    this.loadUser();
   }
 
-  loadBooks = () => {
-    API.getBooks()
+  loadUser = () => {
+    API.getUsers()
       .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+        console.log(res.data)
+        // this.setState({ users: res.data})
       )
       .catch(err => console.log(err));
   };
 
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(res => this.loadBooks())
-      .catch(err => console.log(err));
-  };
+  // deleteBook = id => {
+  //   API.deleteBook(id)
+  //     .then(res => this.loadBooks())
+  //     .catch(err => console.log(err));
+  // };
 
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
+  // handleInputChange = event => {
+  //   const { name, value } = event.target;
+  //   this.setState({
+  //     [name]: value
+  //   });
+  // };
 
-  handleFormSubmit = event => {
-    event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.saveBook({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis
-      })
-        .then(res => this.loadBooks())
-        .catch(err => console.log(err));
-    }
-  };
+  // handleFormSubmit = event => {
+  //   event.preventDefault();
+  //   if (this.state.title && this.state.author) {
+  //     API.saveBook({
+  //       title: this.state.title,
+  //       author: this.state.author,
+  //       synopsis: this.state.synopsis
+  //     })
+  //       .then(res => this.loadBooks())
+  //       .catch(err => console.log(err));
+  //   }
+  // };
 
   render() {
     return (
       <Container fluid>
         <Row>
           <Col size="md-6">
-            <Jumbotron>
+            {/* <Jumbotron>
               <h1>What Books Should I Read?</h1>
             </Jumbotron>
             <form>
@@ -85,23 +83,23 @@ class Books extends Component {
                 onClick={this.handleFormSubmit}
               >
                 Submit Book
-              </FormBtn>
-            </form>
+              </FormBtn> */}
+            {/* </form> */}
           </Col>
           <Col size="md-6 sm-12">
-            <Jumbotron>
+            {/* <Jumbotron>
               <h1>Books On My List</h1>
-            </Jumbotron>
-            {this.state.books.length ? (
+            </Jumbotron> */}
+            {this.state.Users.length ? (
               <List>
-                {this.state.books.map(book => (
-                  <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
+                {this.state.Users.map(Users => (
+                  <ListItem key={Users._id}>
+                    <Link to={"/user/" + Users._id}>
                       <strong>
-                        {book.title} by {book.author}
+                        {Users.userName}
                       </strong>
                     </Link>
-                    <DeleteBtn onClick={() => this.deleteBook(book._id)} />
+                    {/* <DeleteBtn onClick={() => this.deleteBook(book._id)} /> */}
                   </ListItem>
                 ))}
               </List>
@@ -115,4 +113,4 @@ class Books extends Component {
   }
 }
 
-export default Books;
+export default Users;

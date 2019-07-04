@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import Jumbotron from "./components/Jumbotron/Jumbotron";
+import Users from "./pages/User"
 import NoMatch from "./pages/NoMatch";
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
     <Router>
       <div>
         <Switch>
-          <Route exact path="/" component={Jumbotron} />
+          <Route exact path="/" component={Users} />
           <Route exact path="/login" component={Jumbotron} />
           {/* projects page */}
           <Route exact path="/projects/:id" component={Jumbotron} />
