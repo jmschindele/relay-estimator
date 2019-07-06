@@ -1,24 +1,33 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
+
+
+
+
+
 
 function NavBar() {
   return (
+    <nav className="navbar" >
     <ul className="nav nav-pills nav-justified">
       <li className="nav-item">
-        <a className="nav-link active" href="#">
-          Relay Estimates
-        </a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="#">
+        <Link to="/login">
           Sign In
-        </a>
-      </li>
+        </Link>
+      </li><br />
       <li className="nav-item">
-        <a className="nav-link" href="#">
-          Register
-        </a>
+        <Link to="/projects">
+          Project Tab
+        </Link>
+      </li><br />
+      <li className="nav-item">
+        <Link to="/graph">
+          Graph View
+        </Link>
       </li>
     </ul>
+    </nav >
   );
 }
 
