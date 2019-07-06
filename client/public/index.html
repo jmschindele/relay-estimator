@@ -8,7 +8,7 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/13114.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <!--
@@ -30,37 +30,36 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
 
-
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
+    <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#config-web-app -->
 
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyBMjrAi9BlTddfxietdgeYqGVQn07HxZH4",
-    authDomain: "relay-393e8.firebaseapp.com",
-    databaseURL: "https://relay-393e8.firebaseio.com",
-    projectId: "relay-393e8",
-    storageBucket: "",
-    messagingSenderId: "918066751727",
-    appId: "1:918066751727:web:029a3c7a4168b3c2"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyBMjrAi9BlTddfxietdgeYqGVQn07HxZH4",
+        authDomain: "relay-393e8.firebaseapp.com",
+        databaseURL: "https://relay-393e8.firebaseio.com",
+        projectId: "relay-393e8",
+        storageBucket: "",
+        messagingSenderId: "918066751727",
+        appId: "1:918066751727:web:029a3c7a4168b3c2"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
 
-  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  // ...
-});
-
-</script>
-
-
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // ...
+        });
+    </script>
 
     <div id="root"></div>
     <!--

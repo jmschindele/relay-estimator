@@ -4,8 +4,7 @@ import "./style.css";
 class SignIn extends Component {
   // Setting the component's initial state
   state = {
-    firstName: "",
-    lastName: "",
+    userName: "",
     password: ""
   };
 
@@ -26,20 +25,18 @@ class SignIn extends Component {
   handleSignInSubmit = event => {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     event.preventDefault();
-    if (!this.state.firstName || !this.state.lastName) {
-      alert("Fill out your first and last name please!");
+    if (!this.state.userName || !this.state.password) {
+      alert("Username and Password Required");
     } else if (this.state.password.length < 6) {
       alert(
-        `Choose a more secure password ${this.state.firstName} ${this.state
-          .lastName}`
+        `Choose a more secure password}`
       );
     } else {
-      alert(`Hello ${this.state.firstName} ${this.state.lastName}`);
+      alert(`Login successful}`);
     }
 
     this.setState({
-      firstName: "",
-      lastName: "",
+      userName: "",
       password: ""
     });
   };
@@ -47,33 +44,28 @@ class SignIn extends Component {
   render() {
     // Notice how each input has a `value`, `name`, and `onChange` prop
     return (
-      <div>
-        <p>
-          Hello {this.state.firstName} {this.state.lastName}
-        </p>
+      <div className="form-container mx-auto">
+        <h1 className='text-center' >Sign In</h1>
         <form className="form">
           <input
-            value={this.state.firstName}
-            name="firstName"
+            className="form-control"
+            value={this.state.userName}
+            name="userName"
             onChange={this.handleInputChange}
             type="text"
-            placeholder="First Name"
+            placeholder="Email/Username"
           />
           <input
-            value={this.state.lastName}
-            name="lastName"
-            onChange={this.handleInputChange}
-            type="text"
-            placeholder="Last Name"
-          />
-          <input
+            className="form-control"
             value={this.state.password}
             name="password"
             onChange={this.handleInputChange}
             type="password"
             placeholder="Password"
           />
-          <button onClick={this.handleFormSubmit}>Submit</button>
+          <button onClick={this.handleSignInSubmit} className="btn btn-success">
+            Submit
+          </button>
         </form>
       </div>
     );

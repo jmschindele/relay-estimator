@@ -1,9 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./style.css";
+
+
+
+
+
+
 
 function NavBar() {
   return (
-    <nav className="navbar">
+
+    <nav className="navbar" >
     <ul className="nav nav-pills nav-justified">
       <li className="nav-item">
         <Link to="/login">
@@ -22,6 +30,7 @@ function NavBar() {
       </li>
     </ul>
     </nav >
+
   );
 }
 
