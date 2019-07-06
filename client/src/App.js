@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import Jumbotron from "./components/Jumbotron/Jumbotron";
-import Users from "./pages/Users"
+import Users from "./pages/Users";
 import NoMatch from "./pages/NoMatch";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -16,7 +16,6 @@ function App() {
     <Router>
       <div>
         <Switch>
-        
           <Route exact path="/" component={Home} />
           <Route exact path="/Home" component={Home} />
           <Route exact path="/users" component={Users} />

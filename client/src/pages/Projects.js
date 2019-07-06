@@ -4,38 +4,22 @@ import { Col, Row, Container } from "../components/Grid";
 // import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import NavBar from "../components/NavBar/NavBar";
-
+import ProjectCard from "../components/ProjectCard/index";
 
 class Projects extends Component {
-  state = {
-    book: {}
-  };
+  // state = {
+  //   book: {}
+  // };
   // When this component mounts, grab the book with the _id of this.props.match.params.id
   // e.g. localhost:3000/books/599dcb67f0f16317844583fc
-
 
   render() {
     return (
       <Container fluid>
         <NavBar />
         <Row>
-          <Col size="md-12">
-
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-10 md-offset-1">
-            <article>
-              <h1>Synopsis</h1>
-              <p>
-                {this.state.book.synopsis}
-              </p>
-            </article>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-2">
-            <Link to="/">Home</Link>
+          <Col size="md-3">
+            <ProjectCard />
           </Col>
         </Row>
       </Container>
