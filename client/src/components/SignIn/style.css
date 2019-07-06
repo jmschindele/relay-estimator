@@ -8,3 +8,20 @@
   margin-bottom: 5px;
   width: 100%;
 }
+
+.form-container {
+  width: 500px;
+  height: 300px;
+  border: solid 1px lightgrey;
+  background: whitesmoke;
+  margin: 30px auto;
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px 1px grey;
+  padding: 3rem;
+  background: #271a3e;
+  color: white;
+}
+
+.form-container btn {
+  float: right;
+}

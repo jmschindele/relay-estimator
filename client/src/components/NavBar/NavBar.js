@@ -1,9 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
+
+
+
+
+
 function NavBar() {
   return (
-    <nav className="navbar">
+    <nav className="navbar" >
     <ul className="nav nav-pills nav-justified">
       <li className="nav-item">
         <Link to="/login">
