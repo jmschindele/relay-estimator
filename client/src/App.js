@@ -7,15 +7,23 @@ import Jumbotron from "./components/Jumbotron/Jumbotron";
 import Users from "./pages/Users"
 import NoMatch from "./pages/NoMatch";
 import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Graph from "./pages/Graph";
+import Projects from "./pages/Projects";
 
 function App() {
   return (
     <Router>
       <div>
         <Switch>
+        
           <Route exact path="/" component={Home} />
+          <Route exact path="/Home" component={Home} />
           <Route exact path="/users" component={Users} />
           {/* projects page */}
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/projects" component={Projects} />
+          <Route exact path="/graph" component={Graph} />
           <Route exact path="/projects/:id" component={Jumbotron} />
           {/* display estimates */}
           <Route exact path="/projects/:id/:projectID" component={Jumbotron} />
