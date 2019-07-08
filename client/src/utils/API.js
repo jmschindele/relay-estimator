@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default {
+const API = {
   // Gets all books
   getUsers: function() {
     return axios.get("/api/user");
@@ -18,3 +18,5 @@ export default {
     return axios.post("/api/user", userData);
   }
 };
+
+export default API;

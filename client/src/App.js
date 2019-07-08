@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Graph from "./pages/Graph";
 import Projects from "./pages/Projects";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/users" component={Users} />
           {/* projects page */}
           <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
           <Route exact path="/projects" component={Projects} />
           <Route exact path="/graph" component={Graph} />
           <Route exact path="/projects/:id" component={Jumbotron} />
