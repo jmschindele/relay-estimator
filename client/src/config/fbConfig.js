@@ -1,5 +1,5 @@
       import firebase from 'firebase/app';
-      import 'firebase/firestore';
+      // import 'firebase/firestore';
       import 'firebase/auth';
       
       
@@ -15,7 +15,7 @@
       };
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
-      firebase.firestore().settings({ timestampsInSnapshots: true})
+
 
 // This stuff is from firebase, but was not in the tutorial; not sure if we need it...
       // firebase

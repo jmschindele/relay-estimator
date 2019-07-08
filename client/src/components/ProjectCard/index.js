@@ -19,12 +19,12 @@ function ProjectCard() {
         <h5 className="card-title">Project title</h5>
         <h6 className="card-subtitle mb-2 text-muted">Project subtitle</h6>
         <p className="card-text">This project is the BEEZ KNEEzzz...</p>
-        <a href="#" className="card-link">
+        <Link to="#" className="card-link">
           Edit
-        </a>
-        <a href="#" className="card-link">
+        </Link>
+        <Link to="#" className="card-link">
           View Progress
-        </a>
+        </Link>
       </div>
     </div>
   );

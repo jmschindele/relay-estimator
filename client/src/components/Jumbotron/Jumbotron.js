@@ -16,8 +16,8 @@ function Jumbotron() {
           say "HEY! FUCK YOU, PAY ME!"
           <br />
         </p>
-        <a href="">Sign Up | </a>
-        <a href="">Log In</a>
+        <Link to="/register">Sign Up | </Link>
+        <Link to="/login">Log In</Link>
       </div>
     </div>
   );
