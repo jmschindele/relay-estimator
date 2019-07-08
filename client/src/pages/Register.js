@@ -3,13 +3,17 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 // import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
-import SignIn from "../components/auth/SignIn";
+import SignUp from "../components/auth/SignUp";
 
-class Login extends Component {
+class Register extends Component {
   state = {
     user: {
-      userName: "",
-      password: ""
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: ""
+
     }
   };
 
@@ -19,7 +23,7 @@ class Login extends Component {
       <Container fluid>
         <Row>
           <Col size="md-12">
-            <SignIn />
+            <SignUp />
 
           </Col>
         </Row>
@@ -33,4 +37,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Register;
