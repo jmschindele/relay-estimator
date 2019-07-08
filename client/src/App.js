@@ -12,6 +12,7 @@ import Graph from "./pages/Graph";
 import Projects from "./pages/Projects";
 import Register from "./pages/Register";
 
+
 function App() {
   return (
     <Router>
@@ -25,7 +26,7 @@ function App() {
           <Route exact path="/register" component={Register} />
           <Route exact path="/projects" component={Projects} />
           <Route exact path="/graph" component={Graph} />
-          <Route exact path="/projects/:id" component={Jumbotron} />
+          <Route exact path="/users/:id" component={Jumbotron} />
           {/* display estimates */}
           <Route exact path="/projects/:id/:projectID" component={Jumbotron} />
           <Route component={NoMatch} />
