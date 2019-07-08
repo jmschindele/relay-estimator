@@ -1,8 +1,8 @@
 import React from "react";
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-import NavBar from "./components/NavBar/NavBar";
+// import NavBar from "./components/NavBar/NavBar";
 import Jumbotron from "./components/Jumbotron/Jumbotron";
 import Users from "./pages/Users";
 import NoMatch from "./pages/NoMatch";
