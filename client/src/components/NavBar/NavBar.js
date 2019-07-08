@@ -19,6 +19,11 @@ function NavBar() {
         </Link>
       </li><br />
       <li className="nav-item">
+        <Link to="/register">
+          Sign Up
+        </Link>
+      </li><br />
+      <li className="nav-item">
         <Link to="/projects">
           Project Tab
         </Link>
