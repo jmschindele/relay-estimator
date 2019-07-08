@@ -12,8 +12,9 @@ const projectSeed = [
   {
     userName: "Chris1",
     project: [
-      {
-        project1: [
+      { 
+        projectName: 'Project 1',
+        projectInfo: [
           {
             task: "html",
             hours: 4,
@@ -42,7 +43,8 @@ const projectSeed = [
         ]
       },
       {
-        project2: [
+        projectName: 'project2',
+        projectInfo: [
           {
             task: "html",
             hours: 10,
@@ -76,8 +78,9 @@ const projectSeed = [
   {
     userName: "Chris2",
     project: [
-      {
-        project1: [
+      { 
+        projectName : 'project1',
+        projectInfo: [
           {
             task: "html",
             hours: 12,
@@ -106,7 +109,8 @@ const projectSeed = [
         ]
       },
       {
-        project2: [
+        projectName: 'project2',
+        projectInfo: [
           {
             task: "html",
             hours: 110,
@@ -141,7 +145,8 @@ const projectSeed = [
     userName: "Josh",
     project: [
       {
-        project1: [
+        projectName: 'project1',
+        projectInfo: [
           {
             task: "html",
             hours: 122,
@@ -170,7 +175,8 @@ const projectSeed = [
         ]
       },
       {
-        project2: [
+        projectName: 'project2',
+        projectInfo: [
           {
             task: "html",
             hours: 150,

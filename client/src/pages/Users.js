@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import DeleteBtn from "../components/DeleteBtn";
+// import DeleteBtn from "../components/DeleteBtn";
 // import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
+// import { Input, TextArea, FormBtn } from "../components/Form";
 
 class Users extends Component {
   state = {
@@ -18,10 +18,13 @@ class Users extends Component {
 
   loadUser = () => {
     API.getUsers()
-      .then(res =>
+      .then(res => {
         console.log(res.data)
+        this.setState({
+          Users: [res.data[0]]
+        })
         // this.setState({ users: res.data})
-      )
+      })
       .catch(err => console.log(err));
   };
 
@@ -31,25 +34,9 @@ class Users extends Component {
   //     .catch(err => console.log(err));
   // };
 
-  // handleInputChange = event => {
-  //   const { name, value } = event.target;
-  //   this.setState({
-  //     [name]: value
-  //   });
-  // };
 
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   if (this.state.title && this.state.author) {
-  //     API.saveBook({
-  //       title: this.state.title,
-  //       author: this.state.author,
-  //       synopsis: this.state.synopsis
-  //     })
-  //       .then(res => this.loadBooks())
-  //       .catch(err => console.log(err));
-  //   }
-  // };
+
+
 
   render() {
     return (
@@ -85,20 +72,20 @@ class Users extends Component {
                 Submit Book
               </FormBtn> */}
             {/* </form> */}
-          </Col>
-          <Col size="md-6 sm-12">
-            {/* <Jumbotron>
-              <h1>Books On My List</h1>
-            </Jumbotron> */}
+
+
             {this.state.Users.length ? (
               <List>
                 {this.state.Users.map(Users => (
                   <ListItem key={Users._id}>
-                    <Link to={"/user/" + Users._id}>
-                      <strong>
-                        {Users.userName}
+                      <strong>{`
+                        ${Users.userName}
+                        ${Users.project[0].projectName}
+                        ${Users.project[0].projectInfo[0].task}
+                        ${Users.project[0].projectInfo[0].hours}
+                        ${Users.project[0].projectInfo[0].rate}
+                        `}
                       </strong>
-                    </Link>
                     {/* <DeleteBtn onClick={() => this.deleteBook(book._id)} /> */}
                   </ListItem>
                 ))}

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { Doughnut, Bar } from "react-chartjs-2";
+import { Doughnut, 
+  // Bar
+ } from "react-chartjs-2";
 
 class Chart extends Component {
   constructor(props) {

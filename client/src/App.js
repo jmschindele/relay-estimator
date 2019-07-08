@@ -1,8 +1,8 @@
 import React from "react";
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-import NavBar from "./components/NavBar/NavBar";
+// import NavBar from "./components/NavBar/NavBar";
 import Jumbotron from "./components/Jumbotron/Jumbotron";
 import Users from "./pages/Users";
 import NoMatch from "./pages/NoMatch";
@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import Graph from "./pages/Graph";
 import Projects from "./pages/Projects";
 import Register from "./pages/Register";
+
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
           <Route exact path="/register" component={Register} />
           <Route exact path="/projects" component={Projects} />
           <Route exact path="/graph" component={Graph} />
-          <Route exact path="/projects/:id" component={Jumbotron} />
+          <Route exact path="/users/:id" component={Jumbotron} />
           {/* display estimates */}
           <Route exact path="/projects/:id/:projectID" component={Jumbotron} />
           <Route component={NoMatch} />
