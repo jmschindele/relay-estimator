@@ -29,14 +29,12 @@ class SignIn extends Component {
     if (!this.state.email || !this.state.password) {
       alert("Username and Password Required");
     } else if (this.state.password.length < 6) {
-      alert(
-        `Choose a more secure password}`
-      );
+      alert(`Choose a more secure password}`);
     } else {
       alert(`Login successful`);
       let email = this.state.email;
       let password = this.state.password;
-      firebase.auth().signInWithEmailAndPassword(email, password)
+      firebase.auth().signInWithEmailAndPassword(email, password);
     }
 
     this.setState({
@@ -47,24 +45,14 @@ class SignIn extends Component {
 
   render() {
     // Notice how each input has a `value`, `name`, and `onChange` prop
-    
-    
-    
-    const {
-      email,
-      password
-    } = this.state;
 
-    const isInvalid =
-      password === '' ||
-      password.length < 6 ||
-      email === '';
+    const { email, password } = this.state;
 
-    
-    
+    const isInvalid = password === "" || password.length < 6 || email === "";
+
     return (
       <div className="form-container mx-auto">
-        <h1 className='text-center' >Sign In</h1>
+        <h1 className="text-center">Sign In</h1>
         <form className="form">
           <input
             className="form-control"
@@ -82,8 +70,12 @@ class SignIn extends Component {
             type="password"
             placeholder="Password"
           />
-          <button onClick={this.handleSignInSubmit} disabled={isInvalid} className="btn btn-success">
-            Submit
+          <button
+            onClick={this.handleSignInSubmit}
+            disabled={isInvalid}
+            className="btn"
+          >
+            Sign In
           </button>
         </form>
       </div>

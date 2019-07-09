@@ -4,10 +4,9 @@ import { Col, Row, Container } from "../components/Grid";
 // import Jumbotron from "../components/Jumbotron";
 // import API from "../utils/API";
 import NavBar from "../components/NavBar/NavBar";
-import ProjectCard from "../components/ProjectCard/index";
 import TaskCard from "../components/TaskCard/index";
 
-class Projects extends Component {
+class Tasks extends Component {
   // state = {
   //   book: {}
   // };
@@ -19,11 +18,8 @@ class Projects extends Component {
       <Container fluid>
         <NavBar />
         <Row>
-          <TaskCard />
-        </Row>
-        <Row>
-          <Col size="md-3">
-            <ProjectCard />
+          <Col size="md-12">
+            <TaskCard />
           </Col>
         </Row>
       </Container>
@@ -31,4 +27,4 @@ class Projects extends Component {
   }
 }
 
-export default Projects;
+export default Tasks;
