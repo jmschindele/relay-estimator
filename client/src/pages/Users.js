@@ -9,7 +9,7 @@ import { List, ListItem } from "../components/List";
 
 class Users extends Component {
   state = {
-    Users: [],
+    Users: []
   };
 
   componentDidMount() {
@@ -19,10 +19,10 @@ class Users extends Component {
   loadUser = () => {
     API.getUsers()
       .then(res => {
-        console.log(res.data)
+        console.log(res.data);
         this.setState({
           Users: [res.data[0]]
-        })
+        });
         // this.setState({ users: res.data})
       })
       .catch(err => console.log(err));
@@ -33,10 +33,6 @@ class Users extends Component {
   //     .then(res => this.loadBooks())
   //     .catch(err => console.log(err));
   // };
-
-
-
-
 
   render() {
     return (
@@ -73,19 +69,19 @@ class Users extends Component {
               </FormBtn> */}
             {/* </form> */}
 
-
             {this.state.Users.length ? (
               <List>
                 {this.state.Users.map(Users => (
                   <ListItem key={Users._id}>
-                      <strong>{`
+                    <strong>
+                      {`
                         ${Users.userName}
                         ${Users.project[0].projectName}
                         ${Users.project[0].projectInfo[0].task}
                         ${Users.project[0].projectInfo[0].hours}
                         ${Users.project[0].projectInfo[0].rate}
                         `}
-                      </strong>
+                    </strong>
                     {/* <DeleteBtn onClick={() => this.deleteBook(book._id)} /> */}
                   </ListItem>
                 ))}

@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import { Doughnut, 
+import {
+  Doughnut
   // Bar
- } from "react-chartjs-2";
+} from "react-chartjs-2";
 
 class Chart extends Component {
   constructor(props) {
     super(props);
     this.state = {
       chartData: props.chartData
-      
     };
   }
 
@@ -17,7 +17,6 @@ class Chart extends Component {
     displayLegend: true,
     legendPosition: "right",
     projectName: "Project Name"
-    
   };
   render() {
     return (
@@ -31,7 +30,6 @@ class Chart extends Component {
               display: this.props.displayTitle,
               text: "Project Name is: " + this.props.Project_Name,
               fontSize: 25
-              
             },
             legend: {
               display: this.props.displayLegend,

@@ -16,8 +16,12 @@ function Jumbotron() {
           say "HEY! FUCK YOU, PAY ME!"
           <br />
         </p>
-        <Link to="/register">Sign Up | </Link>
-        <Link to="/login">Log In</Link>
+        <Link className="link-name" to="/register">
+          Sign Up |{" "}
+        </Link>
+        <Link className="link-name" to="/login">
+          Log In
+        </Link>
       </div>
     </div>
   );
