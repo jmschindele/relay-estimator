@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./style.css";
+import "./style2.css";
 import firebase from "../../../config/fbConfig";
 
 class SignUp extends Component {
@@ -29,20 +29,24 @@ class SignUp extends Component {
   handleSignInSubmit = event => {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     event.preventDefault();
-    if (!this.state.email || !this.state.password || !this.state.firstName || !this.state.lastName || !this.state.confirmPassword) {
+    if (
+      !this.state.email ||
+      !this.state.password ||
+      !this.state.firstName ||
+      !this.state.lastName ||
+      !this.state.confirmPassword
+    ) {
       alert("All fields required");
     } else if (this.state.password.length < 6) {
-      alert(
-        `Choose a more secure password}`
-      );
+      alert(`Choose a more secure password}`);
     } else if (this.state.password !== this.state.confirmPassword) {
-      alert('passwords do not match')
+      alert("passwords do not match");
     } else {
       let email = this.state.email;
       let password = this.state.password;
       console.log(`user created:
-      email: ${email} password: ${password}`)
-      firebase.auth().createUserWithEmailAndPassword(email, password)
+      email: ${email} password: ${password}`);
+      firebase.auth().createUserWithEmailAndPassword(email, password);
     }
 
     this.setState({
@@ -57,7 +61,6 @@ class SignUp extends Component {
   render() {
     // Notice how each input has a `value`, `name`, and `onChange` prop
 
-
     const {
       firstName,
       lastName,
@@ -67,20 +70,18 @@ class SignUp extends Component {
     } = this.state;
 
     const isInvalid =
-
       password !== confirmPassword ||
-      password === '' ||
+      password === "" ||
       password.length < 6 ||
-      email === '' ||
-      firstName === '' ||
-      lastName === '';
-
+      email === "" ||
+      firstName === "" ||
+      lastName === "";
 
     return (
       <div className="form-container mx-auto">
-        <h1 className='text-center' >Sign Up</h1>
+        <h1 className="text-center">Sign Up</h1>
         <form className="form">
-        <input
+          <input
             className="form-control"
             value={this.state.firstName}
             name="firstName"
@@ -88,7 +89,7 @@ class SignUp extends Component {
             type="text"
             placeholder="First Name"
           />
-                    <input
+          <input
             className="form-control"
             value={this.state.lastName}
             name="lastName"
@@ -112,7 +113,7 @@ class SignUp extends Component {
             type="password"
             placeholder="Password"
           />
-                    <input
+          <input
             className="form-control"
             value={this.state.confirmPassword}
             name="confirmPassword"
@@ -120,8 +121,12 @@ class SignUp extends Component {
             type="password"
             placeholder="Confirm Password"
           />
-          <button onClick={this.handleSignInSubmit} disabled={isInvalid} className="btn btn-success">
-            Submit
+          <button
+            onClick={this.handleSignInSubmit}
+            disabled={isInvalid}
+            className="btn"
+          >
+            Register
           </button>
         </form>
       </div>

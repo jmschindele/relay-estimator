@@ -11,17 +11,23 @@
 
 .form-container {
   width: 500px;
-  height: 300px;
+  height: 200px;
   border: solid 1px lightgrey;
   background: whitesmoke;
   margin: 30px auto;
   border-radius: 5px;
   box-shadow: 0px 0px 15px 1px grey;
   padding: 3rem;
-  background: #271a3e;
-  color: white;
+  background: #00a86b;
+  color: #fae03c;
 }
 
 .form-container btn {
   float: right;
+}
+
+.btn {
+  background-color: #3f704d;
+  /* color: #fae03c; */
+  color: black;
 }

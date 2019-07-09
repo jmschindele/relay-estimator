@@ -4,6 +4,7 @@ import { Col, Row, Container } from "../components/Grid";
 // import Jumbotron from "../components/Jumbotron";
 // import API from "../utils/API";
 import NavBar from "../components/NavBar/NavBar";
+// import TaskCard from "../components/TaskCard/index";
 import Chart from "../components/Graph/index";
 
 class Graph extends Component {
@@ -56,7 +57,7 @@ class Graph extends Component {
     return (
       <Container fluid>
         <NavBar />
-
+        <div>{/* <TaskCard /> */}</div>
         <div className="App">
           <Chart
             chartData={this.state.chartData}
