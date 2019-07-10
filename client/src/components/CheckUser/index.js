@@ -6,7 +6,7 @@ class CheckUser extends Component {
 handleCheckUser = event => {
     event.preventDefault();
     var user = firebase.auth().currentUser;
-    let name, email, photoUrl, uid, emailVerified;
+    let name, photoUrl, uid, emailVerified;
     
     if (user != null) {
     //   name = this.user.displayName;

@@ -19,7 +19,7 @@ function NavBar() {
         </li>
         <br />
         <li className="nav-item">
-          <Link className="nav-link" to="/projects">
+          <Link className="nav-link" to="/project">
             My Projects
           </Link>
         </li>
