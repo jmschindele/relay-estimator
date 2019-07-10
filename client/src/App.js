@@ -8,29 +8,46 @@ import Users from "./pages/Users";
 import NoMatch from "./pages/NoMatch";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Graph from "./pages/Graph";
+import Chart from "./pages/Graph.js";
 import Projects from "./pages/Projects";
 import Register from "./pages/Register";
+import firebase from "./config/fbConfig"
 
 
 function App() {
+
+
+  var user = firebase.auth().currentUser;
+var name, email, photoUrl, uid, emailVerified;
+
+if (user != null) {
+  name = user.displayName;
+  email = user.email;
+  photoUrl = user.photoURL;
+  emailVerified = user.emailVerified;
+  uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
+                   // this value to authenticate with your backend server, if
+                   // you have one. Use User.getToken() instead.
+}
+ console.log(`user: ${user} name: ${name}`)
   return (
     <Router>
+      {console.log("current user: " + firebase.auth().currentUser)}
       <div>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/Home" component={Home} />
-          <Route exact path="/users" component={Users} />
-          {/* projects page */}
+          {/* copy of projects \/ */}
+          {/* <Route exact path="/users" component={Users} />
+          projects page */}
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
-          <Route exact path="/projects" component={Projects} />
-          <Route exact path="/graph" component={Graph} />
-          <Route exact path="/users/:id" component={Jumbotron} />
+          <Route path="/project" component={Projects} />
+          <Route path="/graph" component={Chart} />
+          <Route path="/users" component={Users} />
           {/* display estimates */}
-          <Route exact path="/projects/:id/:projectID" component={Jumbotron} />
           <Route component={NoMatch} />
-        </Switch>
+        </Switch>        
       </div>
     </Router>
   );

@@ -4,6 +4,7 @@ import { Col, Row, Container } from "../components/Grid";
 // import Jumbotron from "../components/Jumbotron";
 // import API from "../utils/API";
 import SignIn from "../components/auth/SignIn";
+import firebase from "../config/fbConfig";
 
 class Login extends Component {
   state = {
@@ -13,14 +14,15 @@ class Login extends Component {
     }
   };
 
-
+  currentUser = firebase.auth().currentUser ? firebase.auth().currentUser.email : 'jeff';
+  
   render() {
     return (
       <Container fluid>
         <Row>
           <Col size="md-12">
             <SignIn />
-
+{this.currentUser ? console.log(this.currentUser) : console.log('no user')}
           </Col>
         </Row>
         <Row>
