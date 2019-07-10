@@ -4,7 +4,7 @@ import { Col, Row, Container } from "../components/Grid";
 // import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import NavBar from "../components/NavBar/NavBar";
-// import TaskCard from "../components/TaskCard/index";
+import TaskCardDisplay from "../components/TaskCardDisplay/index";
 
 // import API from "../utils/API";
 import {
@@ -22,14 +22,6 @@ class Graph extends Component {
 
 
 
-
-
-// render() {
-//   return (<Doughnut ref={(reference) => this.chartReference = reference } data={data} />)
-// }
-
-  // When this component mounts, grab the book with the _id of this.props.match.params.id
-  // e.g. localhost:3000/books/599dcb67f0f16317844583fc
   componentDidMount() {
     this.getChartData();
   }
@@ -37,21 +29,25 @@ class Graph extends Component {
   getChartData = () => {
 
     API.getUsers().then(res => {
-      console.log(res.data[0].project[1].projectInfo.length);
+      // console.log(res.data[0].project[1].projectInfo.length);
       let taskArr = [];
       for (let i = 0; i < res.data[0].project[1].projectInfo.length; i++) {
         taskArr.push(res.data[0].project[1].projectInfo[i].task);
       }
-      console.log("task array: " + taskArr);
+      // console.log("task array: " + taskArr);
       let values = [];
+      let rate = [];
+      let hours = [];
       for (let i = 0; i < res.data[0].project[1].projectInfo.length; i++) {
         let newVal = 0;
         let num1 = res.data[0].project[1].projectInfo[i].hours;
         let num2 = res.data[0].project[1].projectInfo[i].rate;
         newVal = num1 * num2;
+        rate.push(num1)
+        hours.push(num2)
         values.push(newVal);
       }
-      console.log("Values: " + values);
+      // console.log("Values: " + values);
 
 
       this.setState({
@@ -66,6 +62,8 @@ class Graph extends Component {
               fontSize: 20
             },
             data: values,
+            rate,
+            hours,
             backgroundColor: [
               "rgba(255, 99, 132, 0.6)",
               "rgba(54, 162, 235, 0.6)",
@@ -86,14 +84,45 @@ class Graph extends Component {
     return (
       <Container fluid>
         <NavBar />
-        
-        {console.log('mer',this.state.chartData)}
+<Row>
+  <Col size='md-6'>
+ {/* {console.log( */}
+   {this.state.chartData.labels && this.state.chartData.labels.map((project, i) => (
+   <TaskCardDisplay
+   task={project}
+   rate={this.state.chartData.datasets[0].rate[i]}
+   hours={this.state.chartData.datasets[0].hours[i]}
+   total={this.state.chartData.datasets[0].data[i]}
+   />
+ )) 
+   }
+ {/* )} */}
+
+
+
+  {/* <TaskCardDisplay 
+  
+  task={'html'
+    // project.task
+  }
+  rate={ 60
+    // project.rate
+  }
+  hours={ 60
+    // project.hours
+  }
+  total={ 3600
+    // parseInt(project.rate) * parseInt(project.hours)
+  }
+
+  /> */}
+
+  
+  
+  </Col>
+  <Col size='md-6'>
+
         <div className="App">
-          {/* <Chart
-            chartData={this.state.chartData && this.state.chartData}
-            Project_Name="Relay"
-            legendPosition="top"
-          /> */}
 
 <Doughnut
           data={this.state.chartData}
@@ -113,11 +142,11 @@ class Graph extends Component {
               }
             }
           }}
-        />
+          />
         </div>
-        {/* );
-  }
-} */}
+          </Col>
+        </Row>
+
         <Row>
           <Col size="md-2">
             <Link to="/">Home</Link>
