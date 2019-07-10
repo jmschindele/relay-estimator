@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./style.css";
 import firebase from "../../../config/fbConfig";
+import SignOutBtn from "../../SignOutBtn";
+import CheckUser from "../../CheckUser";
 
 class SignIn extends Component {
   // Setting the component's initial state
@@ -23,6 +25,9 @@ class SignIn extends Component {
     });
   };
 
+
+
+
   handleSignInSubmit = event => {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     event.preventDefault();
@@ -31,7 +36,6 @@ class SignIn extends Component {
     } else if (this.state.password.length < 6) {
       alert(`Choose a more secure password}`);
     } else {
-      alert(`Login successful`);
       let email = this.state.email;
       let password = this.state.password;
       firebase.auth().signInWithEmailAndPassword(email, password);
@@ -77,6 +81,8 @@ class SignIn extends Component {
           >
             Sign In
           </button>
+          <SignOutBtn />
+          <CheckUser />
         </form>
       </div>
     );

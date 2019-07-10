@@ -17,9 +17,10 @@ class Users extends Component {
   }
 
   loadUser = () => {
+    
     API.getUsers()
       .then(res => {
-        console.log(res.data);
+        console.log(res.data[0]);
         this.setState({
           Users: [res.data[0]]
         });
@@ -80,7 +81,7 @@ class Users extends Component {
                         ${Users.project[0].projectInfo[0].task}
                         ${Users.project[0].projectInfo[0].hours}
                         ${Users.project[0].projectInfo[0].rate}
-                        `}
+                      `}
                     </strong>
                     {/* <DeleteBtn onClick={() => this.deleteBook(book._id)} /> */}
                   </ListItem>
