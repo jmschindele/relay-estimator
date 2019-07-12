@@ -1,56 +1,103 @@
-import React from "react";
+// import React from "react";
+import React, { Component } from 'react';
 // import logo from "./logo.svg";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 // import NavBar from "./components/NavBar/NavBar";
 // import Jumbotron from "./components/Jumbotron/Jumbotron";
-import Users from "./pages/Users";
-import NoMatch from "./pages/NoMatch";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Chart from "./pages/Graph.js";
-import Projects from "./pages/Projects";
-import Register from "./pages/Register";
-// import firebase from "./config/fbConfig"
+// import Users from "./pages/Users";
+// import NoMatch from "./pages/NoMatch";
+// import Home from "./pages/Home";
+// import Login from "./pages/Login";
+// import Chart from "./pages/Graph.js";
+// import Projects from "./pages/Projects";
+// import Register from "./pages/Register";
+import firebase from "./config/fbConfig"
 
+//starting tutorial experiment below this line
+import { Col, Row, Container } from "./components/Grid";
+import Jumbotron from "./components/Jumbotron/Jumbotron";
+import { Nav, Navbar, NavItem } from "react-bootstrap";
+import { Link, withRouter } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
+import SignOutBtn from "./components/SignOutBtn";
+import Routes from "./Routes";
+// function App() {
+  class App extends Component {
 
-function App() {
+  constructor (props) {
+    super(props);
+    this.state = {
+      isAuthenticated: false,
+      isAuthenticating: true
+    };
+  }
 
+  async componentDidMount() {
+    try {
+      firebase.auth().currentUser ? this.userHasAuthenticated(true) : console.log('not signed in')
+    } catch(e) {
+      console.log(e)
+    }
 
-//   var user = firebase.auth().currentUser;
+   this.setState({isAuthenticating: false});
+  }
+
+  userHasAuthenticated = autheticated => {
+    this.setState({isAuthenticated : autheticated})
+  }
+
+  handleLogout = async event => {
+    console.log('before logging out: ',firebase.auth().currentUser)
+    await firebase.auth().signOut().then(() => {
+      console.log('after logging out: ',firebase.auth().getUser)
+    });
+    this.userHasAuthenticated(false);
+    this.props.history.push("/signin");
+  }
   
-//   if (user != null) {
-//   var name, email, photoUrl, uid, emailVerified;
-//   name = user.displayName;
-//   email = user.email;
-//   photoUrl = user.photoURL;
-//   emailVerified = user.emailVerified;
-//   uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
-//                    // this value to authenticate with your backend server, if
-//                    // you have one. Use User.getToken() instead.
-// }
-//  console.log(`user: ${user} name: ${name}`)
-  return (
-    <Router>
-      {/* {console.log("current user: " + firebase.auth().currentUser)} */}
-      <div>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/Home" component={Home} />
-          {/* copy of projects \/ */}
-          {/* <Route exact path="/users" component={Users} />
-          projects page */}
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/register" component={Register} />
-          <Route path="/project" component={Projects} />
-          <Route path="/graph" component={Chart} />
-          <Route path="/users" component={Users} />
-          {/* display estimates */}
-          <Route component={NoMatch} />
-        </Switch>        
-      </div>
-    </Router>
-  );
-}
 
-export default App;
+  render () {
+    // <>
+    const childProps = {
+      isAutheticated: this.state.isAuthenticated,
+      userHasAuthenticated: this.userHasAuthenticated
+    };
+      return(
+    
+
+    !this.state.isAutheticating &&
+    <Container fluid>
+      <Navbar fluid collapseOnSelect>
+
+              <Link to="/">Home </Link>
+              <Link to="/estimate">graph </Link>
+              <Link to="/projects">projects </Link>
+              <Nav>
+              {this.state.isAuthenticated
+
+              ? <NavItem onClick={this.handleLogout}>Logout</NavItem> 
+              
+              : <>
+            <NavItem><Link to="register">Signup</Link></NavItem>
+
+            <NavItem><Link to="signin">Login</Link></NavItem>
+                </>
+              }
+          </Nav>
+
+      </Navbar>
+    <Row>
+      <Col size="md-12">
+
+        <Routes childProps={childProps} />
+        {/* <Jumbotron />
+        <SignOutBtn /> */}
+      </Col>
+    </Row>
+  </Container>
+ )};
+ 
+  }
+
+export default withRouter(App);

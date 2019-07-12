@@ -11,13 +11,13 @@ handleCheckUser = event => {
     if (user != null) {
     //   name = this.user.displayName;
     //   email = this.user.email;
-    //   photoUrl = this.user.photoURL;
-    //   emailVerified = this.user.emailVerified;
+      photoUrl = this.user.photoURL;
+      emailVerified = this.user.emailVerified;
       uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
                        // this value to authenticate with your backend server, if
                        // you have one. Use User.getToken() instead.
     }
-    console.log(`User: ${user.email}, Name: ${name}, Photo Url: ${photoUrl}, UID: ${uid}, Email: ${emailVerified}`)
+    console.log(`UID: ${uid}, Email: ${emailVerified}`)
 }
 
 render() {

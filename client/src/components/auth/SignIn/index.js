@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Row, Container } from "../../Grid";
 import "./style.css";
 import firebase from "../../../config/fbConfig";
 import SignOutBtn from "../../SignOutBtn";
@@ -25,10 +26,7 @@ class SignIn extends Component {
     });
   };
 
-
-
-
-  handleSignInSubmit = event => {
+  handleSignInSubmit = async event => {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     event.preventDefault();
     if (!this.state.email || !this.state.password) {
@@ -36,9 +34,17 @@ class SignIn extends Component {
     } else if (this.state.password.length < 6) {
       alert(`Choose a more secure password}`);
     } else {
-      let email = this.state.email;
-      let password = this.state.password;
-      firebase.auth().signInWithEmailAndPassword(email, password);
+      try {
+        //making async call to firebase and waiting for user confirmation
+        await firebase
+          .auth()
+          .signInWithEmailAndPassword(this.state.email, this.state.password);
+          this.props.userHasAuthenticated(true);
+          this.props.history.push("/");
+        console.log("current user ", firebase.auth().currentUser.uid);
+      } catch (e) {
+        console.log(e.message);
+      }
     }
 
     this.setState({
@@ -55,36 +61,41 @@ class SignIn extends Component {
     const isInvalid = password === "" || password.length < 6 || email === "";
 
     return (
-      <div className="form-container mx-auto">
-        <h1 className="text-center">Sign In</h1>
-        <form className="form">
-          <input
-            className="form-control"
-            value={this.state.email}
-            name="email"
-            onChange={this.handleInputChange}
-            type="text"
-            placeholder="Email/Username"
-          />
-          <input
-            className="form-control"
-            value={this.state.password}
-            name="password"
-            onChange={this.handleInputChange}
-            type="password"
-            placeholder="Password"
-          />
-          <button
-            onClick={this.handleSignInSubmit}
-            disabled={isInvalid}
-            className="btn"
-          >
-            Sign In
-          </button>
-          <SignOutBtn />
-          <CheckUser />
-        </form>
-      </div>
+      <Container>
+        <Row>
+          <div className="form-container mx-auto">
+            <h1 className="text-center">Sign In</h1>
+            <form className="form">
+              <input
+                autoFocus
+                className="form-control"
+                value={this.state.email}
+                name="email"
+                onChange={this.handleInputChange}
+                type="text"
+                placeholder="Email/Username"
+              />
+              <input
+                className="form-control"
+                value={this.state.password}
+                name="password"
+                onChange={this.handleInputChange}
+                type="password"
+                placeholder="Password"
+              />
+              <button
+                onClick={this.handleSignInSubmit}
+                disabled={isInvalid}
+                className="btn"
+              >
+                Sign In
+              </button>
+              <SignOutBtn />
+              <CheckUser />
+            </form>
+          </div>
+        </Row>
+      </Container>
     );
   }
 }

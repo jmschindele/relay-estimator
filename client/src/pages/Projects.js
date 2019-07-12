@@ -18,8 +18,10 @@ class Projects extends Component {
   render() {
     return (
       <Container fluid>
-        <NavBar />
+
+        
         <NewProjectBtn />
+
         <Row>
           <Col size="md-3">
             <ProjectCard />

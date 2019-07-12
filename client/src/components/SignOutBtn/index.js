@@ -11,8 +11,9 @@ handleSignOut = event => {
 
 render() {
     return(
+        <>
     <button onClick={this.handleSignOut}> Sign Out </button>
-
-    )}
+    {localStorage.setItem("User", '')}
+    </>)}
 }
 export default SignOutBtn;
