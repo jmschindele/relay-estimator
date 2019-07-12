@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./style2.css";
 import firebase from "../../../config/fbConfig";
 
-class SignUp extends Component {
+class Register extends Component {
   // Setting the component's initial state
   state = {
     firstName: "",
@@ -26,7 +26,7 @@ class SignUp extends Component {
     });
   };
 
-  handleSignInSubmit = event => {
+  handleRegisterSubmit = async event => {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     event.preventDefault();
     if (
@@ -42,12 +42,18 @@ class SignUp extends Component {
     } else if (this.state.password !== this.state.confirmPassword) {
       alert("passwords do not match");
     } else {
-      let email = this.state.email;
-      let password = this.state.password;
-      console.log(`user created:
-      email: ${email} password: ${password}`);
-      firebase.auth().createUserWithEmailAndPassword(email, password);
+      try {
+        //making async call to firebase and waiting for register
+      await firebase
+      .auth()
+      .createUserWithEmailAndPassword(this.state.email, this.state.password);
+      firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+      this.props.history.push("/");
+    } catch (e) {
+      console.log(e.message);
+      document.getElementById('register-fail').textContent = e.message;
     }
+  }
 
     this.setState({
       firstName: "",
@@ -122,16 +128,17 @@ class SignUp extends Component {
             placeholder="Confirm Password"
           />
           <button
-            onClick={this.handleSignInSubmit}
+            onClick={this.handleRegisterSubmit}
             disabled={isInvalid}
             className="btn"
           >
             Register
           </button>
         </form>
+        <p id='register-fail'></p>
       </div>
     );
   }
 }
 
-export default SignUp;
+export default Register;

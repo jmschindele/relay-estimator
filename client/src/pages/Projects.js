@@ -17,7 +17,7 @@ class Projects extends Component {
   render() {
     return (
       <Container fluid>
-        <NavBar />
+      
         <Row>
           <TaskCard />
         </Row>
