@@ -3,7 +3,7 @@ import { Row, Container } from "../../Grid";
 import "./style.css";
 import firebase from "../../../config/fbConfig";
 import SignOutBtn from "../../SignOutBtn";
-import CheckUser from "../../CheckUser";
+
 
 class SignIn extends Component {
   // Setting the component's initial state
@@ -91,7 +91,7 @@ class SignIn extends Component {
                 Sign In
               </button>
               <SignOutBtn />
-              <CheckUser />
+
             </form>
           </div>
         </Row>
