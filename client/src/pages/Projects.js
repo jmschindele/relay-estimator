@@ -6,6 +6,7 @@ import { Col, Row, Container } from "../components/Grid";
 import NavBar from "../components/NavBar/NavBar";
 import ProjectCard from "../components/ProjectCard/index";
 import TaskCard from "../components/TaskCard/index";
+import NewProjectBtn from "../components/NewProjectBtn";
 
 class Projects extends Component {
   // state = {
@@ -18,13 +19,14 @@ class Projects extends Component {
     return (
       <Container fluid>
         <NavBar />
-        <Row>
-          <TaskCard />
-        </Row>
+        <NewProjectBtn />
         <Row>
           <Col size="md-3">
             <ProjectCard />
           </Col>
+        </Row>
+        <Row>
+          <TaskCard />
         </Row>
       </Container>
     );
