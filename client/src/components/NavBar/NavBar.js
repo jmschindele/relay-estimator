@@ -7,9 +7,16 @@ function NavBar() {
     <nav className="navbar">
       <ul className="nav nav-pills nav-justified">
         <li className="nav-item">
-          <Link className="nav-link" to="/login">
-            Sign In
+
+        {this.state.isAuthenticated
+        
+        ?  <Link className="nav-link" to="/signin">
+            Sign Out
           </Link>
+        :  <Link className="nav-link" to="/signin">
+        Sign In
+      </Link> 
+        }
         </li>
         <br />
         <li className="nav-item">

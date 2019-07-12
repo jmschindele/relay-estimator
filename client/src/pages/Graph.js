@@ -24,6 +24,9 @@ class Graph extends Component {
 
   componentDidMount() {
     this.getChartData();
+
+      console.log("Graph page localstorage test : ",localStorage.getItem('User'))
+     
   }
 
   getChartData = () => {
@@ -83,12 +86,13 @@ class Graph extends Component {
   render() {
     return (
       <Container fluid>
-        <NavBar />
+    
 <Row>
   <Col size='md-6'>
  {/* {console.log( */}
    {this.state.chartData.labels && this.state.chartData.labels.map((project, i) => (
    <TaskCardDisplay
+   key={i}
    task={project}
    rate={this.state.chartData.datasets[0].rate[i]}
    hours={this.state.chartData.datasets[0].hours[i]}
@@ -96,26 +100,7 @@ class Graph extends Component {
    />
  )) 
    }
- {/* )} */}
 
-
-
-  {/* <TaskCardDisplay 
-  
-  task={'html'
-    // project.task
-  }
-  rate={ 60
-    // project.rate
-  }
-  hours={ 60
-    // project.hours
-  }
-  total={ 3600
-    // parseInt(project.rate) * parseInt(project.hours)
-  }
-
-  /> */}
 
   
   
