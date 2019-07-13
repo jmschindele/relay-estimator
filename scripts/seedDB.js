@@ -10,7 +10,7 @@ mongoose.connect(
 
 const projectSeed = [
   {
-    userName: "Chris1",
+    uid: "3FPDyy58KaOY0Aw3qw4UNoAMsD03",
     project: [
       { 
         projectName: 'Project 1',
@@ -76,7 +76,7 @@ const projectSeed = [
     ]
   },
   {
-    userName: "Chris2",
+    uid: "Chris2",
     project: [
       { 
         projectName : 'project1',
@@ -142,7 +142,7 @@ const projectSeed = [
     ]
   },
   {
-    userName: "Josh",
+    uid: "Josh",
     project: [
       {
         projectName: 'project1',

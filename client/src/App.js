@@ -1,26 +1,13 @@
-// import React from "react";
-import React, { Component } from "react";
-// import logo from "./logo.svg";
-// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import React, { Component } from 'react';
 import "./App.css";
-// import NavBar from "./components/NavBar/NavBar";
-// import Jumbotron from "./components/Jumbotron/Jumbotron";
-// import Users from "./pages/Users";
-// import NoMatch from "./pages/NoMatch";
-// import Home from "./pages/Home";
-// import Login from "./pages/Login";
-// import Chart from "./pages/Graph.js";
-// import Projects from "./pages/Projects";
-// import Register from "./pages/Register";
-import firebase from "./config/fbConfig";
+
+import firebase from "./config/fbConfig"
 
 //starting tutorial experiment below this line
 import { Col, Row, Container } from "./components/Grid";
-// import Jumbotron from "./components/Jumbotron/Jumbotron";
 import { Nav, Navbar, NavItem } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
-// import { LinkContainer } from "react-router-bootstrap";
-// import SignOutBtn from "./components/SignOutBtn";
 import Routes from "./Routes";
 // function App() {
 class App extends Component {
@@ -64,7 +51,8 @@ class App extends Component {
     // <>
     const childProps = {
       isAutheticated: this.state.isAuthenticated,
-      userHasAuthenticated: this.userHasAuthenticated
+      userHasAuthenticated: this.userHasAuthenticated,
+      userId: firebase.auth().currentUser ? firebase.auth().currentUser.uid : null
     };
     return (
       !this.state.isAutheticating && (

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./style2.css";
 import firebase from "../../../config/fbConfig";
-
+import API from "../../../utils/API"
 class Register extends Component {
   // Setting the component's initial state
   state = {
@@ -46,8 +46,15 @@ class Register extends Component {
         //making async call to firebase and waiting for register
       await firebase
       .auth()
-      .createUserWithEmailAndPassword(this.state.email, this.state.password);
-      firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+      .createUserWithEmailAndPassword(this.state.email, this.state.password).then(function(res,err){
+        if (err) console.log('register err', err)
+        API.saveUser({
+          uid: res.user.uid
+        })
+      });
+      // firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then(function(res, err){
+      //  console.log(res)
+      // })
       this.props.history.push("/");
     } catch (e) {
       console.log(e.message);

@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
-// import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 
 import TaskCardDisplay from "../components/TaskCardDisplay/index";
 
-// import API from "../utils/API";
 import {
   Doughnut
   // Bar
@@ -89,7 +87,7 @@ class Graph extends Component {
     
 <Row>
   <Col size='md-6'>
- {/* {console.log( */}
+ 
    {this.state.chartData.labels && this.state.chartData.labels.map((project, i) => (
    <TaskCardDisplay
    key={i}

@@ -16,6 +16,18 @@ const API = {
   // Saves a book to the database
   saveUser: function(userData) {
     return axios.post("/api/user", userData);
+  },
+
+  getProjects: function(userId) {
+    return axios.get("/api/"+ userId )
+  },
+
+  getProject: function(uid, projectName) {
+    return axios.get('/api/' + uid + '/' + projectName)
+  },
+
+  saveTask: function(uid, projectName, userData) {
+    return axios.post('/api/' + uid + '/' + projectName + '/' + userData)
   }
 };
 
