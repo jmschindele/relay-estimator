@@ -1,12 +1,14 @@
 .jumbotron {
   margin-top: 10%;
-  /* background-image: url("https://s16002.pcdn.co/wp-content/uploads/2015/01/Freelance-desktop-1600x799.png"); */
-  opacity: 80%;
   background-size: contain;
-  background-repeat: no-repeat;
   background-position: center;
   background-color: #00a86b;
   color: #fae03c;
+  border: solid 1px lightgrey;
+  margin: 30px auto;
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px 1px grey;
+  padding: 3rem;
   /* text-shadow: 0px 0px 10px black; */
 }
 

@@ -4,11 +4,11 @@ import "./style.css";
 
 function TaskCard() {
   return (
-    <div className="card">
+    <div className="card-t">
       <div className="card-body">
         <div className="form-row align-items-center">
           <div className="col-6">
-            <label className="sr-only" for="inlineFormInput">
+            <label className="sr-only" htmlFor="inlineFormInput">
               {" "}
               Name{" "}
             </label>
@@ -16,45 +16,46 @@ function TaskCard() {
               type="text"
               className="form-control mb-2"
               id="inlineFormInput"
-              placeholder="Task Name"
+              placeholder="Task"
             />
           </div>
-          <div class="col-2">
-            <label class="sr-only" for="inlineFormInput">
+          <div className="col-2">
+            <label className="sr-only" htmlFor="inlineFormInput">
               Name
             </label>
             <input
               type="text"
-              class="form-control mb-2"
-              id="inlineFormInput"
-              placeholder="Hours"
-            />
-          </div>
-          <div class="col-2">
-            <label class="sr-only" for="inlineFormInput">
-              Name
-            </label>
-            <input
-              type="text"
-              class="form-control mb-2"
+              className="form-control mb-2"
               id="inlineFormInput"
               placeholder="Rate"
             />
           </div>
-          <div class="col-2">
-            <label class="sr-only" for="inlineFormInput">
+          <div className="col-2">
+            <label className="sr-only" htmlFor="inlineFormInput">
               Name
             </label>
             <input
               type="text"
-              class="form-control mb-2"
+              className="form-control mb-2"
               id="inlineFormInput"
-              placeholder="Total"
+              placeholder="Hours"
+            />
+          </div>
+          <div className="col-2">
+            <label htmlFor="staticTotal" className="col-sm-2 col-form-label">
+              Total:
+            </label>
+            <input
+              type="text"
+              readOnly
+              className="form-control-plaintext"
+              id="staticTotal"
+              value=""
             />
           </div>
         </div>
 
-        <Link to="#" className="card-link">
+        <Link to="#" className="card-link-t">
           Edit
         </Link>
       </div>

@@ -1,29 +1,29 @@
-.card {
+.card-tcd {
   margin-left: 20px;
   margin-bottom: 10px;
   box-shadow: 0px 0px 3px 1px grey;
+  background-color: #00a86b;
+  border-radius: 5px;
+  border: solid 1px lightgrey;
 }
 
 .task-title {
   color: white;
+  font-size: 2em;
   font-weight: bold;
 }
 
 .task-heading {
-  color: whitesmoke;
+  color: #fae03c;
   font-size: 1.5em;
   border-bottom: solid 1px currentColor;
   line-height: 1;
-  text-shadow: 
-      2px 2px #00a86b, 
-      2px -2px #00a86b, 
-      -2px 2px #00a86b,
-      -2px -2px #00a86b;
+  text-shadow: 2px 2px #00a86b, 2px -2px #00a86b, -2px 2px #00a86b,
+    -2px -2px #00a86b;
 }
 
 .task-result {
   color: white;
   font-size: 2em;
   font-weight: bold;
-
 }
