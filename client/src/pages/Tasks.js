@@ -3,8 +3,9 @@ import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
 // import Jumbotron from "../components/Jumbotron";
 // import API from "../utils/API";
-import NavBar from "../components/NavBar/NavBar";
+// import NavBar from "../components/NavBar/NavBar";
 import TaskCard from "../components/TaskCard/index";
+import NewTaskBtn from "../components/NewTaskBtn/index";
 
 class Tasks extends Component {
   // state = {
@@ -16,9 +17,11 @@ class Tasks extends Component {
   render() {
     return (
       <Container fluid>
-        <NavBar />
+        <NewTaskBtn />
         <Row>
-          <Col size="md-12">
+          <Col size="md-10">
+            <TaskCard />
+            <TaskCard />
             <TaskCard />
           </Col>
         </Row>

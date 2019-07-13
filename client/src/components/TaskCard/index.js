@@ -56,7 +56,10 @@ function TaskCard() {
         </div>
 
         <Link to="#" className="card-link-t">
-          Edit
+          Edit |
+        </Link>
+        <Link to="#" className="card-link-t">
+          Save
         </Link>
       </div>
     </div>

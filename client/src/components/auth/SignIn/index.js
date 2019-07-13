@@ -6,9 +6,14 @@ import SignOutBtn from "../../SignOutBtn";
 
 class SignIn extends Component {
   // Setting the component's initial state
+  // state = {
+  //   email: "",
+  //   password: ""
+  // };
+
   state = {
-    email: "",
-    password: ""
+    email: "test@test.com",
+    password: "test123"
   };
 
   handleInputChange = event => {
@@ -46,18 +51,18 @@ class SignIn extends Component {
       }
     }
 
-    this.setState({
-      email: "",
-      password: ""
-    });
+    // this.setState({
+    //   email: "",
+    //   password: ""
+    // });
   };
 
   render() {
     // Notice how each input has a `value`, `name`, and `onChange` prop
 
-    const { email, password } = this.state;
+    // const { email, password } = this.state;
 
-    const isInvalid = password === "" || password.length < 6 || email === "";
+    // const isInvalid = password === "" || password.length < 6 || email === "";
 
     return (
       <Container>
@@ -68,7 +73,8 @@ class SignIn extends Component {
               <input
                 autoFocus
                 className="form-control"
-                value={this.state.email}
+                // value={this.state.email}
+                value="test@test.com"
                 name="email"
                 onChange={this.handleInputChange}
                 type="text"
@@ -76,7 +82,8 @@ class SignIn extends Component {
               />
               <input
                 className="form-control"
-                value={this.state.password}
+                // value={this.state.password}
+                value="test123"
                 name="password"
                 onChange={this.handleInputChange}
                 type="password"
@@ -84,7 +91,7 @@ class SignIn extends Component {
               />
               <button
                 onClick={this.handleSignInSubmit}
-                disabled={isInvalid}
+                // disabled={isInvalid}
                 className="btn"
               >
                 Sign In
