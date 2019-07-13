@@ -20,4 +20,4 @@ export default ({childProps}) =>
     <AppliedRoute path='/estimate/' component={Chart}  props={childProps}/>
     <Route component={NoMatch} />
   </Switch>
-);
+

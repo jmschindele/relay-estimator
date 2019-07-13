@@ -54,12 +54,6 @@ class App extends Component {
       userHasAuthenticated: this.userHasAuthenticated,
       userId: firebase.auth().currentUser ? firebase.auth().currentUser.uid : null
     };
-<<<<<<< HEAD
-      return(
-    !this.state.isAutheticating &&
-    <Container fluid>
-      <Navbar  collapseOnSelect>
-=======
     return (
       !this.state.isAutheticating && (
         <Container fluid>
@@ -71,7 +65,6 @@ class App extends Component {
             <Link className="nav-link" to="/estimate">
               graph{" "}
             </Link>
->>>>>>> 6f26d99aecd900fa2b65ec3b71fec1a0c7898de3
 
             <Link className="nav-link" to="/projects">
               projects{" "}

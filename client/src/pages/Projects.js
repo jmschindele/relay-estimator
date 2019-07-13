@@ -47,8 +47,9 @@ class Projects extends Component {
         <NewProjectBtn />
 
         <Row>
-          <Col size="md-3">
+
             {this.state.titles && this.state.titles.map((project, i) => (
+              
               <ProjectCard
               key={i}
               title={project}
@@ -56,13 +57,7 @@ class Projects extends Component {
             ))}
             {/* <ProjectCard 
             title={this.state.titles}/> */}
-          </Col>
-          <Col size="md-3">
-            <ProjectCard />
-          </Col>
-          <Col size="md-3">
-            <ProjectCard />
-          </Col>
+
         </Row>
       </Container>
     );
