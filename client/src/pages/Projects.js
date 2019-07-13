@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import ProjectCard from "../components/ProjectCard/index";
-import TaskCard from "../components/TaskCard/index";
+// import TaskCard from "../components/TaskCard/index";
 import NewProjectBtn from "../components/NewProjectBtn";
 import API from "../utils/API"
 
@@ -57,9 +57,12 @@ class Projects extends Component {
             {/* <ProjectCard 
             title={this.state.titles}/> */}
           </Col>
-        </Row>
-        <Row>
-          <TaskCard />
+          <Col size="md-3">
+            <ProjectCard />
+          </Col>
+          <Col size="md-3">
+            <ProjectCard />
+          </Col>
         </Row>
       </Container>
     );

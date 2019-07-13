@@ -1,8 +1,14 @@
-.card {
+.card-p {
   background-color: #00a86b;
   color: black;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  border: solid 1px lightgrey;
+  box-shadow: 0px 0px 15px 1px grey;
+  padding: 1rem;
+  background: #00a86b;
 }
 
-.card-link {
+.card-link-p {
   color: #fae03c;
 }

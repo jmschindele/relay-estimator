@@ -18,7 +18,7 @@ class NewProjectBtn extends Component {
     return (
       <button className="btn-primary" onClick={this.startNewProject}>
         {" "}
-        +{" "}
+        + Prjkt
       </button>
     );
   }
