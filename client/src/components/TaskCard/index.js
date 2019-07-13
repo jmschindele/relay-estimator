@@ -8,7 +8,7 @@ function TaskCard() {
       <div className="card-body">
         <div className="form-row align-items-center">
           <div className="col-6">
-            <label className="sr-only" for="inlineFormInput">
+            <label className="sr-only" htmlFor="inlineFormInput">
               {" "}
               Name{" "}
             </label>
@@ -19,35 +19,35 @@ function TaskCard() {
               placeholder="Task Name"
             />
           </div>
-          <div class="col-2">
-            <label class="sr-only" for="inlineFormInput">
+          <div className="col-2">
+            <label className="sr-only" htmlFor="inlineFormInput">
               Name
             </label>
             <input
               type="text"
-              class="form-control mb-2"
+              className="form-control mb-2"
               id="inlineFormInput"
               placeholder="Hours"
             />
           </div>
-          <div class="col-2">
-            <label class="sr-only" for="inlineFormInput">
+          <div className="col-2">
+            <label className="sr-only" htmlFor="inlineFormInput">
               Name
             </label>
             <input
               type="text"
-              class="form-control mb-2"
+              className="form-control mb-2"
               id="inlineFormInput"
               placeholder="Rate"
             />
           </div>
-          <div class="col-2">
-            <label class="sr-only" for="inlineFormInput">
+          <div className="col-2">
+            <label className="sr-only" htmlFor="inlineFormInput">
               Name
             </label>
             <input
               type="text"
-              class="form-control mb-2"
+              className="form-control mb-2"
               id="inlineFormInput"
               placeholder="Total"
             />

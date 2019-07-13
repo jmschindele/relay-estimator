@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-function ProjectCard() {
+function ProjectCard(props) {
   return (
     <div className="card">
       <div className="card-body">
-        <h5 className="card-title">Project title</h5>
-        <p className="card-text">This project is the BEEZ KNEEzzz...</p>
+        <h5 className="card-title">{props.title}</h5>
+        {/* <p className="card-text">This project is the BEEZ KNEEzzz...</p> */}
         <Link to="#" className="card-link">
           Edit
         </Link>
