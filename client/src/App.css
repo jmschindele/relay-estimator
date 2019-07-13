@@ -4,8 +4,8 @@ body {
 
 .navbar {
   background-color: #c7ea46;
-  color: #3f704d;
   border-radius: 2px;
+  margin-bottom: 30px;
 }
 
 .nav-link {
