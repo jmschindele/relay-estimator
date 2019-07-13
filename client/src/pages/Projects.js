@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Col, Row, Container } from "../components/Grid";
+import { Row, Container } from "../components/Grid";
 import ProjectCard from "../components/ProjectCard/index";
 // import TaskCard from "../components/TaskCard/index";
 import NewProjectBtn from "../components/NewProjectBtn";
@@ -42,13 +42,17 @@ class Projects extends Component {
         <NewProjectBtn />
 
         <Row>
-          {this.state.titles &&
-            this.state.titles.map((project, i) => (
-              <Col>
-                <ProjectCard key={i} title={project} />
-              </Col>
+
+            {this.state.titles && this.state.titles.map((project, i) => (
+              <div className='col-3'>
+              <ProjectCard
+              key={i}
+              title={project}
+              />
+              </div>
             ))}
-          {/* <ProjectCard 
+
+            {/* <ProjectCard 
             title={this.state.titles}/> */}
         </Row>
       </Container>
