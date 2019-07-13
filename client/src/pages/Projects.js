@@ -5,15 +5,18 @@ import TaskCard from "../components/TaskCard/index";
 import NewProjectBtn from "../components/NewProjectBtn";
 
 class Projects extends Component {
-
   render() {
     return (
       <Container fluid>
-
-        
         <NewProjectBtn />
 
         <Row>
+          <Col size="md-3">
+            <ProjectCard />
+          </Col>
+          <Col size="md-3">
+            <ProjectCard />
+          </Col>
           <Col size="md-3">
             <ProjectCard />
           </Col>

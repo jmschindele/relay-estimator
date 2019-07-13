@@ -4,7 +4,6 @@ import "./style.css";
 import firebase from "../../../config/fbConfig";
 import SignOutBtn from "../../SignOutBtn";
 
-
 class SignIn extends Component {
   // Setting the component's initial state
   state = {
@@ -39,8 +38,8 @@ class SignIn extends Component {
         await firebase
           .auth()
           .signInWithEmailAndPassword(this.state.email, this.state.password);
-          this.props.userHasAuthenticated(true);
-          this.props.history.push("/");
+        this.props.userHasAuthenticated(true);
+        this.props.history.push("/");
         console.log("current user ", firebase.auth().currentUser.uid);
       } catch (e) {
         console.log(e.message);
@@ -63,7 +62,7 @@ class SignIn extends Component {
     return (
       <Container>
         <Row>
-          <div className="form-container mx-auto">
+          <div className="form-container-2 mx-auto">
             <h1 className="text-center">Sign In</h1>
             <form className="form">
               <input
@@ -91,7 +90,6 @@ class SignIn extends Component {
                 Sign In
               </button>
               <SignOutBtn />
-
             </form>
           </div>
         </Row>

@@ -1,4 +1,6 @@
 .btn-primary {
-  border-radius: 2px;
+  border-radius: 5px;
+  border: solid 1px lightgrey;
+  margin-top: 50px;
   margin-left: 95%;
 }
