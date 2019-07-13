@@ -49,12 +49,14 @@ class Projects extends Component {
         <Row>
 
             {this.state.titles && this.state.titles.map((project, i) => (
-              
+              <div className='col-3'>
               <ProjectCard
               key={i}
               title={project}
               />
+              </div>
             ))}
+
             {/* <ProjectCard 
             title={this.state.titles}/> */}
 
