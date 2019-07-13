@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Col, Row, Container } from "../components/Grid";
+import { Row, Container } from "../components/Grid";
 import ProjectCard from "../components/ProjectCard/index";
 // import TaskCard from "../components/TaskCard/index";
 import NewProjectBtn from "../components/NewProjectBtn";

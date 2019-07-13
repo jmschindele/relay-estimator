@@ -10,18 +10,10 @@ class SignIn extends Component {
   //   email: "",
   //   password: ""
   // };
-<<<<<<< HEAD
   state = { 
     email: "test@test.com",
     password: "test123"
   }
-=======
-
-  state = {
-    email: "test@test.com",
-    password: "test123"
-  };
->>>>>>> 14ac1a00f00571c73bf0314ac3479843079aaed7
 
   handleInputChange = event => {
     // Getting the value and name of the input which triggered the change
@@ -81,11 +73,7 @@ class SignIn extends Component {
                 autoFocus
                 className="form-control"
                 // value={this.state.email}
-<<<<<<< HEAD
                 value='test@test.com'
-=======
-                value="test@test.com"
->>>>>>> 14ac1a00f00571c73bf0314ac3479843079aaed7
                 name="email"
                 onChange={this.handleInputChange}
                 type="text"
@@ -94,11 +82,7 @@ class SignIn extends Component {
               <input
                 className="form-control"
                 // value={this.state.password}
-<<<<<<< HEAD
                 value='test123'
-=======
-                value="test123"
->>>>>>> 14ac1a00f00571c73bf0314ac3479843079aaed7
                 name="password"
                 onChange={this.handleInputChange}
                 type="password"
