@@ -63,28 +63,31 @@ class App extends Component {
             </Link>
 
             <Link className="nav-link" to="/estimate">
-              graph{" "}
+              Graph/Estimate{" "}
             </Link>
 
             <Link className="nav-link" to="/projects">
-              projects{" "}
+              Projects{" "}
+            </Link>
+
+            <Link className="nav-link" to="/tasks">
+              Tasks{" "}
             </Link>
 
             <Nav>
               {this.state.isAuthenticated ? (
-                <NavItem className="nav-link" onClick={this.handleLogout}>
+                <NavItem className="nav-link-2" onClick={this.handleLogout}>
                   Logout
                 </NavItem>
               ) : (
                 <>
                   <NavItem>
-                    <Link className="nav-link" to="register">
-                      Signup
+                    <Link className="nav-link-3" to="register">
+                      Signup |
                     </Link>
                   </NavItem>
-
                   <NavItem>
-                    <Link className="nav-link" to="signin">
+                    <Link className="nav-link-4" to="signin">
                       Login
                     </Link>
                   </NavItem>
