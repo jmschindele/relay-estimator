@@ -10,4 +10,23 @@ body {
 
 .nav-link {
   color: #3f704d;
+  margin-right: 30px;
+}
+
+.nav-link-2 {
+  color: #3f704d;
+  /* margin-right: 15px;
+  margin-left: 15px; */
+}
+
+.nav-link-3 {
+  color: #3f704d;
+
+  margin-left: 15px;
+}
+
+.nav-link-4 {
+  color: #3f704d;
+  margin-right: 15px;
+  margin-left: 5px;
 }

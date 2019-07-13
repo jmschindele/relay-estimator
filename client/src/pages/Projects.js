@@ -14,12 +14,6 @@ class Projects extends Component {
           <Col size="md-3">
             <ProjectCard />
           </Col>
-          <Col size="md-3">
-            <ProjectCard />
-          </Col>
-          <Col size="md-3">
-            <ProjectCard />
-          </Col>
         </Row>
       </Container>
     );
