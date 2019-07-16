@@ -7,14 +7,19 @@
   border: solid 1px lightgrey;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 .task-title {
   color: white;
   font-size: 2em;
   font-weight: bold;
+  overflow-x: auto;
 }
 
 @media (max-width: 618px) {
-  .col-3 task-title {
+  .task-title {
     font-size: 1em;
   }
 }
