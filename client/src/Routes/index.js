@@ -4,7 +4,7 @@ import Home from "../pages/Home/index";
 import NoMatch from "../pages/NoMatch";
 import SignIn from "../components/auth/SignIn";
 import Register from "../components/auth/Register";
-import Chart from "../pages/Graph";
+import Chart from "../pages/Graph/Graph";
 import Projects from "../pages/Projects";
 import AppliedRoute from "../components/AppliedRoute";
 import Tasks from "../pages/Tasks";

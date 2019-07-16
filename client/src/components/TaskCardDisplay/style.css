@@ -13,6 +13,12 @@
   font-weight: bold;
 }
 
+@media (max-width: 618px) {
+  .col-3 task-title {
+    font-size: 1em;
+  }
+}
+
 .task-heading {
   color: #fae03c;
   font-size: 1.5em;
@@ -22,8 +28,20 @@
     -2px -2px #00a86b;
 }
 
+@media (max-width: 618px) {
+  .task-heading {
+    font-size: 1em;
+  }
+}
+
 .task-result {
   color: white;
   font-size: 2em;
   font-weight: bold;
+}
+
+@media (max-width: 618px) {
+  .task-result {
+    font-size: 1em;
+  }
 }
