@@ -5,16 +5,14 @@ import "./style.css";
 class SignOutBtn extends Component {
   handleSignOut = event => {
     event.preventDefault();
-    firebase.auth().signOut();
-    console.log("signed out");
+    firebase.auth().signOut().then(()=> console.log('signed out'));
   };
 
   render() {
     return (
       <>
         <button className="btn btn-warning" onClick={this.handleSignOut}>
-          {" "}
-          Sign Out{" "}
+          Sign Out
         </button>
         {localStorage.setItem("User", "")}
       </>

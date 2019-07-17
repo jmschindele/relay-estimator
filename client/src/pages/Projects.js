@@ -96,7 +96,8 @@
 
 import React, { Component } from "react";
 import { Row, Container } from "../components/Grid";
-import ProjectCard from "../components/ProjectCard/index";
+import ProjectCard from "../components/ProjectCard";
+import NewProjectCard from "../components/ProjectCard/NewProjectCard"
 // import TaskCard from "../components/TaskCard/index";
 import NewProjectBtn from "../components/NewProjectBtn";
 import API from "../utils/API";
@@ -106,7 +107,9 @@ import DeleteBtn from "../components/DeleteBtn"
 class Projects extends Component {
 
  state = {
-   projects: []
+   projects: [],
+   newProjects: [],
+   newProjectTitle: '',
  }
 
   componentDidMount() {
@@ -119,29 +122,35 @@ class Projects extends Component {
         this.setState({projects: res.data}))
       .catch(err => console.log(err));
       };
-      deleteProject = id => {
+
+  deleteProject = id => {
         API.deleteProject(id)
           .then(res => this.loadProjects())
           .catch(err => console.log(err))
       };
       
-      handleProjectClick = () => {
+  handleProjectClick = () => {
         // event.preventDefault();
         alert('clickity mofucking clack')
       };
       
-      handleProjectDelete = (id) => {
+  handleProjectDelete = (id) => {
         API.deleteProject(id)
           .then(res=> this.loadProjects())
           .catch(err => console.log(err))
-      }
+      };
     
-      
+  appendProjectCard = () => {
+    this.setState({
+      newProjects: this.state.newProjects.concat(<NewProjectCard />)
+    })
+  }   
+
   render() {
-console.log('state now... ',this.state)
+
     return (
       <Container fluid>
-        <NewProjectBtn />
+        <NewProjectBtn onClick={this.appendProjectCard} />
 
         <Row>
 
@@ -158,9 +167,9 @@ console.log('state now... ',this.state)
               </div>
               
             ))}
-
-            {/* <ProjectCard 
-            title={this.state.titles}/> */}
+            {this.state.newProjects.map(newProjects => (
+              <NewProjectCard />
+            ))}
         </Row>
       </Container>
     );

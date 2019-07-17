@@ -36,12 +36,11 @@ class App extends Component {
   };
 
   handleLogout = async event => {
-    console.log("before logging out: ", firebase.auth().currentUser);
     await firebase
       .auth()
       .signOut()
       .then(() => {
-        console.log("after logging out: ", firebase.auth().getUser);
+          console.log('sign out successful')
       });
     this.userHasAuthenticated(false);
     this.props.history.push("/signin");
@@ -59,36 +58,41 @@ class App extends Component {
         <Container fluid>
           <Navbar className="navbar" collapseOnSelect>
             <Link className="nav-link" to="/">
-              Home{" "}
+              Home
             </Link>
 
-            <Link className="nav-link" to="/estimate">
-              Graph/Estimate{" "}
-            </Link>
 
-            <Link className="nav-link" to="/projects">
-              Projects{" "}
-            </Link>
-
-            <Link className="nav-link" to="/tasks">
-              Tasks{" "}
-            </Link>
 
             <Nav>
               {this.state.isAuthenticated ? (
-                <NavItem className="nav-link-2" onClick={this.handleLogout}>
+                <>
+                <Link className="nav-link" to="/estimate">
+                Graph/Estimate
+                </Link>
+    
+                <Link className="nav-link" to="/projects">
+                  Projects
+                </Link>
+    
+                <Link className="nav-link" to="/tasks">
+                  Tasks
+                </Link>
+
+                <NavItem className="nav-link" onClick={this.handleLogout}>
                   Logout
                 </NavItem>
+
+                </>
               ) : (
                 <>
                   <NavItem>
-                    <Link className="nav-link-3" to="register">
-                      Signup |
+                    <Link className="nav-link-3" to="signin">
+                      Login |
                     </Link>
                   </NavItem>
                   <NavItem>
-                    <Link className="nav-link-4" to="signin">
-                      Login
+                    <Link className="nav-link-4" to="register">
+                      Signup
                     </Link>
                   </NavItem>
                 </>
