@@ -16,16 +16,4 @@
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
 
-
-// This stuff is from firebase, but was not in the tutorial; not sure if we need it...
-      // firebase
-      // .auth()
-      // .createUserWithEmailAndPassword(email, password)
-      // .catch(function(error) {
-      //   // Handle Errors here.
-      //   var errorCode = error.code;
-      //   var errorMessage = error.message;
-      //   // ...
-      // });
-
       export default firebase;

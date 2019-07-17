@@ -19,7 +19,7 @@ function Jumbotron() {
         <Link className="link-name" to="/register">
           Sign Up |{" "}
         </Link>
-        <Link className="link-name" to="/login">
+        <Link className="link-name" to="/signin">
           Log In
         </Link>
       </div>

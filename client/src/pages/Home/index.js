@@ -11,7 +11,6 @@ export default class Home extends Component {
         <Row>
           <Col size="md-12">
             <Jumbotron />
-            {/* <SignOutBtn /> */}
           </Col>
         </Row>
       </Container>

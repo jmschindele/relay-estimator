@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./style.css";
 
 function ProjectCard(props) {
-  console.log('props from projectCard component: ',props)
+
   return (
     <div className="card-p">
       <div className="card-body">
@@ -11,9 +11,9 @@ function ProjectCard(props) {
         <hr />
         <p className="card-text">project #1 details</p>
         <hr />
-        <hr />
+        <Link to='/tasks'>
           <button onClick={props.handleProject}>Edit/Add/Remove Tasks</button>
-        <hr />
+        </Link>
         <hr />
         <Link to="/estimate" className="card-link-p" data={props.data}>
   

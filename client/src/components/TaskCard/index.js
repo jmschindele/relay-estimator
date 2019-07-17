@@ -6,7 +6,7 @@ import API from "../../utils/API"
 class TaskCard extends Component {
   // Setting the component's initial state
   state = {
-    task: "",
+    title: "",
     rate: '',
     hours: '',
     total: 0
@@ -16,7 +16,7 @@ class TaskCard extends Component {
     let value = event.target.value;
     const name = event.target.name;
     this.setState({
-      [name]: value.trim(),
+      [name]: value,
        total: this.state.hours && this.state.rate ? parseInt(this.state.hours) * parseInt(this.state.rate) : 0
     });
   };
@@ -25,18 +25,22 @@ class TaskCard extends Component {
     event.preventDefault();
     if (
       !this.state.rate ||
-      !this.state.task ||
+      !this.state.title ||
       !this.state.hours
     ) {
-      alert('gotta fill `em all!')
-    } API.saveTask('Josh','projectInfo',{
-      task: this.state.task,
+      alert('Entries cannot be left blank')
+    } API.saveTask({
+       title: this.state.title.trim(),
        rate: this.state.rate,
        hours: this.state.hours 
-    }).then(
-      // API.getTasks('Josh', 'Project1')
-      alert('posted')
-    )
+    }).then( () => {
+      this.setState({
+        title: '',
+        rate: '',
+        hours: ''
+      })
+    }
+    ).catch(err => console.log(err))
   }
 
   render() {
@@ -48,15 +52,15 @@ class TaskCard extends Component {
             <div className="form-row align-items-center">
               <div className="col-6">
                 <label className="sr-only" htmlFor="task-input">
-                  Task
+                  Title
                 </label>
                 <input
                   type="text"
                   className="form-control mb-2"
                   id="task-input"
-                  placeholder="Task"
-                  name="task"
-                  value={this.state.task}
+                  placeholder="Title"
+                  name="title"
+                  value={this.state.title}
                   onChange={this.handleInputChange}
                 />
               </div>
