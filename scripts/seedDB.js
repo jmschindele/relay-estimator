@@ -260,10 +260,10 @@ db.User
 
 const projectSeed = [
   {
-    projectName: 'Death of Me',
+    projectName: 'The best project',
     date: new Date(Date.now())
   },
-  {projectName: 'But not with Joe',
+  {projectName: 'Ever projected in green and yellow',
  date: new Date(Date.now())}
 ]
 
