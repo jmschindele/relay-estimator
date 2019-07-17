@@ -1,3 +1,23 @@
-.card {
+.card-t {
+  background-color: #00a86b;
   margin-bottom: 5px;
+  border: solid 1px lightgrey;
+  background: whitesmoke;
+  margin-left: 15px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px 1px grey;
+  padding: 1rem;
+  background: #00a86b;
+}
+
+.card-link-t {
+  color: #fae03c;
+  padding: .5em 1em;
+  border-radius: 5px;
+}
+
+.card-link-t:hover {
+  background: #399171;
+  border-radius: 5px;
+  cursor: pointer;
 }

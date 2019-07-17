@@ -1,25 +1,166 @@
+// import React, { Component } from "react";
+// import { Row, Container } from "../components/Grid";
+// import ProjectCard from "../components/ProjectCard/index";
+// // import TaskCard from "../components/TaskCard/index";
+// import NewProjectBtn from "../components/NewProjectBtn";
+// import API from "../utils/API";
+
+// class Projects extends Component {
+
+//   constructor(props) {
+//     super(props);
+
+// this.state = {
+//   userId: '',
+//   titles: [],
+//   projectName: ''
+// };
+// this.handleProject = this.handleProject.bind(ProjectCard)
+// };
+
+
+
+
+
+
+//   componentDidMount() {
+//     console.log("props in mount: ", this.state);
+//     const userId = this.props.userId;
+//     this.loadProjects(userId);
+//   }
+ 
+//   loadProjects = userId => {
+//     API.getUser(userId)
+//       .then(res => {
+//         let projArr = [];
+//         let user = this.props.userId;
+//         console.log('props ', this.props)
+//         let titlesArr = [];
+//         for (let i = 0; i < res.data[0].project.length; i++) {
+//           titlesArr.push(res.data[0].project[i].projectName);
+//         }
+//         this.setState({
+//           titles: titlesArr,
+//           userId
+//         });
+//         console.log("res.data = ", res.data[0].project);
+//       })
+//       .catch(err => console.log(err));
+//     };
+      
+//       handleProject = (event) => {
+//         event.preventDefault();
+//         alert('click handled')
+//         // this.setState({
+//         //   projectName: this.props.title
+//         // })
+//       }
+      
+    
+      
+//   render() {
+//     console.log("imported this id: ", this.props.userId);
+//     console.log('state 1: ',this.state && 'state 2: ',this.state)
+//     return (
+//       <Container fluid>
+//         <NewProjectBtn />
+
+//         <Row>
+
+//             {this.state.titles && this.state.titles.map((project, i) => (
+//               <div className='col-3'>
+              
+//               <ProjectCard
+//               key={i}
+//               title={project}
+//               data={this.state.userId}
+//               onClick={this.handleProject}
+//               />
+
+//               </div>
+              
+//             ))}
+
+//             {/* <ProjectCard 
+//             title={this.state.titles}/> */}
+//         </Row>
+//       </Container>
+//     );
+//   }
+// }
+
+// export default Projects;
+
+
+// experimenting with redoing backend... and front end...
+
 import React, { Component } from "react";
-import { Col, Row, Container } from "../components/Grid";
+import { Row, Container } from "../components/Grid";
 import ProjectCard from "../components/ProjectCard/index";
-import TaskCard from "../components/TaskCard/index";
+// import TaskCard from "../components/TaskCard/index";
 import NewProjectBtn from "../components/NewProjectBtn";
+import API from "../utils/API";
+import ViewProjectBtn from "../components/ViewProjectBtn"
+import DeleteBtn from "../components/DeleteBtn"
 
 class Projects extends Component {
 
+ state = {
+   projects: []
+ }
+
+  componentDidMount() {
+    this.loadProjects()
+  }
+ 
+  loadProjects = () => {
+    API.getProjects()
+      .then(res => 
+        this.setState({projects: res.data}))
+      .catch(err => console.log(err));
+      };
+      deleteProject = id => {
+        API.deleteProject(id)
+          .then(res => this.loadProjects())
+          .catch(err => console.log(err))
+      };
+      
+      handleProjectClick = () => {
+        // event.preventDefault();
+        alert('clickity mofucking clack')
+      };
+      
+      handleProjectDelete = (id) => {
+        API.deleteProject(id)
+          .then(res=> this.loadProjects())
+          .catch(err => console.log(err))
+      }
+    
+      
   render() {
+console.log('state now... ',this.state)
     return (
       <Container fluid>
-
-        
         <NewProjectBtn />
 
         <Row>
-          <Col size="md-3">
-            <ProjectCard />
-          </Col>
-        </Row>
-        <Row>
-          <TaskCard />
+
+            {this.state.projects && this.state.projects.map((project, i) => (
+              <div className='col-3'>
+              
+              <ProjectCard
+              key={project._id}
+              title={project.projectName}
+              />
+              <ViewProjectBtn onClick={() => this.handleProjectClick()} />
+              <DeleteBtn onClick={() => this.handleProjectDelete(project._id)} />
+              
+              </div>
+              
+            ))}
+
+            {/* <ProjectCard 
+            title={this.state.titles}/> */}
         </Row>
       </Container>
     );

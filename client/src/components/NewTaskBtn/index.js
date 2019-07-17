@@ -2,8 +2,8 @@ import React, { Component } from "react";
 // import ProjectCard from "../ProjectCard/index";
 import "./style.css";
 
-class NewProjectBtn extends Component {
-  startNewProject = event => {
+class NewTaskBtn extends Component {
+  startNewTask = event => {
     event.preventDefault(this.props);
     this.handleClick = this.handleClick.bind(this);
   };
@@ -16,11 +16,11 @@ class NewProjectBtn extends Component {
 
   render() {
     return (
-      <button className="btn-primary" onClick={this.startNewProject}>
+      <button className="btn-primary" onClick={this.startNewTask}>
         {" "}
-        + Prjkt
+        + Tsk
       </button>
     );
   }
 }
-export default NewProjectBtn;
+export default NewTaskBtn;

@@ -4,7 +4,7 @@ import "./style.css";
 
 function TaskCardDisplay(props) {
   return (
-    <div className="card">
+    <div className="card-tcd">
       <div className="card-body">
         <div className="row">
           <div className="col-3 task-title">

@@ -4,13 +4,16 @@ import "./style.css";
 import firebase from "../../../config/fbConfig";
 import SignOutBtn from "../../SignOutBtn";
 
-
 class SignIn extends Component {
   // Setting the component's initial state
-  state = {
-    email: "",
-    password: ""
-  };
+  // state = {
+  //   email: "",
+  //   password: ""
+  // };
+  state = { 
+    email: "test@test.com",
+    password: "test123"
+  }
 
   handleInputChange = event => {
     // Getting the value and name of the input which triggered the change
@@ -39,37 +42,38 @@ class SignIn extends Component {
         await firebase
           .auth()
           .signInWithEmailAndPassword(this.state.email, this.state.password);
-          this.props.userHasAuthenticated(true);
-          this.props.history.push("/");
+        this.props.userHasAuthenticated(true);
+        this.props.history.push("/");
         console.log("current user ", firebase.auth().currentUser.uid);
       } catch (e) {
         console.log(e.message);
       }
     }
 
-    this.setState({
-      email: "",
-      password: ""
-    });
+    // this.setState({
+    //   email: "",
+    //   password: ""
+    // });
   };
 
   render() {
     // Notice how each input has a `value`, `name`, and `onChange` prop
 
-    const { email, password } = this.state;
+    // const { email, password } = this.state;
 
-    const isInvalid = password === "" || password.length < 6 || email === "";
+    // const isInvalid = password === "" || password.length < 6 || email === "";
 
     return (
       <Container>
         <Row>
-          <div className="form-container mx-auto">
+          <div className="form-container-2 mx-auto">
             <h1 className="text-center">Sign In</h1>
             <form className="form">
               <input
                 autoFocus
                 className="form-control"
-                value={this.state.email}
+                // value={this.state.email}
+                value='test@test.com'
                 name="email"
                 onChange={this.handleInputChange}
                 type="text"
@@ -77,7 +81,8 @@ class SignIn extends Component {
               />
               <input
                 className="form-control"
-                value={this.state.password}
+                // value={this.state.password}
+                value='test123'
                 name="password"
                 onChange={this.handleInputChange}
                 type="password"
@@ -85,13 +90,12 @@ class SignIn extends Component {
               />
               <button
                 onClick={this.handleSignInSubmit}
-                disabled={isInvalid}
+                // disabled={isInvalid}
                 className="btn"
               >
                 Sign In
               </button>
               <SignOutBtn />
-
             </form>
           </div>
         </Row>
