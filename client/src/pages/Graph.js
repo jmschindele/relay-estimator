@@ -149,12 +149,6 @@
 
 
 
-
-
-
-
-
-
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
@@ -179,21 +173,18 @@ class Graph extends Component {
 
   componentDidMount() {
     this.getChartData();
-
-      console.log("Graph page localstorage test : ",localStorage.getItem('User'))
      
   }
 
   getChartData = () => {
 
     API.getTasks().then(res => {
-      // console.log(res.data[0].project[1].projectInfo.length);
-      console.log(res.data)
+
       let taskArr = [];
       for (let i = 0; i < res.data.length; i++) {
         taskArr.push(res.data[i].title);
       }
-      console.log("task array: " + taskArr);
+
       let values = [];
       let rate = [];
       let hours = [];
@@ -206,14 +197,12 @@ class Graph extends Component {
         hours.push(num2)
         values.push(newVal);
       }
-      console.log("Values: " + values);
 
       this.setState({
         chartData: {
           labels: taskArr,
           fontSize: 25,
 
-          // props.chartData
           datasets: [
           {
             label: {

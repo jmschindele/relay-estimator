@@ -56,6 +56,7 @@ import { Col, Row, Container } from "../components/Grid";
 // import NavBar from "../components/NavBar/NavBar";
 // import TaskCard from "../components/TaskCard/index";
 import TaskCardDisplay from "../components/TaskCardDisplay"
+import TaskCard from "../components/TaskCard";
 import NewTaskBtn from "../components/NewTaskBtn/index";
 import API from "../utils/API";
 import DeleteBtn from "../components/DeleteBtn"
@@ -65,19 +66,23 @@ class Tasks extends Component {
   state = {
     tasks: [],
     hours: '',
-    rate: ''
+    rate: '',
+    newTasks: [],
+    newTaskTitle: '',
+    newHours: '',
+    newRate: ''
   };
 
   componentDidMount() {
     this.loadTasks();
-  }
+  };
 
   loadTasks = () => {
     API.getTasks()
     .then(res =>
       this.setState({tasks: res.data, hours: '', rate: ''}))
       .catch(err => console.log(err));
-  }
+  };
 
   deleteTask = id => {
     API.deleteTask(id)
@@ -92,29 +97,23 @@ class Tasks extends Component {
     });
   };
 
-  handleTaskSubmit = event => {
-    event.preventDefault();
-    if(this.state.title && this.state.hours && this.state.rate) {
-      API.saveTask({
-        title: this.state.title,
-        hours: this.state.hours,
-        rate: this.state.rate
-      })
-      .then(res => this.loadTasks())
-      .catch(err => console.log(err))
-    }
+  appendTaskCard = () => {
+      this.setState({
+        newTasks: this.state.newTasks.concat(<TaskCard />)
+        }
+        )
   };
 
   handleTaskDelete = (id) => {
     API.deleteTask(id)
       .then(res=> this.loadTasks())
       .catch(err => console.log(err))
-  }
+  };
 
   render() {
     return (
       <Container fluid>
-        <NewTaskBtn />
+        <NewTaskBtn onClick={this.appendTaskCard}/>
         <Row>
           <Col size="md-10">
             {this.state.tasks.map(task => (
@@ -124,9 +123,9 @@ class Tasks extends Component {
               </>
               ))
             }
-            {/* <TaskCard />
-            <TaskCard />
-            <TaskCard /> */}
+            {this.state.newTasks.map(newTask =>
+              <TaskCard />
+              )}
           </Col>
         </Row>
       </Container>
