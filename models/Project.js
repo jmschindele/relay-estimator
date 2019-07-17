@@ -5,11 +5,12 @@ const Schema = mongoose.Schema;
 
 const projectSchema = new Schema ({
     projectName: {type: String, required: true},
-    projectInfo: {type: Array}
+    projectInfo: {type: Schema.Types.ObjectId,
+    ref: "Task"},
+    date: { type: Date, default: Date.now }
 });
 
 const Project = mongoose.model("Project", projectSchema);
 
 module.exports = Project;
-
 
