@@ -12,4 +12,12 @@
 
 .card-link-t {
   color: #fae03c;
+  padding: .5em 1em;
+  border-radius: 5px;
+}
+
+.card-link-t:hover {
+  background: #399171;
+  border-radius: 5px;
+  cursor: pointer;
 }

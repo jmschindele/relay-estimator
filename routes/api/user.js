@@ -9,13 +9,16 @@ router.route("/")
 // Matches with "/api/user/:id"
 router
   .route("/:id")
-  .get(userController.where)
+  // .where(userController.where)
+  .get(userController.findById)
   .put(userController.update)
   .delete(userController.remove);
 
-  router
-  .route("/:id/:projectName")
-  .get(userController.findAll)
+  // router
+  // .route("/:uid/:projectName")
+  // .get(userController.whereProject)
+  // .post(userController.updateProject)
+
 
 module.exports = router;
 
