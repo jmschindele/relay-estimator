@@ -7,10 +7,21 @@
   border: solid 1px lightgrey;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 .task-title {
   color: white;
   font-size: 2em;
   font-weight: bold;
+  overflow-x: auto;
+}
+
+@media (max-width: 618px) {
+  .task-title {
+    font-size: 1em;
+  }
 }
 
 .task-heading {
@@ -22,8 +33,20 @@
     -2px -2px #00a86b;
 }
 
+@media (max-width: 618px) {
+  .task-heading {
+    font-size: 1em;
+  }
+}
+
 .task-result {
   color: white;
   font-size: 2em;
   font-weight: bold;
+}
+
+@media (max-width: 618px) {
+  .task-result {
+    font-size: 1em;
+  }
 }
