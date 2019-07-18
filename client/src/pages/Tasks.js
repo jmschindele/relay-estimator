@@ -124,7 +124,7 @@ class Tasks extends Component {
               ))
             }
             {this.state.newTasks.map(newTask =>
-              <TaskCard />
+              <TaskCard loadTasks={this.loadTasks} />
               )}
           </Col>
         </Row>

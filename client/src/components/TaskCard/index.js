@@ -1,50 +1,60 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 import "./style.css";
-import API from "../../utils/API"
+import API from "../../utils/API";
 
 class TaskCard extends Component {
   // Setting the component's initial state
   state = {
     title: "",
-    rate: '',
-    hours: '',
+    rate: "",
+    hours: "",
     total: 0
   };
 
   handleInputChange = event => {
     let value = event.target.value;
     const name = event.target.name;
+
+    let hours, rate;
+
+    //check what name is
+    if (name === "hours") {
+      hours = value;
+      rate = this.state.rate;
+    } else if (name === "rate") {
+      rate = value;
+      hours = this.state.hours;
+    }
+    
     this.setState({
       [name]: value,
-       total: this.state.hours && this.state.rate ? parseInt(this.state.hours) * parseInt(this.state.rate) : 0
+      total: hours && rate ? parseInt(hours) * parseInt(rate) : 0
     });
   };
 
   handleTaskSave = event => {
     event.preventDefault();
-    if (
-      !this.state.rate ||
-      !this.state.title ||
-      !this.state.hours
-    ) {
-      alert('Entries cannot be left blank')
-    } API.saveTask({
-       title: this.state.title.trim(),
-       rate: this.state.rate,
-       hours: this.state.hours 
-    }).then( () => {
-      this.setState({
-        title: '',
-        rate: '',
-        hours: ''
-      })
+    if (!this.state.rate || !this.state.title || !this.state.hours) {
+      alert("Entries cannot be left blank");
     }
-    ).catch(err => console.log(err))
-  }
+    API.saveTask({
+      title: this.state.title.trim(),
+      rate: this.state.rate,
+      hours: this.state.hours
+    })
+      .then(() => {
+        this.setState({
+          title: "",
+          rate: "",
+          hours: ""
+        });
+        this.props.loadTasks();
+      })
+      .catch(err => console.log(err));
+  };
 
   render() {
-
     return (
       <>
         <div className="card-t">
@@ -66,14 +76,14 @@ class TaskCard extends Component {
               </div>
               <div className="col-2">
                 <label className="sr-only" htmlFor="rate-input">
-                  <span className='h3'>Rate</span>
+                  <span className="h3">Rate</span>
                 </label>
                 <input
                   type="text"
                   className="form-control mb-2"
                   id="rate-input"
                   placeholder="Rate"
-                  name='rate'
+                  name="rate"
                   value={this.state.rate}
                   onChange={this.handleInputChange}
                 />
@@ -87,7 +97,7 @@ class TaskCard extends Component {
                   className="form-control mb-2"
                   id="hours-input"
                   placeholder="Hours"
-                  name='hours'
+                  name="hours"
                   value={this.state.hours}
                   onChange={this.handleInputChange}
                 />
@@ -106,17 +116,16 @@ class TaskCard extends Component {
                   id="staticTotal"
                   value={this.state.total && this.state.total}
                 />
-                
               </div>
             </div>
-{/* 
+            {/* 
             <Link to="#" className="card-link-t">
               Edit |
             </Link> */}
             {/* <Link to="#" className="card-link-t"> */}
-              <span className='card-link-t' onClick={this.handleTaskSave}>
+            <span className="card-link-t" onClick={this.handleTaskSave}>
               Save
-              </span>
+            </span>
             {/* </Link> */}
           </div>
         </div>

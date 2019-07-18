@@ -30,3 +30,8 @@ body {
   margin-right: 15px;
   margin-left: 5px;
 }
+
+.pull-right {
+  position:absolute;
+  right: 5%;
+}

@@ -24,7 +24,14 @@ class NewProjectCard extends Component {
     API.saveProject({
       projectName: this.state.title.trim()
     })
-      .then(console.log("saved successfully"))
+      .then(() => {
+        this.setState({
+          title: "",
+          rate: "",
+          hours: ""
+        });
+        this.props.loadProjects();
+      })
       .catch(err => console.log(err));
   };
 
