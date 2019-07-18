@@ -10,11 +10,10 @@ class SignIn extends Component {
   //   email: "",
   //   password: ""
   // };
-
-  state = {
+  state = { 
     email: "test@test.com",
     password: "test123"
-  };
+  }
 
   handleInputChange = event => {
     // Getting the value and name of the input which triggered the change
@@ -44,7 +43,8 @@ class SignIn extends Component {
           .auth()
           .signInWithEmailAndPassword(this.state.email, this.state.password);
         this.props.userHasAuthenticated(true);
-        this.props.history.push("/");
+        console.log('history prop',this.props.history)
+        this.props.history.push("/projects");
         console.log("current user ", firebase.auth().currentUser.uid);
       } catch (e) {
         console.log(e.message);
@@ -74,7 +74,7 @@ class SignIn extends Component {
                 autoFocus
                 className="form-control"
                 // value={this.state.email}
-                value="test@test.com"
+                value='test@test.com'
                 name="email"
                 onChange={this.handleInputChange}
                 type="text"
@@ -83,7 +83,7 @@ class SignIn extends Component {
               <input
                 className="form-control"
                 // value={this.state.password}
-                value="test123"
+                value='test123'
                 name="password"
                 onChange={this.handleInputChange}
                 type="password"
