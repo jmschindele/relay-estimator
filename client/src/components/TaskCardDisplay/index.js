@@ -26,7 +26,7 @@ function TaskCardDisplay(props) {
           </div>
           <div className="col-3 text-center">
             <span className="task-result">$</span>{" "}
-            <span className="task-result text-center">{props.total}</span>
+            <span className="task-result text-center">{parseInt(props.hours)*parseInt(props.rate)}</span>
           </div>
         </div>
       </div>

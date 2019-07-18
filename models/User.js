@@ -23,6 +23,7 @@ const userSchema = new Schema({
 
   project: { type: Schema.Types.ObjectId,
   ref: "Project"},
+  //need projects to be an array, with this content
 
   date: { type: Date, default: Date.now }
 });
