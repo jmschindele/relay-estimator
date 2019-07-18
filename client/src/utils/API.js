@@ -93,7 +93,7 @@ const API = {
     return axios.get("/api/task")
   },
   // Gets the book with the given id
-  getTask: function(id) {
+  getTasksWhere: function(id) {
     return axios.get("/api/task/" + id);
   },
   // Deletes the book with the given id

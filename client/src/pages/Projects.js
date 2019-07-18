@@ -129,9 +129,14 @@ class Projects extends Component {
           .catch(err => console.log(err))
       };
       
-  handleProjectClick = () => {
-        // event.preventDefault();
-        alert('clickity mofucking clack')
+  loadProjectTasks = id => {
+    API.getTasksWhere(id)
+      .then(res => console.log(res))
+  }   
+
+  handleProjectClick = (id) => {
+        this.loadTasks(id);
+        console.log(id)
       };
       
   handleProjectDelete = (id) => {
@@ -161,14 +166,14 @@ class Projects extends Component {
               key={project._id}
               title={project.projectName}
               />
-              <ViewProjectBtn onClick={() => this.handleProjectClick()} />
+              <ViewProjectBtn onClick={() => this.handleProjectClick(project._id)} />
               <DeleteBtn onClick={() => this.handleProjectDelete(project._id)} />
               
               </div>
               
             ))}
             {this.state.newProjects.map(newProjects => (
-              <NewProjectCard />
+              <NewProjectCard loadProjects={this.loadProjects}/>
             ))}
         </Row>
       </Container>

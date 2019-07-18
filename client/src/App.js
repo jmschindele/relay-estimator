@@ -63,7 +63,7 @@ class App extends Component {
 
 
 
-            <Nav>
+            <Nav className='pull-right'>
               {this.state.isAuthenticated ? (
                 <>
                 <Link className="nav-link" to="/estimate">
