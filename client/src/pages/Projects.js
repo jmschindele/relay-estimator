@@ -18,17 +18,12 @@
 // this.handleProject = this.handleProject.bind(ProjectCard)
 // };
 
-
-
-
-
-
 //   componentDidMount() {
 //     console.log("props in mount: ", this.state);
 //     const userId = this.props.userId;
 //     this.loadProjects(userId);
 //   }
- 
+
 //   loadProjects = userId => {
 //     API.getUser(userId)
 //       .then(res => {
@@ -47,7 +42,7 @@
 //       })
 //       .catch(err => console.log(err));
 //     };
-      
+
 //       handleProject = (event) => {
 //         event.preventDefault();
 //         alert('click handled')
@@ -55,9 +50,7 @@
 //         //   projectName: this.props.title
 //         // })
 //       }
-      
-    
-      
+
 //   render() {
 //     console.log("imported this id: ", this.props.userId);
 //     console.log('state 1: ',this.state && 'state 2: ',this.state)
@@ -69,7 +62,7 @@
 
 //             {this.state.titles && this.state.titles.map((project, i) => (
 //               <div className='col-3'>
-              
+
 //               <ProjectCard
 //               key={i}
 //               title={project}
@@ -78,10 +71,10 @@
 //               />
 
 //               </div>
-              
+
 //             ))}
 
-//             {/* <ProjectCard 
+//             {/* <ProjectCard
 //             title={this.state.titles}/> */}
 //         </Row>
 //       </Container>
@@ -91,90 +84,85 @@
 
 // export default Projects;
 
-
 // experimenting with redoing backend... and front end...
 
 import React, { Component } from "react";
 import { Row, Container } from "../components/Grid";
 import ProjectCard from "../components/ProjectCard";
-import NewProjectCard from "../components/ProjectCard/NewProjectCard"
+import NewProjectCard from "../components/ProjectCard/NewProjectCard";
 // import TaskCard from "../components/TaskCard/index";
 import NewProjectBtn from "../components/NewProjectBtn";
 import API from "../utils/API";
-import ViewProjectBtn from "../components/ViewProjectBtn"
-import DeleteBtn from "../components/DeleteBtn"
+import ViewProjectBtn from "../components/ViewProjectBtn";
+// import DeleteBtn from "../components/DeleteBtn";
 
 class Projects extends Component {
-
- state = {
-   projects: [],
-   newProjects: [],
-   newProjectTitle: '',
- }
+  state = {
+    projects: [],
+    newProjects: [],
+    newProjectTitle: ""
+  };
 
   componentDidMount() {
-    this.loadProjects()
+    this.loadProjects();
   }
- 
+
   loadProjects = () => {
     API.getProjects()
-      .then(res => 
-        this.setState({projects: res.data}))
+      .then(res => this.setState({ projects: res.data }))
       .catch(err => console.log(err));
-      };
+  };
 
   deleteProject = id => {
-        API.deleteProject(id)
-          .then(res => this.loadProjects())
-          .catch(err => console.log(err))
-      };
-      
-  loadProjectTasks = id => {
-    API.getTasksWhere(id)
-      .then(res => console.log(res))
-  }   
+    API.deleteProject(id)
+      .then(res => this.loadProjects())
+      .catch(err => console.log(err));
+  };
 
-  handleProjectClick = (id) => {
-        this.loadTasks(id);
-        console.log(id)
-      };
-      
-  handleProjectDelete = (id) => {
-        API.deleteProject(id)
-          .then(res=> this.loadProjects())
-          .catch(err => console.log(err))
-      };
-    
+  loadProjectTasks = id => {
+    API.getTasksWhere(id).then(res => console.log(res));
+  };
+
+  handleProjectClick = id => {
+    this.loadTasks(id);
+    console.log(id);
+  };
+
+  handleProjectDelete = id => {
+    API.deleteProject(id)
+      .then(res => this.loadProjects())
+      .catch(err => console.log(err));
+  };
+
   appendProjectCard = () => {
     this.setState({
       newProjects: this.state.newProjects.concat(<NewProjectCard />)
-    })
-  }   
+    });
+  };
 
   render() {
-
     return (
       <Container fluid>
         <NewProjectBtn onClick={this.appendProjectCard} />
 
         <Row>
-
-            {this.state.projects && this.state.projects.map((project, i) => (
-              <div className='col-3'>
-              
-              <ProjectCard
-              key={project._id}
-              title={project.projectName}
-              />
-              <ViewProjectBtn onClick={() => this.handleProjectClick(project._id)} />
-              <DeleteBtn onClick={() => this.handleProjectDelete(project._id)} />
-              
+          {this.state.projects &&
+            this.state.projects.map((project, i) => (
+              <div className="col-3">
+                <ProjectCard
+                  key={project._id}
+                  _id={project._id}
+                  title={project.projectName}
+                  handleProjectDelete={this.handleProjectDelete}
+                />
+                <ViewProjectBtn
+                  onClick={() => this.handleProjectClick(project._id)}
+                />
               </div>
-              
             ))}
-            {this.state.newProjects.map(newProjects => (
-              <NewProjectCard loadProjects={this.loadProjects}/>
-            ))}
+          {this.state.newProjects.map(newProjects => (
+            <NewProjectCard loadProjects={this.loadProjects} />
+          ))}
         </Row>
       </Container>
     );
