@@ -1,6 +1,7 @@
 import React from "react";
 // import { Link } from "react-router-dom";
 import "./style.css";
+import DeleteBtn from "../DeleteBtn/index";
 
 function TaskCardDisplay(props) {
   return (
@@ -26,8 +27,11 @@ function TaskCardDisplay(props) {
           </div>
           <div className="col-3 text-center">
             <span className="task-result">$</span>{" "}
-            <span className="task-result text-center">{parseInt(props.hours)*parseInt(props.rate)}</span>
+            <span className="task-result text-center">
+              {parseInt(props.hours) * parseInt(props.rate)}
+            </span>
           </div>
+          <DeleteBtn onClick={() => props.handleTaskDelete(props._id)} />
         </div>
       </div>
     </div>
