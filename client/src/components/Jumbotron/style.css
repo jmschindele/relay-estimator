@@ -2,14 +2,14 @@
   margin-top: 10%;
   background-size: contain;
   background-position: center;
-  background-color: #00a86b;
-  color: #fae03c;
+  background-color: #303f2f;
+  color: #c7ea46;
   border: solid 1px lightgrey;
-  margin: 30px auto;
+  margin: 0 auto;
   border-radius: 5px;
   box-shadow: 0px 0px 15px 1px grey;
   padding: 3rem;
-  /* text-shadow: 0px 0px 10px black; */
+  max-width: 90%;
 }
 
 .display-4 {
@@ -19,12 +19,15 @@
 
 .lead {
   font-size: 40px;
+  color: #68d6c7;
 }
 
 .about {
   font-size: 22px;
+  color: #d8d1d0;
 }
 
-.link-name {
-  color: black;
+.about-2 {
+  font-size: 22px;
+  color: #68d6c7;
 }

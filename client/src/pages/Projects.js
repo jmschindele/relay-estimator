@@ -5,9 +5,8 @@ import NewProjectCard from "../components/ProjectCard/NewProjectCard";
 // import TaskCard from "../components/TaskCard/index";
 import NewProjectBtn from "../components/NewProjectBtn";
 import API from "../utils/API";
-import ViewProjectBtn from "../components/ViewProjectBtn";
-import DeleteBtn from "../components/DeleteBtn";
 import firebase from "../config/fbConfig";
+
 
 class Projects extends Component {
   state = {
@@ -71,20 +70,22 @@ class Projects extends Component {
   };
 
   render() {
+    console.log(this.state)
     return (
       <Container fluid>
         <NewProjectBtn onClick={this.appendProjectCard} />
 
         <Row>
           {this.state.projects &&
-            this.state.projects.map((project, i) => (
+            this.state.projects.map( (project,i) => (
+              
               <div className="col-3">
-                <ProjectCard key={project._id} title={project.projectName} />
-                <ViewProjectBtn
-                  onClick={() => this.handleProjectClick(project._id)}
-                />
-                <DeleteBtn
-                  onClick={() => this.handleProjectDelete(project._id)}
+                <ProjectCard
+                  key={project._id}
+                  _id={project._id}
+                  title={project.projectName}
+                  handleProjectDelete={this.handleProjectDelete}
+                  handleProjectClick={this.handleProjectClick}
                 />
               </div>
             ))}

@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "./style.css";
 import API from "../../utils/API";
 
+
 class TaskCard extends Component {
   // Setting the component's initial state
   state = {
@@ -26,7 +27,7 @@ class TaskCard extends Component {
       rate = value;
       hours = this.state.hours;
     }
-    
+
     this.setState({
       [name]: value,
       total: hours && rate ? parseInt(hours) * parseInt(rate) : 0
@@ -82,10 +83,10 @@ class TaskCard extends Component {
                   <span className="h3">Rate</span>
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   className="form-control mb-2"
                   id="rate-input"
-                  placeholder="Rate"
+                  placeholder="$000.00"
                   name="rate"
                   value={this.state.rate}
                   onChange={this.handleInputChange}
@@ -96,10 +97,10 @@ class TaskCard extends Component {
                   Hours
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   className="form-control mb-2"
                   id="hours-input"
-                  placeholder="Hours"
+                  placeholder="24hrs"
                   name="hours"
                   value={this.state.hours}
                   onChange={this.handleInputChange}
@@ -119,6 +120,7 @@ class TaskCard extends Component {
                   id="staticTotal"
                   value={this.state.total && this.state.total}
                 />
+               
               </div>
             </div>
             {/* 
