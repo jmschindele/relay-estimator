@@ -75,13 +75,19 @@
   }
 
   .overlay {
-    top: 200px;
+    top: 140px;
+  }
+}
+
+@media (max-width: 1690px) {
+  .overlay {
+    top: 140px;
   }
 }
 
 @media (max-width: 1598px) {
   .overlay {
-    top: 300px;
+    top: 290px;
   }
 }
 

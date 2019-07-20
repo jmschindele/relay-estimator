@@ -18,10 +18,18 @@
   overflow-x: auto;
 }
 
-@media (max-width: 618px) {
-  .task-title {
-    font-size: 1em;
-  }
+.text-center {
+  display: table;
+  margin: auto;
+}
+
+.task-result-title {
+  color: #fae03c;
+  font-size: 1.5em;
+  border-bottom: solid 1px currentColor;
+  line-height: 1;
+  text-shadow: 2px 2px #00a86b, 2px -2px #00a86b, -2px 2px #00a86b,
+    -2px -2px #00a86b; 
 }
 
 .task-heading {
@@ -49,4 +57,12 @@
   .task-result {
     font-size: 1em;
   }
+}
+
+.delete-btn {
+  float: right;
+}
+
+#btn-danger {
+  float: right;
 }
