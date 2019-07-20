@@ -16,9 +16,8 @@ export default ({ childProps }) => (
     <AppliedRoute path="/signin" component={SignIn} props={childProps} />
     <AppliedRoute path="/register" component={Register} props={childProps} />
     <AppliedRoute path="/projects/" component={Projects} props={childProps} />
-    <AppliedRoute path="/tasks" component={Tasks} props={childProps} />
-    <AppliedRoute path="/estimate/" component={Graph} props={childProps} />
-
+    <AppliedRoute path="/tasks/:projectId" component={Tasks} props={childProps} />
+    <AppliedRoute path="/estimate/:projectId" component={Graph} props={childProps} />
     <Route component={NoMatch} />
   </Switch>
 );

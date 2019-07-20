@@ -24,12 +24,10 @@
 }
 
 .task-result-title {
-  color: #fae03c;
+  color: #68d6c7;
   font-size: 1.5em;
   border-bottom: solid 1px currentColor;
   line-height: 1;
-  text-shadow: 2px 2px #00a86b, 2px -2px #00a86b, -2px 2px #00a86b,
-    -2px -2px #00a86b; 
 }
 
 .task-heading {
