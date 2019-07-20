@@ -18,8 +18,8 @@
   border-radius: 5px;
   box-shadow: 0px 0px 15px 1px grey;
   padding: 3rem;
-  background: #00a86b;
-  color: #fae03c;
+  background: #303f2f;
+  color: #c7ea46;
 }
 
 .form-container btn {
@@ -27,7 +27,6 @@
 }
 
 .btn {
-  background-color: #3f704d;
-  /* color: #fae03c; */
-  color: black;
+  background-color: #68d6c7;
+  color: #3a572f;
 }

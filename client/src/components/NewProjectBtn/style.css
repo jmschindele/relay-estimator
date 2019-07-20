@@ -1,6 +1,8 @@
-.btn-primary {
+.btn-2 {
   border-radius: 5px;
-  border: solid 1px lightgrey;
+  border: solid 2px #303f2f;
   margin-top: 25px;
   margin-bottom: 5px;
+  background-color: #c7ea46;
+  color: #303f2f;
 }
