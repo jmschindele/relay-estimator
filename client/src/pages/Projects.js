@@ -93,7 +93,7 @@ import NewProjectCard from "../components/ProjectCard/NewProjectCard";
 // import TaskCard from "../components/TaskCard/index";
 import NewProjectBtn from "../components/NewProjectBtn";
 import API from "../utils/API";
-import ViewProjectBtn from "../components/ViewProjectBtn";
+// import ViewProjectBtn from "../components/ViewProjectBtn";
 // import DeleteBtn from "../components/DeleteBtn";
 
 class Projects extends Component {
@@ -154,15 +154,13 @@ class Projects extends Component {
                   _id={project._id}
                   title={project.projectName}
                   handleProjectDelete={this.handleProjectDelete}
-                />
-                <ViewProjectBtn
-                  onClick={() => this.handleProjectClick(project._id)}
+                  handleProjectClick={this.handleProjectClick}
                 />
               </div>
             ))}
-          {this.state.newProjects.map(newProjects => (
+          {/* {this.state.newProjects.map(newProjects => (
             <NewProjectCard loadProjects={this.loadProjects} />
-          ))}
+          ))} */}
         </Row>
       </Container>
     );
