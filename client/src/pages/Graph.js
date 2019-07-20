@@ -122,7 +122,7 @@ class Graph extends Component {
         
         <div className='overlay'>$25</div>
         </div>
-
+          
           </div>
         <Row>
           <Col size="md-2">

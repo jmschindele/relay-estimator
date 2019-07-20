@@ -109,13 +109,14 @@ class TaskCard extends Component {
                   htmlFor="staticTotal"
                 />
                 <input
-                  type="number"
+                  type="text"
                   readOnly
-                  placeholder="Total"
+                  placeholder="$0000.00"
                   // className="form-control-plaintext"
                   className="form-control mb-2"
                   id="static-total"
-                  value={this.state.total && this.state.total}
+                  name="total"
+                  value={"$" + this.state.total}
                 />
               </div>
             </div>
