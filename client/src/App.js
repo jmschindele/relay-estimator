@@ -1,8 +1,7 @@
-
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import "./App.css";
 
-import firebase from "./config/fbConfig"
+import firebase from "./config/fbConfig";
 
 //starting tutorial experiment below this line
 import { Col, Row, Container } from "./components/Grid";
@@ -40,7 +39,7 @@ class App extends Component {
       .auth()
       .signOut()
       .then(() => {
-          console.log('sign out successful')
+        console.log("sign out successful");
       });
     this.userHasAuthenticated(false);
     this.props.history.push("/signin");
@@ -51,53 +50,54 @@ class App extends Component {
     const childProps = {
       isAutheticated: this.state.isAuthenticated,
       userHasAuthenticated: this.userHasAuthenticated,
-      userId: firebase.auth().currentUser ? firebase.auth().currentUser.uid : null
+      userId: firebase.auth().currentUser
+        ? firebase.auth().currentUser.uid
+        : null
     };
     return (
       !this.state.isAutheticating && (
         <Container fluid>
           <Navbar className="navbar" collapseOnSelect>
-            <Link className="nav-link" to="/">
-              Home
-            </Link>
+            <div className="container">
+              <Link className="nav-link" to="/">
+                Home
+              </Link>
 
-
-
-            <Nav className='pull-right'>
-              {this.state.isAuthenticated ? (
-                <>
-                <Link className="nav-link" to="/estimate">
-                Graph/Estimate
-                </Link>
-    
-                <Link className="nav-link" to="/projects">
-                  Projects
-                </Link>
-    
-                <Link className="nav-link" to="/tasks">
-                  Tasks
-                </Link>
-
-                <NavItem className="nav-link" onClick={this.handleLogout}>
-                  Logout
-                </NavItem>
-
-                </>
-              ) : (
-                <>
-                  <NavItem>
-                    <Link className="nav-link-3" to="signin">
-                      Login |
+              <Nav className="pull-right">
+                {this.state.isAuthenticated ? (
+                  <>
+                    <Link className="nav-link" to="/estimate">
+                      Graph/Estimate
                     </Link>
-                  </NavItem>
-                  <NavItem>
-                    <Link className="nav-link-4" to="register">
-                      Signup
+
+                    <Link className="nav-link" to="/projects">
+                      Projects
                     </Link>
-                  </NavItem>
-                </>
-              )}
-            </Nav>
+
+                    <Link className="nav-link" to="/tasks">
+                      Tasks
+                    </Link>
+
+                    <NavItem className="nav-link" onClick={this.handleLogout}>
+                      Logout
+                    </NavItem>
+                  </>
+                ) : (
+                  <>
+                    <NavItem>
+                      <Link className="nav-link-3" to="signin">
+                        Login |
+                      </Link>
+                    </NavItem>
+                    <NavItem>
+                      <Link className="nav-link-4" to="register">
+                        Signup
+                      </Link>
+                    </NavItem>
+                  </>
+                )}
+              </Nav>
+            </div>
           </Navbar>
           <Row>
             <Col size="md-12">

@@ -1,4 +1,4 @@
-# H1 CodeName: Relay
+# CodeName: Relay
 
     Relay (BETA) is a project estimator designed for freelance developers
     &designers in mind. It is simple to use and can be applied to any industry
@@ -10,9 +10,9 @@
     Utlized: React, HTML5, CSS, React-Bootstrap, Javascript ES6, Node.js,
     MongoDB, Express, REST API's, ChartJS,
 
-# H3 Deployed URL: https://salty-reef-43633.herokuapp.com/
+## Deployed URL: https://salty-reef-43633.herokuapp.com/
 
-# H3 New/Registered User
+### New/Registered User
 
 - Arrives at the site and clicks the Signup/Login Link on the right side of the Navigation Bar.
 
@@ -30,7 +30,7 @@
 
 - The Estimate/Graph page provides the user the capability of printing the page to a pdf and emailing the total project estimation to a potential client
 
-# H3 Future Improvements
+### Future Improvements
 
 - Adding a 3rd party email service such as Sendgrid for "Forget Password" and other authentication capabilities and emailing the client the estimate.
 
