@@ -1,37 +1,33 @@
 body {
-  background: #c2fed7;
+  background: #d8d1d0;
 }
 
 .navbar {
-  background-color: #c7ea46;
+  background-color: #68d6c7;
   border-radius: 2px;
   margin-bottom: 30px;
 }
 
 .nav-link {
-  color: #3f704d;
-  margin-right: 30px;
+  color: #303f2f;
 }
 
 .nav-link-2 {
-  color: #3f704d;
-  /* margin-right: 15px;
-  margin-left: 15px; */
+  color: #303f2f;
 }
 
 .nav-link-3 {
-  color: #3f704d;
-
+  color: #303f2f;
   margin-left: 15px;
 }
 
 .nav-link-4 {
-  color: #3f704d;
+  color: #303f2f;
   margin-right: 15px;
   margin-left: 5px;
 }
 
-.pull-right {
-  position:absolute;
-  right: 5%;
+.container {
+  min-width: 90vw;
+  padding: 0;
 }
