@@ -6,7 +6,7 @@ import "./style.css";
 function DeleteBtn(props) {
   return (
     <span className="delete-btn" {...props} role="button" tabIndex="0">
-      <button type="button" class="btn btn-danger" id= "btn-danger"    >
+      <button type="button" className="btn btn-danger" id="btn-danger">
         Delete
       </button>
     </span>

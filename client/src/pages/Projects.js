@@ -2,11 +2,9 @@ import React, { Component } from "react";
 import { Row, Container } from "../components/Grid";
 import ProjectCard from "../components/ProjectCard";
 import NewProjectCard from "../components/ProjectCard/NewProjectCard";
-// import TaskCard from "../components/TaskCard/index";
 import NewProjectBtn from "../components/NewProjectBtn";
 import API from "../utils/API";
 import firebase from "../config/fbConfig";
-
 
 class Projects extends Component {
   state = {
@@ -78,15 +76,14 @@ class Projects extends Component {
   };
 
   render() {
-    console.log(this.state)
+    console.log(this.state);
     return (
       <Container fluid>
         <NewProjectBtn onClick={this.appendProjectCard} />
 
         <Row>
           {this.state.projects &&
-            this.state.projects.map( (project,i) => (
-              
+            this.state.projects.map((project, i) => (
               <div className="col-3">
                 <ProjectCard
                   key={project._id}
