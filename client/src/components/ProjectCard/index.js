@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 import DeleteBtn from "../DeleteBtn/index";
+import ViewProjectBtn from "../ViewProjectBtn/index";
 
 function ProjectCard(props) {
   return (
@@ -16,9 +17,10 @@ function ProjectCard(props) {
           <button onClick={props.handleProject}>Edit/Add/Remove Tasks</button>
         </Link>
         <hr />
-        <Link to="/estimate" className="card-link-p" data={props.data}>
+        {/* <Link to="/estimate" className="card-link-p" data={props.data}>
           <button onClick={props.handleProject}>View Graph/Breakdown</button>
-        </Link>
+        </Link> */}
+        <ViewProjectBtn onClick={() => props.handleProjectClick(props._id)} />
       </div>
     </div>
   );

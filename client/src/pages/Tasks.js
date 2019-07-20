@@ -55,7 +55,7 @@ import TaskCardDisplay from "../components/TaskCardDisplay";
 import TaskCard from "../components/TaskCard";
 import NewTaskBtn from "../components/NewTaskBtn/index";
 import API from "../utils/API";
-import DeleteBtn from "../components/DeleteBtn";
+// import DeleteBtn from "../components/DeleteBtn";
 
 class Tasks extends Component {
   state = {
