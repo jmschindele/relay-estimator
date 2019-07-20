@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./style.css";
 import API from "../../utils/API";
+import firebase from "../../config/fbConfig";
 
 class NewProjectCard extends Component {
   state = {
@@ -20,22 +21,25 @@ class NewProjectCard extends Component {
     if (!this.state.title) {
       alert("The project needs a title");
     }
-
-    API.saveProject({
+    let uid = firebase.auth().currentUser.uid;
+    console.log('uid is: ',uid)
+    API.createProject(uid,{
       projectName: this.state.title.trim()
     })
       .then(() => {
         this.setState({
-          title: "",
-          rate: "",
-          hours: ""
-        });
+          title: ""
+          // rate: "",
+          // hours: ""
+        })
         this.props.loadProjects();
       })
       .catch(err => console.log(err));
   };
 
   render() {
+
+    console.log(this.state.title)
     return (
       <>
         <div className="card-p">

@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
@@ -16,45 +15,60 @@ class Graph extends Component {
   constructor() {
     super();
     this.state = {
-      chartData: {}
+      chartData: {},
+      tasks: [],
+      hours: "",
+      rate: "",
+      pulledTasks: []
     };
   }
 
-
-
   componentDidMount() {
     this.getChartData();
-     
   }
 
-  getChartData = () => {
+  getTaskNames = () => {
+    this.state.pulledTasks.map((task, i) => {
+      API.getTasksWhere(task)
+        .then(res => {
+          this.setState({
+            tasks: this.state.tasks.concat(res.data)
+          });
+        })
+        .then(res => {
+          this.updateChart();
+        });
+    });
+  };
 
-    API.getTasks().then(res => {
+  updateChart = () => {
+    let taskArr = [];
+    let titles = [];
+    for (let i = 0; i < this.state.tasks.length; i++) {
+      taskArr = this.state.tasks;
+      titles.push(this.state.tasks[i].title)
+    }
+    console.log('titles = ',titles)
+    let values = [];
+    let rate = [];
+    let hours = [];
 
-      let taskArr = [];
-      for (let i = 0; i < res.data.length; i++) {
-        taskArr.push(res.data[i].title);
-      }
+    for (let i = 0; i < taskArr.length; i++) {
+      let newVal = 0;
+      let num1 = parseFloat(taskArr[i].hours);
+      let num2 = parseFloat(taskArr[i].rate);
+      newVal = num1 * num2;
+      rate.push(num1);
+      hours.push(num2);
+      values.push(newVal);
+    }
 
-      let values = [];
-      let rate = [];
-      let hours = [];
-      for (let i = 0; i < res.data.length; i++) {
-        let newVal = 0;
-        let num1 = parseFloat(res.data[i].hours);
-        let num2 = parseFloat(res.data[i].rate);
-        newVal = num1 * num2;
-        rate.push(num1)
-        hours.push(num2)
-        values.push(newVal);
-      }
+    this.setState({
+      chartData: {
+        labels: titles,
+        fontSize: 25,
 
-      this.setState({
-        chartData: {
-          labels: taskArr,
-          fontSize: 25,
-
-          datasets: [
+        datasets: [
           {
             label: {
               fontSize: 20
@@ -73,57 +87,66 @@ class Graph extends Component {
             ]
           }
         ]
-        }
-      });
+      }
+    });
+  };
+
+  getChartData = () => {
+    // let id = this.props.match.params.projectId;
+    let id = "5d332a217eed241b2aef3fb0";
+    API.getTasks(id).then(res => {
+      // console.log(res.data.tasks)
+      this.setState({ pulledTasks: res.data.tasks, hours: "", rate: "" });
+      this.getTaskNames();
+      let taskArr = [];
+      for (let i = 0; i < this.state.tasks.length; i++) {
+        taskArr.push(i);
+      }
     });
   };
 
   render() {
+    // console.log(this.state)
     return (
       <Container fluid>
-    
-
- <div className='chart-flex'>
-   <div>
-   {this.state.chartData.labels && 
-   this.state.chartData.labels.map((project, i) => (
-   <TaskCardDisplay
-   key={i}
-   task={project}
-   rate={this.state.chartData.datasets[0].rate[i]}
-   hours={this.state.chartData.datasets[0].hours[i]}
-   total={this.state.chartData.datasets[0].data[i]}
-   />
- ))}
-   </div>
- 
-
-<div className="App">
-
-  <Doughnut
-          data={this.state.chartData}
-          width={100}
-          height={50}
-          options={{
-            title: {
-              display: this.state.displayTitle,
-              text: "Project Name is: " + this.state.Project_Name,
-              fontSize: 25
-            },
-            legend: {
-              display: true,
-              position: "bottom",
-              labels :{
-                fontSize: 30
-              }
-            }
-          }}
-          />
-        
-        <div className='overlay'>$25</div>
-        </div>
-
+        <div className="chart-flex">
+          <div>
+            {this.state.tasks &&
+              this.state.tasks.map((task, i) => (
+                <TaskCardDisplay
+                  key={i}
+                  task={task.title}
+                  rate={task.rate}
+                  hours={task.hours}
+                />
+              ))}
           </div>
+
+          <div className="App">
+            <Doughnut
+              data={this.state.chartData}
+              width={100}
+              height={50}
+              options={{
+                title: {
+                  display: this.state.displayTitle,
+                  text: "Project Name is: " + this.state.Project_Name,
+                  fontSize: 25
+                },
+                legend: {
+                  display: true,
+                  position: "bottom",
+                  labels: {
+                    
+                    fontSize: 30
+                  }
+                }
+              }}
+            />
+
+            <div className="overlay">$25</div>
+          </div>
+        </div>
         <Row>
           <Col size="md-2">
             <Link to="/">Home</Link>

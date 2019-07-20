@@ -66,7 +66,7 @@ class App extends Component {
             <Nav className='pull-right'>
               {this.state.isAuthenticated ? (
                 <>
-                <Link className="nav-link" to="/estimate">
+                <Link className="nav-link" to="/estimate/:projectId">
                 Graph/Estimate
                 </Link>
     
@@ -74,7 +74,7 @@ class App extends Component {
                   Projects
                 </Link>
     
-                <Link className="nav-link" to="/tasks">
+                <Link className="nav-link" to="/tasks/:projectId">
                   Tasks
                 </Link>
 
