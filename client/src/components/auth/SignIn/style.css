@@ -20,6 +20,8 @@
   padding: 3rem;
   background: #303f2f;
   color: #c7ea46;
+  text-shadow: 
+  1px 1px 3px black;
 }
 
 .form-container btn {
