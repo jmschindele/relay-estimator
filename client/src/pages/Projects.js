@@ -52,10 +52,18 @@ class Projects extends Component {
     this.props.history.push(`/tasks/${id}`);
   };
 
-  handleProjectClick = id => {
+  loadProjectEstimate = id => {
+    this.props.history.push(`/estimate/${id}`)
+  }
+
+  handleTaskClick = id => {
     console.log("id = ", id);
     this.loadProjectTasks(id);
   };
+
+  handleEstimateClick = id => {
+    this.loadProjectEstimate(id);
+  }
 
   handleProjectDelete = id => {
     API.deleteProject(id)
@@ -85,7 +93,8 @@ class Projects extends Component {
                   _id={project._id}
                   title={project.projectName}
                   handleProjectDelete={this.handleProjectDelete}
-                  handleProjectClick={this.handleProjectClick}
+                  handleTaskClick={this.handleTaskClick}
+                  handleEstimateClick={this.handleEstimateClick}
                 />
               </div>
             ))}
