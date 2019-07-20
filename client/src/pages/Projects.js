@@ -20,13 +20,15 @@ class Projects extends Component {
 
   getProjectNames = () => {
     // alert('fire');
+    let projects = [];
     this.state.pulledProjects.map((project, i) =>
       API.getProject(project).then(res => {
-        this.setState({
-          projects: this.state.projects.concat(res.data)
-        });
+        console.log(res.data);
+        projects.push(res.data);
+        this.setState({ projects });
       })
     );
+    console.log(projects);
   };
 
   loadProjects = () => {
@@ -34,6 +36,7 @@ class Projects extends Component {
     let id = "3FPDyy58KaOY0Aw3qw4UNoAMsD03";
     API.getProjects(id)
       .then(res => {
+        console.log(res.data[0].project);
         this.setState({ pulledProjects: res.data[0].project });
         this.getProjectNames();
       })
@@ -51,8 +54,8 @@ class Projects extends Component {
   };
 
   loadProjectEstimate = id => {
-    this.props.history.push(`/estimate/${id}`)
-  }
+    this.props.history.push(`/estimate/${id}`);
+  };
 
   handleTaskClick = id => {
     console.log("id = ", id);
@@ -61,7 +64,7 @@ class Projects extends Component {
 
   handleEstimateClick = id => {
     this.loadProjectEstimate(id);
-  }
+  };
 
   handleProjectDelete = id => {
     API.deleteProject(id)
@@ -83,18 +86,21 @@ class Projects extends Component {
 
         <Row>
           {this.state.projects &&
-            this.state.projects.map((project, i) => (
-              <div className="col-3">
-                <ProjectCard
-                  key={project._id}
-                  _id={project._id}
-                  title={project.projectName}
-                  handleProjectDelete={this.handleProjectDelete}
-                  handleTaskClick={this.handleTaskClick}
-                  handleEstimateClick={this.handleEstimateClick}
-                />
-              </div>
-            ))}
+            this.state.projects.map(
+              (project, i) =>
+                project && (
+                  <div className="col-3">
+                    <ProjectCard
+                      key={project._id}
+                      _id={project._id}
+                      title={project.projectName}
+                      handleProjectDelete={this.handleProjectDelete}
+                      handleTaskClick={this.handleTaskClick}
+                      handleEstimateClick={this.handleEstimateClick}
+                    />
+                  </div>
+                )
+            )}
           {this.state.newProjects.map(newProjects => (
             <NewProjectCard loadProjects={this.loadProjects} />
           ))}
