@@ -22,24 +22,21 @@ class NewProjectCard extends Component {
       alert("The project needs a title");
     }
     let uid = firebase.auth().currentUser.uid;
-    console.log('uid is: ',uid)
-    API.createProject(uid,{
+    console.log("uid is: ", uid);
+    API.createProject(uid, {
       projectName: this.state.title.trim()
     })
       .then(() => {
         this.setState({
           title: ""
-          // rate: "",
-          // hours: ""
-        })
+        });
         this.props.loadProjects();
       })
       .catch(err => console.log(err));
   };
 
   render() {
-
-    console.log(this.state.title)
+    console.log(this.state.title);
     return (
       <>
         <div className="card-p">
@@ -48,16 +45,16 @@ class NewProjectCard extends Component {
               Project title
             </label>
             <input
-                type='text'
-                className='form-control mb-2'
-                id='project-title-input'
-                name='title'
-                value={this.state.title}
-                onChange={this.handleInputChange}
+              type="text"
+              className="form-control mb-2"
+              id="project-title-input"
+              name="title"
+              value={this.state.title}
+              onChange={this.handleInputChange}
             />
           </div>
-          <span className='card-link-t' onClick={this.handleProjectSave}>
-              Save
+          <span className="card-link-t" onClick={this.handleProjectSave}>
+            Save
           </span>
         </div>
       </>
