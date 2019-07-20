@@ -92,10 +92,8 @@ class Graph extends Component {
   };
 
   getChartData = () => {
-    // let id = this.props.match.params.projectId;
-    let id = "5d332a217eed241b2aef3fb0";
+    let id = this.props.match.params.projectId;
     API.getTasks(id).then(res => {
-      // console.log(res.data.tasks)
       this.setState({ pulledTasks: res.data.tasks, hours: "", rate: "" });
       this.getTaskNames();
       let taskArr = [];
