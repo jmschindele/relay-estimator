@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./style.css";
 
 function Jumbotron() {
@@ -16,12 +16,12 @@ function Jumbotron() {
           say "HEY! FUCK YOU, PAY ME!"
           <br />
         </p>
-        <Link className="link-name" to="/register">
+        {/* <Link className="link-name" to="/register">
           Sign Up |{" "}
         </Link>
         <Link className="link-name" to="/signin">
           Log In
-        </Link>
+        </Link> */}
       </div>
     </div>
   );
