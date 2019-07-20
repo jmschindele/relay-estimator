@@ -78,10 +78,10 @@ class Tasks extends Component {
   render() {
     // console.log('state: ',this.state)
     return (
-      <Container fluid>
+      <div className='container'>
         <NewTaskBtn onClick={this.appendTaskCard} />
         <Row>
-          <Col size="md-10">
+          <Col size="md-12">
             {this.state.tasks.map(
               task =>
                 task && (
@@ -106,7 +106,7 @@ class Tasks extends Component {
             ))}
           </Col>
         </Row>
-      </Container>
+      </ div>
     );
   }
 }

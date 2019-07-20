@@ -56,8 +56,9 @@ class App extends Component {
     };
     return (
       !this.state.isAutheticating && (
-        <Container fluid>
-          <Navbar className="navbar" collapseOnSelect>
+        // <Container fluid>
+        <>
+          <Navbar className="navbar navbar-fluid" collapseOnSelect>
             <div className="container">
               <Link className="nav-link" to="/">
                 Home
@@ -106,7 +107,8 @@ class App extends Component {
         <SignOutBtn /> */}
             </Col>
           </Row>
-        </Container>
+          </>
+        // </Container>
       )
     );
   }
