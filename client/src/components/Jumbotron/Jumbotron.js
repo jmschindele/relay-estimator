@@ -8,7 +8,7 @@ function Jumbotron() {
       <div className="jumbotron jumbotron-fluid">
         <h1 className="display-4">CodeName: RELAY [Beta]</h1>
         <h2 className="lead">Welcome...</h2>
-        <hr />
+
         <p className="about">
           RELAY [Beta] is a project estimator designed for freelance developers
           and designers in mind. It is simple to use and can be applied to any
@@ -16,7 +16,7 @@ function Jumbotron() {
           required. Users are able to setup/edit projects and specific tasks for
           each project, and provide cost estimations to potential clients.
         </p>
-        <hr />
+
         <p className="about-2">
           Utlized: React, HTML5, CSS, React-Bootstrap, Javascript ES6, Node.js,
           MongoDB, Express, REST API's, ChartJS
