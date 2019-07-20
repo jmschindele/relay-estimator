@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import "./style.css";
 import API from "../../utils/API";
 
-
 class TaskCard extends Component {
   // Setting the component's initial state
   state = {
@@ -97,7 +96,7 @@ class TaskCard extends Component {
                   type="number"
                   className="form-control mb-2"
                   id="hours-input"
-                  placeholder="24hrs"
+                  placeholder="hours"
                   name="hours"
                   value={this.state.hours}
                   onChange={this.handleInputChange}
@@ -105,19 +104,19 @@ class TaskCard extends Component {
               </div>
               <div className="col-2">
                 <label
+                  // className="col-sm-2 col-form-label"
+                  className="sr-only"
                   htmlFor="staticTotal"
-                  className="col-sm-2 col-form-label"
-                >
-                  Total
-                </label>
+                />
                 <input
-                  type="text"
+                  type="number"
                   readOnly
-                  className="form-control-plaintext"
-                  id="staticTotal"
+                  placeholder="Total"
+                  // className="form-control-plaintext"
+                  className="form-control mb-2"
+                  id="static-total"
                   value={this.state.total && this.state.total}
                 />
-               
               </div>
             </div>
             {/* 
