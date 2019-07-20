@@ -1,57 +1,3 @@
-// import axios from "axios";
-
-// const API = {
-//   // Gets all books
-//   getUsers: function() {
-//     return axios.get("/api/user");
-//   },
-//   // Gets the book with the given id
-//   getUser: function(id) {
-//     return axios.get("/api/user/" + id);
-//   },
-//   // Deletes the book with the given id
-//   deleteUser: function(id) {
-//     return axios.delete("/api/user/" + id);
-//   },
-//   // Saves a book to the database
-//   saveUser: function(userData) {
-//     return axios.post("/api/user/", userData);
-//   },
-
-//   saveTask: function(uid, projectName, projectInfo) {
-//     console.log(`uid = ${uid}
-//     projectName = ${projectName}
-//     projectInfo = ${projectInfo}`)
-//     return axios.post('/api/user/' + uid + '/' + projectName, projectInfo)
-//   },
-// //  //get all tasks to display for a given project
-// //   getTasks: function(uid, projectName) {
-// //     return axios.get("/api/user/"+ uid +"/" + projectName);
-// //   },
-
-//   getProjects: function(userId) {
-//     return axios.get("/api/user/"+ userId )
-//   },
-
-//   getProject: function(uid, projectName) {
-//     return axios.get('/api/user/' + uid + '/' + projectName)
-//   },
-
-
-//   updateTask: function(uid, projectName, userData) {
-//     return axios.put('/api/user/' + uid + '/' + projectName, userData)
-//   },
-
-//   getTasks: function(userID, projectName) {
-//     return axios.get('/api/user/' + userID + '/' + projectName)
-//   }
-// };
-
-// export default API;
-
-
-// experimenting with redone backend 
-
 
 import axios from "axios";
 
@@ -61,9 +7,12 @@ const API = {
     return axios.get("/api/user");
   },
   // Gets the book with the given id
-  getUser: function(id) {
-    return axios.get("/api/user/" + id);
-  },
+  // getUser: function(id) {
+  //   return axios.get("/api/user/" + id);
+  // },
+  // getPopulatedUser: function(id) {
+  //   return axios.get("/api/user/" + id + "/project/")
+  // },
   // Deletes the book with the given id
   deleteUser: function(id) {
     return axios.delete("/api/user/" + id);
@@ -72,25 +21,34 @@ const API = {
   saveUser: function(userData) {
     return axios.post("/api/user/", userData);
   },
-
-  getProjects: function() {
-    return axios.get("/api/project")
+  
+  // getProjects: function(id) {
+  //   return axios.get("/api/project/" + id)
+  // },
+  getProject: function(id) {
+    return axios.get("/api/project/" + id)
+  },
+  
+  getProjects: function(id) {
+    return axios.get("/api/user/"+ id + "/project/")
   },
   // Gets the book with the given id
-  getProject: function(id) {
-    return axios.get("/api/Project/" + id);
-  },
+  // getProject: function(id) {
+  //   return axios.get("/api/Project/" + id);
+  // },
   // Deletes the book with the given id
   deleteProject: function(id) {
-    return axios.delete("/api/Project/" + id);
+    return axios.delete("/api/project/" + id);
   },
   // Saves a book to the database
-  saveProject: function(projectData) {
-    return axios.post("/api/Project/", projectData);
+  createProject: function(uid, projectData) {
+  // saveProject: function(uid, projectData) {
+    // return axios.post("/api/user/${uid}/project", projectData);
+    return axios.post("/api/user/"+uid+"/project/", projectData);
   },
 
-  getTasks: function() {
-    return axios.get("/api/task")
+  getTasks: function(id) {
+    return axios.get("/api/project/"+ id +"/task")
   },
   // Gets the book with the given id
   getTasksWhere: function(id) {
@@ -101,10 +59,16 @@ const API = {
     return axios.delete("/api/task/" + id);
   },
   // Saves a book to the database
-  saveTask: function(taskData) {
-    return axios.post("/api/task/", taskData);
-  },
+  // createTask: function(uid, id,taskData) {
+  //   //id should be the _id of the parent project
+  //   return axios.post("/api/user/"+uid+"/project/"+ id +"task/", taskData);
+  // },
+  createTask: function(id, taskData) {
+    return axios.post("/api/project/"+ id +"/task/", taskData)
+  }
 
 };
 
 export default API;
+
+
