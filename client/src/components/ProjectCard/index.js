@@ -11,8 +11,8 @@ function ProjectCard(props) {
         <DeleteBtn onClick={() => props.handleProjectDelete(props._id)} />
         <h5 className="card-title">{props.title}</h5>
         <hr />
-        <p className="card-text">project #1 details</p>
-        <hr />
+        {/* <p className="card-text">project #1 details</p>
+        <hr /> */}
         <Link to="/tasks">
           <button onClick={props.handleProject}>Edit/Add/Remove Tasks</button>
         </Link>

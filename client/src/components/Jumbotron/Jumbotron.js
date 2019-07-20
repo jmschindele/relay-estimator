@@ -4,18 +4,24 @@ import "./style.css";
 
 function Jumbotron() {
   return (
-    <div className="jumbotron jumbotron-fluid">
-      <div className="container">
+    <div className="container">
+      <div className="jumbotron jumbotron-fluid">
         <h1 className="display-4">CodeName: RELAY [Beta]</h1>
         <h2 className="lead">Welcome...</h2>
+        <hr />
         <p className="about">
-          To your new favorite tool. If you're new to Freelance Design and/or
-          Development, CodeName: Relay will be any easy to use, project
-          estimator, designed for just for you. Manage project time and revenue,
-          and give your clients something sexy to look at when the time comes to
-          say "HEY! FUCK YOU, PAY ME!"
-          <br />
+          RELAY [Beta] is a project estimator designed for freelance developers
+          and designers in mind. It is simple to use and can be applied to any
+          industry in which an estimation for a project/task/service is
+          required. Users are able to setup/edit projects and specific tasks for
+          each project, and provide cost estimations to potential clients.
         </p>
+        <hr />
+        <p className="about-2">
+          Utlized: React, HTML5, CSS, React-Bootstrap, Javascript ES6, Node.js,
+          MongoDB, Express, REST API's, ChartJS
+        </p>
+
         {/* <Link className="link-name" to="/register">
           Sign Up |{" "}
         </Link>
