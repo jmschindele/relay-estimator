@@ -7,7 +7,7 @@ function ViewProjectBtn(props) {
   return (
     <span className="view-project-button" {...props} role="button" tabIndex="0">
       <button type="button" className="btn btn-danger">
-        View Project
+        Edit Tasks
       </button>
     </span>
   );
