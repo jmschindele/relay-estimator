@@ -4,7 +4,9 @@ import TaskCardDisplay from "../components/TaskCardDisplay";
 import TaskCard from "../components/TaskCard";
 import NewTaskBtn from "../components/NewTaskBtn/index";
 import API from "../utils/API";
-// import DeleteBtn from "../components/DeleteBtn";
+import firebase from "../config/fbConfig";
+import ViewEstimateBtn from '../components/ViewEstimateBtn';
+import { Link } from "react-router-dom";
 
 class Tasks extends Component {
   state = {
@@ -19,18 +21,33 @@ class Tasks extends Component {
   };
 
   componentDidMount() {
-    this.loadTasks();
+    this.handleRedirect();
   }
 
+handleEstimateClick = projectId => {
+  projectId = this.props.match.params.projectId;
+  this.props.history.push(`/estimate/${projectId}`)
+}
+
+
+handleRedirect = () => {
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      this.loadTasks()
+    } else {
+      this.props.history.push('/')
+    }
+  })
+}
+
   loadTasks = () => {
-    //need to set this id to be current project id
-    // let id = '5d322f94cedbde02d99f0443'
+
     let id = this.props.match.params.projectId;
     
     API.getTasks(id)
       .then(res => {
         
-        this.setState({ pulledTasks: res.data.tasks, hours: "", rate: "" });
+        this.setState({ pulledTasks: res.data.tasks, hours: "", rate: "", newTasks: null });
         this.getTaskNames();
       })
       .catch(err => console.log(err));
@@ -65,7 +82,10 @@ class Tasks extends Component {
 
   appendTaskCard = () => {
     this.setState({
-      newTasks: this.state.newTasks.concat(<TaskCard />)
+      newTasks: <TaskCard
+      projectId={this.props.match.params.projectId}
+      loadTasks={this.loadTasks}
+      />
     });
   };
 
@@ -82,6 +102,7 @@ class Tasks extends Component {
         <NewTaskBtn onClick={this.appendTaskCard} />
         <Row>
           <Col size="md-12">
+            {this.state.newTasks}
             {this.state.tasks.map(
               task =>
                 task && (
@@ -94,17 +115,16 @@ class Tasks extends Component {
                       hours={task.hours}
                       handleTaskDelete={this.handleTaskDelete}
                     />
-                    {/* <DeleteBtn onClick={() => this.handleTaskDelete(task._id)} /> */}
                   </>
                 )
             )}
-            {this.state.newTasks.map((newTask,i) => (
-              <TaskCard
-                key={i}
-                projectId={this.props.match.params.projectId}
-                loadTasks={this.loadTasks}
-              />
-            ))}
+          </Col>
+        </Row>
+        <Row>
+          <Col size="md-2">
+            <Link to="/projects">Back to Projects</Link>
+            <ViewEstimateBtn
+                onClick={() => this.handleEstimateClick()} />
           </Col>
         </Row>
       </ div>

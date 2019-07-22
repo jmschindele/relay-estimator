@@ -33,7 +33,6 @@ module.exports = {
           { $push: { tasks: dbModel._id } },
           { new: true }
         );
-        console.log(dbModel._id);
       })
       .then(function(dbModel) {
         res.json(dbModel);

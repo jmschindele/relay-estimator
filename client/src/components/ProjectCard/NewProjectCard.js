@@ -39,6 +39,7 @@ class NewProjectCard extends Component {
     console.log(this.state.title);
     return (
       <>
+      <div className='col-4'>
         <div className="card-p">
           <div className="new-card-body">
             <label className="sr-only" htmlFor="project-title-input">
@@ -56,6 +57,7 @@ class NewProjectCard extends Component {
           <span className="card-link-t" onClick={this.handleProjectSave}>
             Save
           </span>
+        </div>
         </div>
       </>
     );

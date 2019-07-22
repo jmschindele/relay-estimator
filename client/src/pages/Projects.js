@@ -14,7 +14,17 @@ class Projects extends Component {
   };
 
   componentDidMount() {
-    this.loadProjects();
+    this.handleRedirect();
+  }
+
+  handleRedirect = () => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.loadProjects()
+      } else {
+        this.props.history.push('/')
+      }
+    })
   }
 
   getProjectNames = () => {
@@ -35,7 +45,8 @@ class Projects extends Component {
     API.getProjects(id)
       .then(res => {
         
-        this.setState({ pulledProjects: res.data[0].project });
+        this.setState({ pulledProjects: res.data[0].project,
+        newProjects: null });
         this.getProjectNames();
       })
       .catch(err => console.log(err));
@@ -48,6 +59,7 @@ class Projects extends Component {
   };
 
   loadProjectTasks = id => {
+    console.log('load project tasks id: ',id)
     this.props.history.push(`/tasks/${id}`);
   };
 
@@ -56,7 +68,6 @@ class Projects extends Component {
   };
 
   handleTaskClick = id => {
-    
     this.loadProjectTasks(id);
   };
 
@@ -72,7 +83,8 @@ class Projects extends Component {
 
   appendProjectCard = () => {
     this.setState({
-      newProjects: this.state.newProjects.concat(<NewProjectCard />)
+      // newProjects: this.state.newProjects.concat(<NewProjectCard />)
+      newProjects: <NewProjectCard loadProjects={this.loadProjects} />
     });
   };
 
@@ -83,11 +95,20 @@ class Projects extends Component {
         <NewProjectBtn onClick={this.appendProjectCard} />
 
         <div className='row'>
+          {/* {this.state.newProjects.map(newProjects => (
+            <div className='col-4'>
+            <NewProjectCard loadProjects={this.loadProjects} />
+            </div>
+          ))} */}
+          {/* {this.state.newProjects ? <div className='col-4'>{this.state.newProjects}</div> : null} */}
+
+          {this.state.newProjects}
+          
           {this.state.projects &&
             this.state.projects.map(
               (project, i) =>
                 project && (
-                  <div className="col-3" key={project._id}>
+                  <div className="col-4" key={project._id}>
                     <ProjectCard
                       
                       _id={project._id}
@@ -99,11 +120,6 @@ class Projects extends Component {
                     </div>
                 )
             )}
-          {this.state.newProjects.map(newProjects => (
-            <div className='col-3'>
-            <NewProjectCard loadProjects={this.loadProjects} />
-            </div>
-          ))}
         </div>
       </div>
     );
