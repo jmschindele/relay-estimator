@@ -4,7 +4,9 @@ import TaskCardDisplay from "../components/TaskCardDisplay";
 import TaskCard from "../components/TaskCard";
 import NewTaskBtn from "../components/NewTaskBtn/index";
 import API from "../utils/API";
-import firebase from "../config/fbConfig"
+import firebase from "../config/fbConfig";
+import ViewEstimateBtn from '../components/ViewEstimateBtn';
+import { Link } from "react-router-dom";
 
 class Tasks extends Component {
   state = {
@@ -21,6 +23,11 @@ class Tasks extends Component {
   componentDidMount() {
     this.handleRedirect();
   }
+
+handleEstimateClick = projectId => {
+  projectId = this.props.match.params.projectId;
+  this.props.history.push(`/estimate/${projectId}`)
+}
 
 
 handleRedirect = () => {
@@ -40,7 +47,7 @@ handleRedirect = () => {
     API.getTasks(id)
       .then(res => {
         
-        this.setState({ pulledTasks: res.data.tasks, hours: "", rate: "" });
+        this.setState({ pulledTasks: res.data.tasks, hours: "", rate: "", newTasks: null });
         this.getTaskNames();
       })
       .catch(err => console.log(err));
@@ -75,7 +82,10 @@ handleRedirect = () => {
 
   appendTaskCard = () => {
     this.setState({
-      newTasks: this.state.newTasks.concat(<TaskCard />)
+      newTasks: <TaskCard
+      projectId={this.props.match.params.projectId}
+      loadTasks={this.loadTasks}
+      />
     });
   };
 
@@ -92,6 +102,7 @@ handleRedirect = () => {
         <NewTaskBtn onClick={this.appendTaskCard} />
         <Row>
           <Col size="md-12">
+            {this.state.newTasks}
             {this.state.tasks.map(
               task =>
                 task && (
@@ -104,17 +115,16 @@ handleRedirect = () => {
                       hours={task.hours}
                       handleTaskDelete={this.handleTaskDelete}
                     />
-                    {/* <DeleteBtn onClick={() => this.handleTaskDelete(task._id)} /> */}
                   </>
                 )
             )}
-            {this.state.newTasks.map((newTask,i) => (
-              <TaskCard
-                key={i}
-                projectId={this.props.match.params.projectId}
-                loadTasks={this.loadTasks}
-              />
-            ))}
+          </Col>
+        </Row>
+        <Row>
+          <Col size="md-2">
+            <Link to="/projects">Back to Projects</Link>
+            <ViewEstimateBtn
+                onClick={() => this.handleEstimateClick()} />
           </Col>
         </Row>
       </ div>

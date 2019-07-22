@@ -18,10 +18,9 @@ module.exports = {
   getPopulated: function(req, res){
     db.User
       .find({uid: req.params.uid})
-      // .then(res => console.log(res))
       .populate("Project")
-      .then(dbModel => console.log(res.json(dbModel)))
-    //   .catch(err => res.status(422).json(err))
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err))
 
   },
   where: function(req, res){
