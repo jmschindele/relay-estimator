@@ -25,7 +25,9 @@ class Graph extends Component {
 
   componentDidMount() {
     this.getChartData();
+
   }
+
 
   getTaskNames = () => {
     this.state.pulledTasks.map((task, i) => {
@@ -46,9 +48,9 @@ class Graph extends Component {
     let titles = [];
     for (let i = 0; i < this.state.tasks.length; i++) {
       taskArr = this.state.tasks;
-      titles.push(this.state.tasks[i].title)
+      titles.push(this.state.tasks[i].title);
     }
-    console.log('titles = ',titles)
+    console.log("titles = ", titles);
     let values = [];
     let rate = [];
     let hours = [];
@@ -91,6 +93,7 @@ class Graph extends Component {
     });
   };
 
+  
   getChartData = () => {
     let id = this.props.match.params.projectId;
     API.getTasks(id).then(res => {
@@ -100,8 +103,23 @@ class Graph extends Component {
       for (let i = 0; i < this.state.tasks.length; i++) {
         taskArr.push(i);
       }
+      this.getTaskTotal();
     });
   };
+
+getTaskTotal = (arr) => { 
+  let total, hour, rate;
+  for (let i = 0; i < arr; i++) {
+    let current = this.state.tasks[i]
+    hour = current.hour
+    console.log('hour : ',hour)
+    rate = current.rate
+    total = total + (parseInt(hour)) * (parseInt(rate))
+    console.log('total = ',total)
+  }
+  console.log('total = ',total)
+}
+
 
   render() {
     // console.log(this.state)
@@ -135,7 +153,6 @@ class Graph extends Component {
                   display: true,
                   position: "bottom",
                   labels: {
-                    
                     fontSize: 30
                   }
                 }

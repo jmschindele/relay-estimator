@@ -19,7 +19,6 @@ class Projects extends Component {
   }
 
   getProjectNames = () => {
-    // alert('fire');
     let projects = [];
     this.state.pulledProjects.map((project, i) =>
       API.getProject(project).then(res => {
@@ -81,15 +80,15 @@ class Projects extends Component {
   render() {
     console.log(this.state);
     return (
-      <Container fluid>
+      <div className='container'>
         <NewProjectBtn onClick={this.appendProjectCard} />
 
-        <Row>
+        <div className='row'>
           {this.state.projects &&
             this.state.projects.map(
               (project, i) =>
                 project && (
-                  <div className="col-3">
+                  // <div className="col-3">
                     <ProjectCard
                       key={project._id}
                       _id={project._id}
@@ -98,14 +97,14 @@ class Projects extends Component {
                       handleTaskClick={this.handleTaskClick}
                       handleEstimateClick={this.handleEstimateClick}
                     />
-                  </div>
+                  //  </div>
                 )
             )}
           {this.state.newProjects.map(newProjects => (
             <NewProjectCard loadProjects={this.loadProjects} />
           ))}
-        </Row>
-      </Container>
+        </div>
+      </div>
     );
   }
 }

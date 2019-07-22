@@ -1,5 +1,5 @@
-.delete-button,
-.delete-button:visited  {
+.view-tasks-button,
+.view-tasks-button:visited  {
   background-color: #303f30;
   color: rgb(212, 211, 211);
   border: solid 1px yellowgreen;
@@ -17,12 +17,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#303f2f', end
 
 }
 
-.delete-button:hover, 
-.delete-button:active, 
-.delete-button:focus,
-.delete-button:link
+.view-tasks-button:hover, 
+.view-tasks-button:active, 
+.view-tasks-button:focus,
+.view-tasks-button:link
 {
-  background: red;
+  background-color:#6f836f;
   border: solid 1px rgb(96, 182, 182);
   transition: 300ms ease-out;
   box-shadow: 0px 0px transparent;

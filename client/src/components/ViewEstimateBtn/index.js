@@ -5,10 +5,10 @@ import "./style.css";
 // That way we don't have to define them all individually
 function ViewEstimateBtn(props) {
   return (
-    <span className="view-project-button" {...props} role="button" tabIndex="0">
-      <button type="button" class="btn btn-danger">
-        View Estimate
-      </button>
+    <span className="view-estimate-button text-center" {...props} role="button" tabIndex="0">
+        {/* <span className='view-estimate-button-text'> */}
+          View
+          {/* </span> */}
     </span>
   );
 }
