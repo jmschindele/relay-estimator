@@ -38,9 +38,7 @@ class TaskCard extends Component {
     if (!this.state.rate || !this.state.title || !this.state.hours) {
       alert("Entries cannot be left blank");
     }
-    //need to set this to be current project id
     let id = this.props.projectId;
-    // console.log('task props',this.props.projectId)
     API.createTask(id, {
       title: this.state.title.trim(),
       rate: this.state.rate,
@@ -61,7 +59,7 @@ class TaskCard extends Component {
     return (
       <>
         <div className="card-t">
-          <div className="card-body">
+          <div className="task-card-body">
             <div className="form-row align-items-center">
               <div className="col-6">
                 <label className="sr-only" htmlFor="task-input">

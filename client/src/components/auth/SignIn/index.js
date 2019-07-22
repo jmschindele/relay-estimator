@@ -55,9 +55,7 @@ class SignIn extends Component {
           .auth()
           .signInWithEmailAndPassword(this.state.email, this.state.password);
         this.props.userHasAuthenticated(true);
-        console.log('history prop',this.props.history)
         this.props.history.push("/projects");
-        console.log("current user ", firebase.auth().currentUser.uid);
       } catch (e) {
         console.log(e.message);
       }

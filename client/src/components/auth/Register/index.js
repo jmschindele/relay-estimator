@@ -80,9 +80,6 @@ class Register extends Component {
           uid: res.user.uid
         })
       });
-      // firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then(function(res, err){
-      //  console.log(res)
-      // })
       this.props.history.push("/");
     } catch (e) {
       console.log(e.message);

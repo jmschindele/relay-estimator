@@ -18,10 +18,10 @@
   overflow-x: auto;
 }
 
-.text-center {
+/* .text-center {
   display: table;
   margin: auto;
-}
+} */
 
 .task-result-title {
   color: #68d6c7;

@@ -22,20 +22,20 @@ class Projects extends Component {
     let projects = [];
     this.state.pulledProjects.map((project, i) =>
       API.getProject(project).then(res => {
-        console.log(res.data);
+        
         projects.push(res.data);
         this.setState({ projects });
       })
     );
-    console.log(projects);
+    
   };
 
   loadProjects = () => {
-    // let id = firebase.auth().currentUser.uid;
-    let id = "3FPDyy58KaOY0Aw3qw4UNoAMsD03";
+    let id = firebase.auth().currentUser.uid;
+    // let id = "3FPDyy58KaOY0Aw3qw4UNoAMsD03";
     API.getProjects(id)
       .then(res => {
-        console.log(res.data[0].project);
+        
         this.setState({ pulledProjects: res.data[0].project });
         this.getProjectNames();
       })
@@ -57,7 +57,7 @@ class Projects extends Component {
   };
 
   handleTaskClick = id => {
-    console.log("id = ", id);
+    
     this.loadProjectTasks(id);
   };
 
@@ -78,7 +78,7 @@ class Projects extends Component {
   };
 
   render() {
-    console.log(this.state);
+    
     return (
       <div className='container'>
         <NewProjectBtn onClick={this.appendProjectCard} />
@@ -88,20 +88,22 @@ class Projects extends Component {
             this.state.projects.map(
               (project, i) =>
                 project && (
-                  // <div className="col-3">
+                  <div className="col-3" key={project._id}>
                     <ProjectCard
-                      key={project._id}
+                      
                       _id={project._id}
                       title={project.projectName}
                       handleProjectDelete={this.handleProjectDelete}
                       handleTaskClick={this.handleTaskClick}
                       handleEstimateClick={this.handleEstimateClick}
                     />
-                  //  </div>
+                    </div>
                 )
             )}
           {this.state.newProjects.map(newProjects => (
+            <div className='col-3'>
             <NewProjectCard loadProjects={this.loadProjects} />
+            </div>
           ))}
         </div>
       </div>

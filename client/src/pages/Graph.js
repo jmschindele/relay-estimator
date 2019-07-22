@@ -25,9 +25,7 @@ class Graph extends Component {
 
   componentDidMount() {
     this.getChartData();
-
   }
-
 
   getTaskNames = () => {
     this.state.pulledTasks.map((task, i) => {
@@ -48,14 +46,16 @@ class Graph extends Component {
     let titles = [];
     for (let i = 0; i < this.state.tasks.length; i++) {
       taskArr = this.state.tasks;
-      titles.push(this.state.tasks[i].title);
+      if (this.state.tasks[i]){
+      titles.push(this.state.tasks[i].title)
+      }
     }
-    console.log("titles = ", titles);
     let values = [];
     let rate = [];
     let hours = [];
 
     for (let i = 0; i < taskArr.length; i++) {
+      if (taskArr[i]) {
       let newVal = 0;
       let num1 = parseFloat(taskArr[i].hours);
       let num2 = parseFloat(taskArr[i].rate);
@@ -63,6 +63,7 @@ class Graph extends Component {
       rate.push(num1);
       hours.push(num2);
       values.push(newVal);
+      }
     }
 
     this.setState({
@@ -93,7 +94,6 @@ class Graph extends Component {
     });
   };
 
-  
   getChartData = () => {
     let id = this.props.match.params.projectId;
     API.getTasks(id).then(res => {
@@ -103,32 +103,18 @@ class Graph extends Component {
       for (let i = 0; i < this.state.tasks.length; i++) {
         taskArr.push(i);
       }
-      this.getTaskTotal();
     });
   };
 
-getTaskTotal = (arr) => { 
-  let total, hour, rate;
-  for (let i = 0; i < arr; i++) {
-    let current = this.state.tasks[i]
-    hour = current.hour
-    console.log('hour : ',hour)
-    rate = current.rate
-    total = total + (parseInt(hour)) * (parseInt(rate))
-    console.log('total = ',total)
-  }
-  console.log('total = ',total)
-}
-
 
   render() {
-    // console.log(this.state)
     return (
-      <Container fluid>
+      <div className='chart-container'>
         <div className="chart-flex">
           <div>
-            {this.state.tasks &&
+            {
               this.state.tasks.map((task, i) => (
+                task &&
                 <TaskCardDisplay
                   key={i}
                   task={task.title}
@@ -167,7 +153,7 @@ getTaskTotal = (arr) => {
             <Link to="/">Home</Link>
           </Col>
         </Row>
-      </Container>
+      </div>
     );
   }
 }

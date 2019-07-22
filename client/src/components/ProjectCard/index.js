@@ -1,46 +1,5 @@
-// import React from "react";
-// import { Link } from "react-router-dom";
-// import "./style.css";
-// import DeleteBtn from "../DeleteBtn/index";
-// import ViewTasksBtn from "../ViewTasksBtn/index";
-// import ViewEstimateBtn from "../ViewEstimateBtn";
-
-// function ProjectCard(props) {
-//   return (
-//     <div className="project-card">
-//       <span className="card-title h1">{props.title}</span>
-//       <span className="card-body">
-//         <div className="row">
-//         <div className='col-sm-12'>
-//           <div className='display-box'>
-//           </div>
-//         </div>
-//         </div>
-//         {/* <hr /> */}
-//         <div className="row display-match">
-
-//           <div className="col-sm-4">
-//             <ViewEstimateBtn
-//               onClick={() => props.handleEstimateClick(props._id)}
-//             />
-//           </div>
-//           <div className="col-sm-4">
-//             <ViewTasksBtn onClick={() => props.handleTaskClick(props._id)} />
-//           </div>
-
-//           <div className="col-sm-4">
-//             <DeleteBtn onClick={() => props.handleProjectDelete(props._id)} />
-//          </div>
-//         </div>
-//       </span>
-//     </div>
-//   );
-// }
-
-// export default ProjectCard;
 
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import "./style.css";
 import DeleteBtn from "../DeleteBtn/index";
 import ViewTasksBtn from "../ViewTasksBtn/index";
@@ -54,9 +13,6 @@ class ProjectCard extends Component {
     };
   }
 
-  // handleOnMouseEnterTask = event => {
-
-  // }
 
   render() {
     return (
@@ -78,7 +34,7 @@ class ProjectCard extends Component {
               <ViewEstimateBtn
                 onClick={() => this.props.handleEstimateClick(this.props._id)}
                 onMouseEnter={() =>
-                  this.setState({ displayBoxImage: "/project_background.png" })
+                  this.setState({ displayBoxImage: "/graph-icon.png" })
                 }
                 onMouseLeave={() => this.setState({ displayBoxImage: "" })}
               />
@@ -87,7 +43,7 @@ class ProjectCard extends Component {
               <ViewTasksBtn
                 onClick={() => this.props.handleTaskClick(this.props._id)}
                 onMouseEnter={() =>
-                  this.setState({ displayBoxImage: "https://image.shutterstock.com/image-vector/pencil-flat-icon-single-high-600w-737037337.jpg" })
+                  this.setState({ displayBoxImage: "./edit-icon.png" })
                 }
                 onMouseLeave={() => this.setState({ displayBoxImage: "" })}
               />
