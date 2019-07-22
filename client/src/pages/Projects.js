@@ -18,11 +18,13 @@ class Projects extends Component {
   }
 
   handleRedirect = () => {
-    if (!this.props.isAutheticated) {
-      this.props.history.push('/')
-    } else {
-    this.loadProjects();
-    }
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.loadProjects()
+      } else {
+        this.props.history.push('/')
+      }
+    })
   }
 
   getProjectNames = () => {

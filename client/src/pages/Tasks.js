@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Redirect } from 'react-router-dom';
 import { Col, Row} from "../components/Grid";
 import TaskCardDisplay from "../components/TaskCardDisplay";
 import TaskCard from "../components/TaskCard";
 import NewTaskBtn from "../components/NewTaskBtn/index";
 import API from "../utils/API";
+import firebase from "../config/fbConfig"
 
 class Tasks extends Component {
   state = {
@@ -22,17 +22,19 @@ class Tasks extends Component {
     this.handleRedirect();
   }
 
-  handleRedirect = () => {
-    if (!this.props.isAutheticated) {
-      this.props.history.push('/')
+
+handleRedirect = () => {
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      this.loadTasks()
     } else {
-      this.loadTasks();
+      this.props.history.push('/')
     }
-  }
+  })
+}
 
   loadTasks = () => {
-    //need to set this id to be current project id
-    // let id = '5d322f94cedbde02d99f0443'
+
     let id = this.props.match.params.projectId;
     
     API.getTasks(id)
