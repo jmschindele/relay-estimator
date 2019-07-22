@@ -22,7 +22,6 @@ class NewProjectCard extends Component {
       alert("The project needs a title");
     }
     let uid = firebase.auth().currentUser.uid;
-    console.log("uid is: ", uid);
     API.createProject(uid, {
       projectName: this.state.title.trim()
     })
@@ -36,7 +35,7 @@ class NewProjectCard extends Component {
   };
 
   render() {
-    console.log(this.state.title);
+
     return (
       <>
       <div className='col-4'>

@@ -107,13 +107,14 @@ handleRedirect = () => {
               task =>
                 task && (
                   <>
-                    <TaskCardDisplay
+                    <TaskCard
                       key={task._id}
                       _id={task._id}
-                      task={task.title}
+                      title={task.title}
                       rate={task.rate}
                       hours={task.hours}
                       handleTaskDelete={this.handleTaskDelete}
+                      projectId = {this.props.match.params.projectId}
                     />
                   </>
                 )

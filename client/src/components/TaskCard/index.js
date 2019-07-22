@@ -39,7 +39,8 @@ class TaskCard extends Component {
       alert("Entries cannot be left blank");
     }
     let id = this.props.projectId;
-    API.createTask(id, {
+    API.updateTask(id, {
+      _uid: this.props._id ? this.props._id : '',
       title: this.state.title.trim(),
       rate: this.state.rate,
       hours: this.state.hours
@@ -71,7 +72,7 @@ class TaskCard extends Component {
                   id="task-input"
                   placeholder="Title"
                   name="title"
-                  value={this.state.title}
+                  value={this.state.title ? this.state.title : this.props.title}
                   onChange={this.handleInputChange}
                 />
               </div>
@@ -85,7 +86,7 @@ class TaskCard extends Component {
                   id="rate-input"
                   placeholder="$000.00"
                   name="rate"
-                  value={this.state.rate}
+                  value={this.state.rate ? this.state.rate : this.props.rate}
                   onChange={this.handleInputChange}
                 />
               </div>
@@ -99,7 +100,7 @@ class TaskCard extends Component {
                   id="hours-input"
                   placeholder="hours"
                   name="hours"
-                  value={this.state.hours}
+                  value={this.state.hours ? this.state.hours : this.props.hours}
                   onChange={this.handleInputChange}
                 />
               </div>
