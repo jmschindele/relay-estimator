@@ -11,16 +11,25 @@
   color: #c7ea46;
   text-shadow: 1px 1px 3px black;
   background: #303f2f; /* Old browsers */
+
+
+  /* overflow: auto; */
   /* background: -moz-linear-gradient(-45deg,  #303f2f 0%, #102d10 72%); FF3.6-15 */
   /* background: -webkit-linear-gradient(-45deg,  #303f2f 0%, #102d10 72%); Chrome10-25,Safari5.1-6 */
   /* background: linear-gradient(135deg, #303f2f 0%, #102d10 72%); W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#303f2f', endColorstr='#102d10',GradientType=1 ); IE6-9 fallback on horizontal gradient */
 }
 
+
+
 .card-title {
   position: absolute;
-  white-space: nowrap;
+  /* white-space: nowrap; */
   display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  max-height: 100%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -86,4 +95,23 @@
 .display-match {
   width: 245px;
   margin: 15px -5px;
+}
+
+/* .new-card-body {
+  
+} */
+
+.new-card-p {
+  position: relative;
+  border: solid 1px lightgrey;
+  height: 300px;
+  width: 300px;
+  display: block;
+  margin: 30px auto;
+  border-radius: 6px;
+  box-shadow: 0px 0px 15px 1px grey;
+  padding: 3rem;
+  color: #c7ea46;
+  text-shadow: 1px 1px 3px black;
+  background: #303f2f; /* Old browsers */
 }

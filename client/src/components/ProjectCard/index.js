@@ -17,14 +17,14 @@ class ProjectCard extends Component {
   render() {
     return (
       <div className="project-card">
-        <span className="card-title h1">{this.props.title}</span>
+        <p className="card-title h1">{this.props.title}</p>
         <span className="card-body">
           <div className="row">
             <div className="col-sm-12">
               <div className="display-box">
                 {this.state.displayBoxImage ? (
                   <img src={this.state.displayBoxImage} alt='action icon'/>
-                ) : <span className="card-title h1">Select An <br /> Option Below</span>}
+                ) : <span className="card-title h1 ">Select An <br /> Option Below</span>}
               </div>
             </div>
           </div>
