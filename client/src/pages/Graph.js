@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Col, Row } from "../components/Grid";
 import API from "../utils/API";
-
+import firebase from "../config/fbConfig"
 import TaskCardDisplay from "../components/TaskCardDisplay/index";
 import "./Graph/style.css";
 
@@ -24,9 +24,18 @@ class Graph extends Component {
   }
 
   componentDidMount() {
-    this.getChartData();
+    this.handleRedirect();
   }
 
+  handleRedirect = () => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.getChartData();
+      } else {
+        this.props.history.push('/')
+      }
+    })
+  }
   getTaskNames = () => {
     this.state.pulledTasks.map((task, i) => {
       API.getTasksWhere(task)
@@ -39,7 +48,7 @@ class Graph extends Component {
           this.updateChart();
         });
     });
-    
+
   };
 
   updateChart = () => {
