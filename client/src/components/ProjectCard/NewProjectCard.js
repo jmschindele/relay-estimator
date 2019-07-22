@@ -40,7 +40,7 @@ class NewProjectCard extends Component {
     return (
       <>
       <div className='col-4'>
-        <div className="card-p">
+        <div className="new-card-p">
           <div className="new-card-body">
             <label className="sr-only" htmlFor="project-title-input">
               Project title

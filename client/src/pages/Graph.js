@@ -166,7 +166,7 @@ class Graph extends Component {
               }}
             />
 
-            <div className="overlay">{this.state.total && this.state.total}</div>
+            <div className="overlay">{this.state.total && '$' + this.state.total}</div>
           </div>
         </div>
         <Row>
