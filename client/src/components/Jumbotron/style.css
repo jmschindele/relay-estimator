@@ -1,6 +1,4 @@
-body {
-  background-image: url('https://www.toptal.com/designers/subtlepatterns/patterns/lghtmesh.png')
-}
+
 
 .jumbotron {
   margin-top: 10%;
@@ -15,6 +13,12 @@ body {
   text-shadow: 
   1px 1px 3px black;
   /* max-width: 90%; */
+  font-family: 'Questrial', sans-serif;
+  background: #303f2f; /* Old browsers */
+  background: -moz-linear-gradient(-45deg,  #303f2f 0%, #102d10 72%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg,  #303f2f 0%, #102d10 72%); /*Chrome10-25,Safari5.1-6*/
+  background: linear-gradient(135deg, #303f2f 0%, #102d10 72%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#303f2f', endColorstr='#102d10',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
 
 

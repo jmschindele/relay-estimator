@@ -6,7 +6,7 @@ import DeleteBtn from "../DeleteBtn/index";
 function TaskCardDisplay(props) {
   return (
     <div className="card-tcd">
-      <div className="card-body">
+      <div className="task-card-body">
         <div className="row">
           <div className="col-2" />
           <div className="col-8 task-title">
@@ -15,7 +15,10 @@ function TaskCardDisplay(props) {
             </div>
           </div>
           <div className="col-2">
+            {props.handleTaskDelete ? 
             <DeleteBtn onClick={() => props.handleTaskDelete(props._id)} />
+            :
+            null }
           </div>
         </div>
         <br />
@@ -31,7 +34,7 @@ function TaskCardDisplay(props) {
             <span className="task-heading">
               HOURS
               <br />
-            </span>{" "}
+            </span>
             <span className="task-result text-center">{props.hours}</span>
           </div>
           <div className="col-4 text-center">

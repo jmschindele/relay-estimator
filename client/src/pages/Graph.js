@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
+import { Col, Row } from "../components/Grid";
 import API from "../utils/API";
 
 import TaskCardDisplay from "../components/TaskCardDisplay/index";
@@ -39,6 +39,7 @@ class Graph extends Component {
           this.updateChart();
         });
     });
+    
   };
 
   updateChart = () => {
@@ -46,14 +47,16 @@ class Graph extends Component {
     let titles = [];
     for (let i = 0; i < this.state.tasks.length; i++) {
       taskArr = this.state.tasks;
+      if (this.state.tasks[i]){
       titles.push(this.state.tasks[i].title)
+      }
     }
-    console.log('titles = ',titles)
     let values = [];
     let rate = [];
     let hours = [];
 
     for (let i = 0; i < taskArr.length; i++) {
+      if (taskArr[i]) {
       let newVal = 0;
       let num1 = parseFloat(taskArr[i].hours);
       let num2 = parseFloat(taskArr[i].rate);
@@ -61,6 +64,7 @@ class Graph extends Component {
       rate.push(num1);
       hours.push(num2);
       values.push(newVal);
+      }
     }
 
     this.setState({
@@ -103,14 +107,15 @@ class Graph extends Component {
     });
   };
 
+
   render() {
-    // console.log(this.state)
     return (
-      <Container fluid>
+      <div className='chart-container'>
         <div className="chart-flex">
           <div>
-            {this.state.tasks &&
+            {
               this.state.tasks.map((task, i) => (
+                task &&
                 <TaskCardDisplay
                   key={i}
                   task={task.title}
@@ -135,7 +140,6 @@ class Graph extends Component {
                   display: true,
                   position: "bottom",
                   labels: {
-                    
                     fontSize: 30
                   }
                 }
@@ -150,7 +154,7 @@ class Graph extends Component {
             <Link to="/">Home</Link>
           </Col>
         </Row>
-      </Container>
+      </div>
     );
   }
 }

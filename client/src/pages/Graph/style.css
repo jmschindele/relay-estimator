@@ -61,6 +61,10 @@
   display: flex;
 }
 
+/* .chart-container {
+  max-width: 1200px;
+} */
+
 .chart-flex > * {
   width: 50%;
 }

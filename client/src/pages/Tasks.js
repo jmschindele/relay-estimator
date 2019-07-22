@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Col, Row, Container } from "../components/Grid";
+import { Col, Row} from "../components/Grid";
 import TaskCardDisplay from "../components/TaskCardDisplay";
 import TaskCard from "../components/TaskCard";
 import NewTaskBtn from "../components/NewTaskBtn/index";
@@ -26,10 +26,10 @@ class Tasks extends Component {
     //need to set this id to be current project id
     // let id = '5d322f94cedbde02d99f0443'
     let id = this.props.match.params.projectId;
-    console.log(this.props.match.params.projectId);
+    
     API.getTasks(id)
       .then(res => {
-        console.log(res.data.tasks);
+        
         this.setState({ pulledTasks: res.data.tasks, hours: "", rate: "" });
         this.getTaskNames();
       })
@@ -39,10 +39,10 @@ class Tasks extends Component {
   getTaskNames = () => {
     let tasks = [];
     this.state.pulledTasks.map((task, i) => {
-      // console.log('getTaskNames task',task)
+      
       API.getTasksWhere(task).then(res => {
         tasks.push(res.data);
-        console.log("getTaskNames res", res.data);
+        
         this.setState({
           tasks
         });
@@ -76,7 +76,7 @@ class Tasks extends Component {
   };
 
   render() {
-    // console.log('state: ',this.state)
+    
     return (
       <div className='container'>
         <NewTaskBtn onClick={this.appendTaskCard} />
@@ -98,8 +98,9 @@ class Tasks extends Component {
                   </>
                 )
             )}
-            {this.state.newTasks.map(newTask => (
+            {this.state.newTasks.map((newTask,i) => (
               <TaskCard
+                key={i}
                 projectId={this.props.match.params.projectId}
                 loadTasks={this.loadTasks}
               />
