@@ -23,7 +23,7 @@ class ProjectCard extends Component {
             <div className="col-sm-12">
               <div className="display-box">
                 {this.state.displayBoxImage ? (
-                  <img src={this.state.displayBoxImage} />
+                  <img src={this.state.displayBoxImage} alt='action icon'/>
                 ) : <span className="card-title h1">Select An <br /> Option Below</span>}
               </div>
             </div>

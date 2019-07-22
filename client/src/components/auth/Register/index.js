@@ -99,21 +99,21 @@ class Register extends Component {
   render() {
     // Notice how each input has a `value`, `name`, and `onChange` prop
 
-    const {
-      firstName,
-      lastName,
-      email,
-      password,
-      confirmPassword
-    } = this.state;
+    // const {
+    //   firstName,
+    //   lastName,
+    //   email,
+    //   password,
+    //   confirmPassword
+    // } = this.state;
 
-    const isInvalid =
-      password !== confirmPassword ||
-      password === "" ||
-      password.length < 6 ||
-      email === "" ||
-      firstName === "" ||
-      lastName === "";
+    // const isInvalid =
+    //   password !== confirmPassword ||
+    //   password === "" ||
+    //   password.length < 6 ||
+    //   email === "" ||
+    //   firstName === "" ||
+    //   lastName === "";
 
     return (
       <div className="form-container mx-auto">

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Row, Container } from "../components/Grid";
 import ProjectCard from "../components/ProjectCard";
 import NewProjectCard from "../components/ProjectCard/NewProjectCard";
 import NewProjectBtn from "../components/NewProjectBtn";

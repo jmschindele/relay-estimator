@@ -4,7 +4,7 @@ import "./App.css";
 import firebase from "./config/fbConfig";
 
 //starting tutorial experiment below this line
-import { Col, Row, Container } from "./components/Grid";
+import { Col, Row} from "./components/Grid";
 import { Nav, Navbar, NavItem } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
 import Routes from "./Routes";
