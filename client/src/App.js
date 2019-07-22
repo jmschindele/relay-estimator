@@ -6,7 +6,7 @@ import firebase from "./config/fbConfig";
 //starting tutorial experiment below this line
 import { Col, Row} from "./components/Grid";
 import { Nav, Navbar, NavItem } from "react-bootstrap";
-import { Link, withRouter } from "react-router-dom";
+import { Link, withRouter} from "react-router-dom";
 import Routes from "./Routes";
 // function App() {
 class App extends Component {
@@ -68,17 +68,10 @@ class App extends Component {
               <Nav className="pull-right">
                 {this.state.isAuthenticated ? (
                   <>
-                    {/* <Link className="nav-link" to="/estimate">
-                      Graph/Estimate
-                    </Link> */}
 
                     <Link className="nav-link-3" to="/projects">
                       Projects / 
                     </Link>
-{/* 
-                    <Link className="nav-link" to="/tasks">
-                      Tasks
-                    </Link> */}
 
                     <NavItem className="nav-link-4" onClick={this.handleLogout}>
                       / Logout

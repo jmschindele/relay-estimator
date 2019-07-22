@@ -14,7 +14,15 @@ class Projects extends Component {
   };
 
   componentDidMount() {
+    this.handleRedirect();
+  }
+
+  handleRedirect = () => {
+    if (!this.props.isAutheticated) {
+      this.props.history.push('/')
+    } else {
     this.loadProjects();
+    }
   }
 
   getProjectNames = () => {

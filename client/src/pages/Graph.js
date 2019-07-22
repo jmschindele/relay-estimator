@@ -24,7 +24,15 @@ class Graph extends Component {
   }
 
   componentDidMount() {
-    this.getChartData();
+    this.handleRedirect();
+  }
+
+  handleRedirect = () => {
+    if (!this.props.isAutheticated) {
+      this.props.history.push('/')
+    } else {
+      this.getChartData();
+    }
   }
 
   getTaskNames = () => {
@@ -39,7 +47,7 @@ class Graph extends Component {
           this.updateChart();
         });
     });
-    
+
   };
 
   updateChart = () => {

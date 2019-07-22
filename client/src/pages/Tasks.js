@@ -1,10 +1,10 @@
 import React, { Component } from "react";
+import { Redirect } from 'react-router-dom';
 import { Col, Row} from "../components/Grid";
 import TaskCardDisplay from "../components/TaskCardDisplay";
 import TaskCard from "../components/TaskCard";
 import NewTaskBtn from "../components/NewTaskBtn/index";
 import API from "../utils/API";
-// import DeleteBtn from "../components/DeleteBtn";
 
 class Tasks extends Component {
   state = {
@@ -19,7 +19,15 @@ class Tasks extends Component {
   };
 
   componentDidMount() {
-    this.loadTasks();
+    this.handleRedirect();
+  }
+
+  handleRedirect = () => {
+    if (!this.props.isAutheticated) {
+      this.props.history.push('/')
+    } else {
+      this.loadTasks();
+    }
   }
 
   loadTasks = () => {
