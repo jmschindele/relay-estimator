@@ -5,7 +5,7 @@ import "./style.css";
 function NewTaskBtn(props) {
 
     return (
-      <button className="btn-primary" {...props}>
+      <button className="new-task-btn" {...props}>
         {" "}
         + Task
       </button>

@@ -6,3 +6,20 @@
   background-color: #c7ea46;
   color: #303f2f;
 }
+
+.new-task-btn {
+  background-color: #303f30;
+  color: rgb(212, 211, 211);
+  border: solid 2px lightgrey;
+  border-radius: 5px;
+  margin-left: 15px;
+  margin-bottom: 5px;
+  padding: .3em 3em; 
+  /* width: 75px; */
+  background: #303f2f; /* Old browsers */
+  background: -moz-linear-gradient(-45deg,  #303f2f 0%, #102d10 72%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg,  #303f2f 0%, #102d10 72%); /*Chrome10-25,Safari5.1-6*/
+  background: linear-gradient(135deg, #303f2f 0%, #102d10 72%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#303f2f', endColorstr='#102d10',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  font-size: 1.2em;
+}

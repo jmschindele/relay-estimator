@@ -7,7 +7,7 @@ import Register from "../components/auth/Register";
 import Graph from "../pages/Graph";
 import Projects from "../pages/Projects";
 import AppliedRoute from "../components/AppliedRoute";
-import Tasks from "../pages/Tasks";
+import Tasks from "../pages/Tasks/index";
 
 export default ({ childProps }) => (
   <Switch>
