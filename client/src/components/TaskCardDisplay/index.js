@@ -1,7 +1,7 @@
 import React from "react";
 // import { Link } from "react-router-dom";
 import "./style.css";
-import DeleteBtn from "../DeleteBtn/index";
+import DeleteBtnIcon from "../DeleteBtnIcon";
 
 function TaskCardDisplay(props) {
   return (
@@ -16,7 +16,7 @@ function TaskCardDisplay(props) {
           </div>
           <div className="col-2">
             {props.handleTaskDelete ? 
-            <DeleteBtn onClick={() => props.handleTaskDelete(props._id)} />
+            <DeleteBtnIcon onClick={() => props.handleTaskDelete(props._id)} />
             :
             null }
           </div>
