@@ -156,6 +156,7 @@ class Graph extends Component {
       <div className="chart-container">
         <div className="chart-flex">
           <div>
+            <div className='overflow'>
             {this.state.tasks.map(
               (task, i) =>
                 task && (
@@ -167,6 +168,7 @@ class Graph extends Component {
                   />
                 )
             )}
+            </div>
             <div className="row">
           <div className="col-12 text-center">
             {/* <Link to="/projects"></Link> */}
@@ -195,7 +197,7 @@ class Graph extends Component {
                 title: {
                   display: "top",
                   text: this.state.projectName,
-                  fontSize: 75,
+                  fontSize: 40,
                   fontStyle: 'lighter'
                 },
                 legend: {
@@ -209,7 +211,7 @@ class Graph extends Component {
               }}
             />
 
-            <div className="overlay">
+            <div className="overlay overlay-text">
               {this.state.total && "$" + this.state.total}
             </div>
           </div>
