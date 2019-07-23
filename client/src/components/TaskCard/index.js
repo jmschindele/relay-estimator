@@ -73,7 +73,7 @@ class TaskCard extends Component {
                   id="task-input"
                   placeholder="Title"
                   name="title"
-                  value={this.state.title ? this.state.title : this.props.title}
+                  value={this.state.hasChanged ? this.state.title : this.props.title}
                   onChange={this.handleInputChange}
                 />
               </div>
@@ -86,7 +86,7 @@ class TaskCard extends Component {
                   id="rate-input"
                   placeholder="$000.00"
                   name="rate"
-                  value={this.state.rate ? this.state.rate : this.props.rate}
+                  value={this.state.hasChanged ? this.state.rate : this.props.rate}
                   onChange={this.handleInputChange}
                 />
               </div>
@@ -99,7 +99,7 @@ class TaskCard extends Component {
                   id="hours-input"
                   placeholder="hours"
                   name="hours"
-                  value={this.state.hours ? this.state.hours : this.props.hours}
+                  value={this.state.hasChanged ? this.state.hours : this.props.hours}
                   onChange={this.handleInputChange}
                 />
               </div>
@@ -118,7 +118,7 @@ class TaskCard extends Component {
                   className="form-control mb-2"
                   id="static-total"
                   value={
-                    this.state.total
+                    this.state.total !== 0
                       ? "$" + this.state.total
                       : "$" + this.props.total
                   }
