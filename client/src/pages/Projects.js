@@ -92,8 +92,11 @@ class Projects extends Component {
     
     return (
       <div className='container'>
+        <div className='row'>
+          <div className='col-4'>
         <NewProjectBtn onClick={this.appendProjectCard} />
-
+        </div>
+        </div>
         <div className='row'>
           {this.state.newProjects}
           {this.state.projects &&

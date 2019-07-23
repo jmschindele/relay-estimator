@@ -40,6 +40,7 @@
   font-size: 1.5em;
   margin-left: 5px;
   line-height: 2;
+  font-weight: lighter;
 }
 
 .title-header {
@@ -48,6 +49,7 @@
   /* color: rgb(212, 211, 211); */
   font-size: 2em;
   margin-left: 5px;
+  font-weight: lighter;
 }
 
 .pull-right-save {
@@ -98,4 +100,20 @@
 .delete-button-icon:hover {
   background-image: url('/trash-hover.png');
   cursor: pointer;
+}
+
+.line-total{
+  color: whitesmoke;
+  font-size: 4.5rem;
+  font-weight: lighter;
+  float: right;
+  margin-right: 20px;
+  text-shadow: 2px 2px 5px black;
+}
+
+.task-title {
+  color: whitesmoke;
+  font-weight: lighter;
+  font-size: 3.5em;
+  margin-left: 15px;
 }

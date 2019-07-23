@@ -5,7 +5,7 @@ import "./style.css";
 
 function NewProjectBtn(props) {
   return (
-    <button className="btn-2" {...props}>
+    <button className="new-project-btn" {...props}>
       + Project
     </button>
   );
