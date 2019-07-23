@@ -120,15 +120,12 @@ class NewTaskCard extends Component {
                 />
               </div>
             </div>
-            {/* 
-            <Link to="#" className="card-link-t">
-              Edit |
-            </Link> */}
-            {/* <Link to="#" className="card-link-t"> */}
+
+
             <span className="card-link-t" onClick={this.handleTaskSave}>
               Save
             </span>
-            {/* </Link> */}
+
           </div>
         </div>
       </>

@@ -71,7 +71,6 @@ handleRedirect = () => {
 
   deleteTask = id => {
     API.deleteTask(id)
-      .then(res => this.loadBooks())
       .catch(err => console.log(err));
   };
 

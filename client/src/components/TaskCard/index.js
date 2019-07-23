@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 import "./style.css";
 import API from "../../utils/API";
+import DeleteBtnIcon from "../DeleteBtnIcon";
 
 class TaskCard extends Component {
   // Setting the component's initial state
@@ -58,9 +59,8 @@ class TaskCard extends Component {
           <div className="task-card-body">
             <div className="form-row align-items-center">
               <div className="col-6">
-                <label className="sr-only" htmlFor="task-input">
-                  Title
-                </label>
+                <label className="sr-only" htmlFor="task-input" />
+                <span className='column-header'>Title</span>
                 <input
                   type="text"
                   className="form-control mb-2"
@@ -72,9 +72,8 @@ class TaskCard extends Component {
                 />
               </div>
               <div className="col-2">
-                <label className="sr-only" htmlFor="rate-input">
-                  <span className="h3">Rate</span>
-                </label>
+                <label className="sr-only" htmlFor="rate-input"/>
+                <span className='column-header'>Rate</span>
                 <input
                   type="number"
                   className="form-control mb-2"
@@ -86,9 +85,8 @@ class TaskCard extends Component {
                 />
               </div>
               <div className="col-2">
-                <label className="sr-only" htmlFor="hours-input">
-                  Hours
-                </label>
+                <label className="sr-only" htmlFor="hours-input" />
+                <span className='column-header'>Hours</span>
                 <input
                   type="number"
                   className="form-control mb-2"
@@ -105,6 +103,7 @@ class TaskCard extends Component {
                   className="sr-only"
                   htmlFor="staticTotal"
                 />
+                <span className='column-header'>Total</span>
                 <input
                   type="text"
                   readOnly
@@ -112,19 +111,17 @@ class TaskCard extends Component {
                   // className="form-control-plaintext"
                   className="form-control mb-2"
                   id="static-total"
-                  value={this.state.total ? this.state.total : this.props.total}
+                  value={this.state.total ? '$'+this.state.total : '$'+this.props.total}
                 />
               </div>
             </div>
-            {/* 
-            <Link to="#" className="card-link-t">
-              Edit |
-            </Link> */}
-            {/* <Link to="#" className="card-link-t"> */}
-            <span className="card-link-t" onClick={this.handleTaskUpdate}>
+
+            <span className="card-link-t pull-right-save" onClick={this.handleTaskUpdate}>
               Save
             </span>
-            {/* </Link> */}
+            <div className="col-2">
+          <DeleteBtnIcon onClick={() => this.props.handleTaskDelete(this.props._id)}/>
+          </div>
           </div>
         </div>
       </>

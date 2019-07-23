@@ -6,13 +6,15 @@
   border-radius: 5px;
   box-shadow: 0px 0px 15px 1px grey;
   padding: 1rem;
+  position: relative;
+  height: 150px;
 }
 
-.card-link-t {
+/* .card-link-t {
   color: #c7ea46;
   padding: 0.5em 1em;
   border-radius: 5px;
-}
+} */
 
 .card-link-t:hover {
   background: #68d6c7;
@@ -23,4 +25,29 @@
 #static-total {
   background-color: grey;
   color: whitesmoke;
+}
+
+.column-header {
+  color: #d1de44;
+  font-size: 1.5em;
+  margin-left: 5px;
+}
+
+.pull-right-save {
+  position: absolute;
+  right: 10px;
+  color: rgb(212, 211, 211);
+  border: solid 1px yellowgreen;
+  border-radius: 5px;
+  margin-top: 0px;
+  padding-left: .3em;
+  padding-right: .3em;
+  padding-top: 0;
+  display: block;
+  width: 75px;
+  background: #303f2f; /* Old browsers */
+  background: -moz-linear-gradient(-45deg,  #303f2f 0%, #102d10 72%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg,  #303f2f 0%, #102d10 72%); /*Chrome10-25,Safari5.1-6*/
+  background: linear-gradient(135deg, #303f2f 0%, #102d10 72%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#303f2f', endColorstr='#102d10',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
