@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import "./style.css";
 import API from "../../utils/API";
 
-class TaskCard extends Component {
+class NewTaskCard extends Component {
   // Setting the component's initial state
   state = {
     title: "",
@@ -15,6 +15,7 @@ class TaskCard extends Component {
   handleInputChange = event => {
     let value = event.target.value;
     const name = event.target.name;
+
     let hours, rate;
 
     //check what name is
@@ -28,29 +29,32 @@ class TaskCard extends Component {
 
     this.setState({
       [name]: value,
-      total: hours && rate ? parseInt(hours) * parseInt(rate) : hours ? parseInt(hours) * this.props.rate : rate ? parseInt(rate) * this.props.hours : 0
-      })
-  }
-  
+      total: hours && rate ? parseInt(hours) * parseInt(rate) : 0
+    });
+  };
 
-
-
-
-  handleTaskUpdate = event => {
+  handleTaskSave = event => {
     event.preventDefault();
-    let id = this.props._id;
-    API.updateTask(id, {
-      title: this.state.title ? this.state.title.trim() : this.props.title,
-      rate: this.state.rate ? this.state.rate : this.props.rate,
-      hours: this.state.hours ? this.state.hours : this.props.hours
+    if (!this.state.rate || !this.state.title || !this.state.hours) {
+      alert("Entries cannot be left blank");
+    }
+    let id = this.props.projectId;
+    API.createTask(id, {
+      title: this.state.title.trim(),
+      rate: this.state.rate,
+      hours: this.state.hours
     })
-      .then(() => API.getTasks())
-      .then((res) => this.setState({ tasks: res.data }))
+      .then(() => {
+        this.setState({
+          title: "",
+          rate: "",
+          hours: ""
+        });
+        this.props.loadTasks();
+      })
       .catch(err => console.log(err));
   };
 
-
-  
   render() {
     return (
       <>
@@ -67,7 +71,7 @@ class TaskCard extends Component {
                   id="task-input"
                   placeholder="Title"
                   name="title"
-                  value={this.state.title ? this.state.title : this.props.title}
+                  value={this.state.title}
                   onChange={this.handleInputChange}
                 />
               </div>
@@ -81,7 +85,7 @@ class TaskCard extends Component {
                   id="rate-input"
                   placeholder="$000.00"
                   name="rate"
-                  value={this.state.rate ? this.state.rate : this.props.rate}
+                  value={this.state.rate}
                   onChange={this.handleInputChange}
                 />
               </div>
@@ -95,7 +99,7 @@ class TaskCard extends Component {
                   id="hours-input"
                   placeholder="hours"
                   name="hours"
-                  value={this.state.hours ? this.state.hours : this.props.hours}
+                  value={this.state.hours}
                   onChange={this.handleInputChange}
                 />
               </div>
@@ -108,11 +112,11 @@ class TaskCard extends Component {
                 <input
                   type="text"
                   readOnly
-                  placeholder="$0000.00"
+                  placeholder="Total"
                   // className="form-control-plaintext"
                   className="form-control mb-2"
                   id="static-total"
-                  value={this.state.total ? this.state.total : this.props.total}
+                  value={'$' + this.state.total && '$' + this.state.total}
                 />
               </div>
             </div>
@@ -121,7 +125,7 @@ class TaskCard extends Component {
               Edit |
             </Link> */}
             {/* <Link to="#" className="card-link-t"> */}
-            <span className="card-link-t" onClick={this.handleTaskUpdate}>
+            <span className="card-link-t" onClick={this.handleTaskSave}>
               Save
             </span>
             {/* </Link> */}
@@ -131,4 +135,4 @@ class TaskCard extends Component {
     );
   }
 }
-export default TaskCard;  
+export default NewTaskCard;

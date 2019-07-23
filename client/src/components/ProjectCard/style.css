@@ -1,10 +1,118 @@
-.card-p {
-  background-color: #303f2f;
-  color: #c7ea46;
-  margin-left: 15px;
-  margin-bottom: 5px;
-  border-radius: 5px;
-  border: solid 1.5px lightgrey;
+.project-card {
+  position: relative;
+  border: solid 1px lightgrey;
+  height: 300px;
+  width: 300px;
+  display: block;
+  margin: 30px auto;
+  border-radius: 6px;
   box-shadow: 0px 0px 15px 1px grey;
-  padding: 1rem;
+  padding: 3rem;
+  color: #c7ea46;
+  text-shadow: 1px 1px 3px black;
+  background: #303f2f; /* Old browsers */
+
+
+  /* overflow: auto; */
+  /* background: -moz-linear-gradient(-45deg,  #303f2f 0%, #102d10 72%); FF3.6-15 */
+  /* background: -webkit-linear-gradient(-45deg,  #303f2f 0%, #102d10 72%); Chrome10-25,Safari5.1-6 */
+  /* background: linear-gradient(135deg, #303f2f 0%, #102d10 72%); W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#303f2f', endColorstr='#102d10',GradientType=1 ); IE6-9 fallback on horizontal gradient */
+}
+
+
+
+.card-title {
+  position: absolute;
+  /* white-space: nowrap; */
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  max-height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.card-body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(7, 32, 7);
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s ease;
+  opacity: 0;
+  display: block;
+  border-radius: 6px;
+  word-wrap: normal;
+}
+
+.card-text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  display: block;
+}
+
+.project-card:hover .card-body {
+  opacity: 1;
+}
+
+.display-box {
+  height: 200px;
+  width: 240px;
+  /* background-color: whitesmoke; */
+  display: block;
+  margin: 5px auto;
+  position: relative;
+  border-radius: 5px;
+  /* background-image: url('https://www.toptal.com/designers/subtlepatterns/patterns/lghtmesh.png'); */
+  /* background-image: url('/project_background.png'); */
+  background-attachment: local;
+  background-size: 200px 240px;
+}
+
+.display-box img {
+  height: 200px;
+  width: 200px;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  /* border: solid 1px red; */
+}
+
+.display-match {
+  width: 245px;
+  margin: 15px -5px;
+}
+
+/* .new-card-body {
+  
+} */
+
+.new-card-p {
+  position: relative;
+  border: solid 1px lightgrey;
+  height: 300px;
+  width: 300px;
+  display: block;
+  margin: 30px auto;
+  border-radius: 6px;
+  box-shadow: 0px 0px 15px 1px grey;
+  padding: 3rem;
+  color: #c7ea46;
+  text-shadow: 1px 1px 3px black;
+  background: #303f2f; /* Old browsers */
 }

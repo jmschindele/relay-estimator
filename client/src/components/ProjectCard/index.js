@@ -1,22 +1,66 @@
-import React from "react";
-import { Link } from "react-router-dom";
+
+import React, { Component } from "react";
 import "./style.css";
 import DeleteBtn from "../DeleteBtn/index";
-import ViewProjectBtn from "../ViewProjectBtn/index";
+import ViewTasksBtn from "../ViewTasksBtn/index";
 import ViewEstimateBtn from "../ViewEstimateBtn";
 
-function ProjectCard(props) {
-  return (
-    <div className="card-p">
-      <div className="card-body">
-        <DeleteBtn onClick={() => props.handleProjectDelete(props._id)} />
-        <h5 className="card-title">{props.title}</h5>
-        <hr />
-        <ViewProjectBtn onClick={() => props.handleTaskClick(props._id)} />
-        <ViewEstimateBtn onClick={() => props.handleEstimateClick(props._id)} />
+class ProjectCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      displayBoxImage: ""
+    };
+  }
+
+
+  render() {
+    return (
+      <div className="project-card">
+        <p className="card-title h1">{this.props.title}</p>
+        <span className="card-body">
+          <div className="row">
+            <div className="col-sm-12">
+              <div className="display-box">
+                {this.state.displayBoxImage ? (
+                  <img src={this.state.displayBoxImage} alt='action icon'/>
+                ) : <span className="card-title h1 ">Select An <br /> Option Below</span>}
+              </div>
+            </div>
+          </div>
+          {/* <hr /> */}
+          <div className="row display-match">
+            <div className="col-sm-4">
+              <ViewEstimateBtn
+                onClick={() => this.props.handleEstimateClick(this.props._id)}
+                onMouseEnter={() =>
+                  this.setState({ displayBoxImage: "/graph-icon.png" })
+                }
+                onMouseLeave={() => this.setState({ displayBoxImage: "" })}
+              />
+            </div>
+            <div className="col-sm-4">
+              <ViewTasksBtn
+                onClick={() => this.props.handleTaskClick(this.props._id)}
+                onMouseEnter={() =>
+                  this.setState({ displayBoxImage: "./edit-icon.png" })
+                }
+                onMouseLeave={() => this.setState({ displayBoxImage: "" })}
+              />
+            </div>
+
+            <div className="col-sm-4">
+              <DeleteBtn
+                onClick={() => this.props.handleProjectDelete(this.props._id)}
+                onMouseEnter={() => this.setState({displayBoxImage: './delete-icon.png'})}
+                onMouseLeave={() => this.setState({displayBoxImage: ''})}
+              />
+            </div>
+          </div>
+        </span>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default ProjectCard;

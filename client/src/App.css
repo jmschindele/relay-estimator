@@ -1,5 +1,8 @@
 body {
-  background: #d8d1d0;
+  background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/lghtmesh.png");
+  /* background: rgba(255,232,189,.5);  */
+  background-image: url("/color-background.png");
+  /* background-image: url('/project_background.png'); */
 }
 
 .navbar {
@@ -11,25 +14,44 @@ body {
   height: 70px;
   box-shadow: 0px 0px 20px 5px grey;
 
-
-/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#303f2f+0,0a0e0a+71,0a0e0a+72,102d10+72,102d10+72 */
-background: #303f2f; /* Old browsers */
-background: -moz-linear-gradient(-45deg,  #303f2f 0%, #0a0e0a 71%, #0a0e0a 72%, #102d10 72%, #102d10 72%); /* FF3.6-15 */
-background: -webkit-linear-gradient(-45deg,  #303f2f 0%,#0a0e0a 71%,#0a0e0a 72%,#102d10 72%,#102d10 72%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(135deg,  #303f2f 0%,#0a0e0a 71%,#0a0e0a 72%,#102d10 72%,#102d10 72%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#303f2f', endColorstr='#102d10',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-
-
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#303f2f+0,0a0e0a+71,0a0e0a+72,102d10+72,102d10+72 */
+  background: #303f2f; /* Old browsers */
+  background: -moz-linear-gradient(
+    -45deg,
+    #303f2f 0%,
+    #0a0e0a 71%,
+    #0a0e0a 72%,
+    #102d10 72%,
+    #102d10 72%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    -45deg,
+    #303f2f 0%,
+    #0a0e0a 71%,
+    #0a0e0a 72%,
+    #102d10 72%,
+    #102d10 72%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    135deg,
+    #303f2f 0%,
+    #0a0e0a 71%,
+    #0a0e0a 72%,
+    #102d10 72%,
+    #102d10 72%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#303f2f', endColorstr='#102d10',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
-.navbar a, .navbar a:hover, .navbar a:active, .navbar a:focus{
-  color: yellowgreen;
-  font-family: 'Questrial', sans-serif;
+.navbar a,
+.navbar a:hover,
+.navbar a:active,
+.navbar a:focus {
+  color: #d1de44;
+  font-family: "Questrial", sans-serif;
   text-decoration: none;
-  text-shadow: 
-    1px 1px 3px black;
+  text-shadow: 1px 1px 3px black;
 }
-
 
 .nav-link {
   font-size: 2.5em;
@@ -41,18 +63,42 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#303f2f', end
 }
 
 .nav-link-3 {
-  color: #303f2f;
-  margin-left: 15px;
+  color: #d1de44;
+  font-family: "Questrial", sans-serif;
+  text-decoration: none;
+  text-shadow: 1px 1px 3px black;
 }
 
 .nav-link-4 {
-  color: #303f2f;
-  margin-right: 15px;
-  margin-left: 5px;
+  color: #d1de44;
+  font-family: "Questrial", sans-serif;
+  text-decoration: none;
+  text-shadow: 1px 1px 3px black;
 }
 
 .container {
   min-width: 80vw;
   padding: 0;
   margin: 0 auto;
+}
+
+/* .logo {
+  border: solid 2px #c7ea46;
+  border-radius: 1000px;
+  overflow: hidden;
+  width: 50px;
+  height: 50px;
+  float: left;
+} */
+
+#title-sub {
+  font-size: 0.5em;
+}
+
+.header-logo {
+  height: 45px;
+  width: auto;
+  margin-right: 25px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }

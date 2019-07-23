@@ -19,12 +19,6 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  // create: function(req, res) {
-  //   db.Task
-  //     .create(req.body)
-  //     .then(dbModel => db.Project.findOneAndUpdate({}, { $push: { tasks: dbModel._id } }, { new: true }))
-  //     .catch(err => res.status(422).json(err));
-  // },
   create: function(req, res) {
     db.Task.create(req.body)
       .then(dbModel => {
@@ -33,7 +27,6 @@ module.exports = {
           { $push: { tasks: dbModel._id } },
           { new: true }
         );
-        console.log(dbModel._id);
       })
       .then(function(dbModel) {
         res.json(dbModel);
@@ -42,8 +35,9 @@ module.exports = {
   },
   update: function(req, res) {
     db.Task.findOneAndUpdate({ _id: req.params.id }, req.body)
+      .then(() => db.Task.findById(req.params.id))
       .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .catch(err => console.log(err));
   },
   remove: function(req, res) {
     db.Task.findById({ _id: req.params.id })
@@ -52,3 +46,5 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   }
 };
+
+

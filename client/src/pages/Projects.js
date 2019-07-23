@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Row, Container } from "../components/Grid";
 import ProjectCard from "../components/ProjectCard";
 import NewProjectCard from "../components/ProjectCard/NewProjectCard";
 import NewProjectBtn from "../components/NewProjectBtn";
@@ -15,29 +14,39 @@ class Projects extends Component {
   };
 
   componentDidMount() {
-    this.loadProjects();
+    this.handleRedirect();
+  }
+
+  handleRedirect = () => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.loadProjects()
+      } else {
+        this.props.history.push('/')
+      }
+    })
   }
 
   getProjectNames = () => {
-    // alert('fire');
     let projects = [];
     this.state.pulledProjects.map((project, i) =>
       API.getProject(project).then(res => {
-        console.log(res.data);
+        
         projects.push(res.data);
         this.setState({ projects });
       })
     );
-    console.log(projects);
+    
   };
 
   loadProjects = () => {
-    // let id = firebase.auth().currentUser.uid;
-    let id = "3FPDyy58KaOY0Aw3qw4UNoAMsD03";
+    let id = firebase.auth().currentUser.uid;
+    // let id = "3FPDyy58KaOY0Aw3qw4UNoAMsD03";
     API.getProjects(id)
       .then(res => {
-        console.log(res.data[0].project);
-        this.setState({ pulledProjects: res.data[0].project });
+        
+        this.setState({ pulledProjects: res.data[0].project,
+        newProjects: null });
         this.getProjectNames();
       })
       .catch(err => console.log(err));
@@ -50,6 +59,7 @@ class Projects extends Component {
   };
 
   loadProjectTasks = id => {
+    console.log('load project tasks id: ',id)
     this.props.history.push(`/tasks/${id}`);
   };
 
@@ -58,7 +68,6 @@ class Projects extends Component {
   };
 
   handleTaskClick = id => {
-    console.log("id = ", id);
     this.loadProjectTasks(id);
   };
 
@@ -74,38 +83,45 @@ class Projects extends Component {
 
   appendProjectCard = () => {
     this.setState({
-      newProjects: this.state.newProjects.concat(<NewProjectCard />)
+      // newProjects: this.state.newProjects.concat(<NewProjectCard />)
+      newProjects: <NewProjectCard loadProjects={this.loadProjects} />
     });
   };
 
   render() {
-    console.log(this.state);
+    
     return (
-      <Container fluid>
+      <div className='container'>
         <NewProjectBtn onClick={this.appendProjectCard} />
 
-        <Row>
+        <div className='row'>
+          {/* {this.state.newProjects.map(newProjects => (
+            <div className='col-4'>
+            <NewProjectCard loadProjects={this.loadProjects} />
+            </div>
+          ))} */}
+          {/* {this.state.newProjects ? <div className='col-4'>{this.state.newProjects}</div> : null} */}
+
+          {this.state.newProjects}
+          
           {this.state.projects &&
             this.state.projects.map(
               (project, i) =>
                 project && (
-                  <div className="col-3">
+                  <div className="col-4" key={project._id}>
                     <ProjectCard
-                      key={project._id}
+                      
                       _id={project._id}
                       title={project.projectName}
                       handleProjectDelete={this.handleProjectDelete}
                       handleTaskClick={this.handleTaskClick}
                       handleEstimateClick={this.handleEstimateClick}
                     />
-                  </div>
+                    </div>
                 )
             )}
-          {this.state.newProjects.map(newProjects => (
-            <NewProjectCard loadProjects={this.loadProjects} />
-          ))}
-        </Row>
-      </Container>
+        </div>
+      </div>
     );
   }
 }

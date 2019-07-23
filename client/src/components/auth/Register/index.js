@@ -9,7 +9,12 @@ class Register extends Component {
     lastName: "",
     email: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
+    firstNameReject: "",
+    lastNameReject: "",
+    emailReject: "",
+    passwordReject: "",
+    confirmPasswordReject: ""
   };
 
   handleInputChange = event => {
@@ -29,18 +34,41 @@ class Register extends Component {
   handleRegisterSubmit = async event => {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     event.preventDefault();
-    if (
-      !this.state.email ||
-      !this.state.password ||
-      !this.state.firstName ||
-      !this.state.lastName ||
-      !this.state.confirmPassword
-    ) {
-      alert("All fields required");
-    } else if (this.state.password.length < 6) {
-      alert(`Choose a more secure password}`);
+
+    if (!this.state.email) {
+      this.setState({
+        emailReject: 'Email Address Required'
+      })
+    }
+    if (!this.state.password) {
+      this.setState({
+        passwordReject: 'Password Required'
+      })
+    }
+    if (!this.state.firstName) {
+      this.setState({
+        firstNameReject: 'This Field Required'
+      })
+    }
+    if (!this.state.LastName) {
+      this.setState({
+        lastNameReject: 'This Field Required'
+      })
+    }
+    if (!this.state.confirmPassword) {
+      this.setState({
+        confirmPasswordReject: 'Please Confirm Password'
+      })
+    }
+
+      
+     else if (this.state.password.length < 6) {
+      this.setState({
+        passwordReject: 'Password Must Be At Least 6 Characters'
+      })
     } else if (this.state.password !== this.state.confirmPassword) {
-      alert("passwords do not match");
+      this.setState({
+        confirmPasswordReject: "passwords do not match"});
     } else {
       try {
         //making async call to firebase and waiting for register
@@ -52,9 +80,6 @@ class Register extends Component {
           uid: res.user.uid
         })
       });
-      // firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then(function(res, err){
-      //  console.log(res)
-      // })
       this.props.history.push("/");
     } catch (e) {
       console.log(e.message);
@@ -74,25 +99,25 @@ class Register extends Component {
   render() {
     // Notice how each input has a `value`, `name`, and `onChange` prop
 
-    const {
-      firstName,
-      lastName,
-      email,
-      password,
-      confirmPassword
-    } = this.state;
+    // const {
+    //   firstName,
+    //   lastName,
+    //   email,
+    //   password,
+    //   confirmPassword
+    // } = this.state;
 
-    const isInvalid =
-      password !== confirmPassword ||
-      password === "" ||
-      password.length < 6 ||
-      email === "" ||
-      firstName === "" ||
-      lastName === "";
+    // const isInvalid =
+    //   password !== confirmPassword ||
+    //   password === "" ||
+    //   password.length < 6 ||
+    //   email === "" ||
+    //   firstName === "" ||
+    //   lastName === "";
 
     return (
       <div className="form-container mx-auto">
-        <h1 className="text-center">Sign Up</h1>
+        <h1 className="sign-up-header">Sign Up</h1>
         <form className="form">
           <input
             className="form-control"
@@ -102,6 +127,7 @@ class Register extends Component {
             type="text"
             placeholder="First Name"
           />
+          <small className='form-small'>{this.state.firstNameReject}</small>
           <input
             className="form-control"
             value={this.state.lastName}
@@ -110,6 +136,7 @@ class Register extends Component {
             type="text"
             placeholder="Last Name"
           />
+          <small className='form-small'>{this.state.lastNameReject}</small>
           <input
             className="form-control"
             value={this.state.email}
@@ -118,6 +145,7 @@ class Register extends Component {
             type="text"
             placeholder="Email/Username"
           />
+          <small className='form-small'>{this.state.emailReject}</small>
           <input
             className="form-control"
             value={this.state.password}
@@ -126,6 +154,7 @@ class Register extends Component {
             type="password"
             placeholder="Password"
           />
+                    <small className='form-small'>{this.state.passwordReject}</small>
           <input
             className="form-control"
             value={this.state.confirmPassword}
@@ -134,10 +163,11 @@ class Register extends Component {
             type="password"
             placeholder="Confirm Password"
           />
+                    <small className='form-small'>{this.state.confirmPasswordReject}</small>
           <button
             onClick={this.handleRegisterSubmit}
-            disabled={isInvalid}
-            className="btn"
+            // disabled={isInvalid}
+            className="register-btn"
           >
             Register
           </button>

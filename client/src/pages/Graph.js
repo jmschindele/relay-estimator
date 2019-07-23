@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
+import { Col, Row } from "../components/Grid";
 import API from "../utils/API";
-
+import firebase from "../config/fbConfig"
 import TaskCardDisplay from "../components/TaskCardDisplay/index";
 import "./Graph/style.css";
+import ViewTasksBtn from '../components/ViewTasksBtn';
 
 import {
   Doughnut
@@ -15,6 +16,7 @@ class Graph extends Component {
   constructor() {
     super();
     this.state = {
+      total: '',
       chartData: {},
       tasks: [],
       hours: "",
@@ -24,9 +26,23 @@ class Graph extends Component {
   }
 
   componentDidMount() {
-    this.getChartData();
+    this.handleRedirect();
   }
 
+  handleTaskClick = id => {
+    let projectId = this.props.match.params.projectId;
+    this.props.history.push(`/tasks/${projectId}`);
+  };
+
+  handleRedirect = () => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.getChartData();
+      } else {
+        this.props.history.push('/')
+      }
+    })
+  }
   getTaskNames = () => {
     this.state.pulledTasks.map((task, i) => {
       API.getTasksWhere(task)
@@ -39,21 +55,26 @@ class Graph extends Component {
           this.updateChart();
         });
     });
+
   };
+
 
   updateChart = () => {
     let taskArr = [];
     let titles = [];
     for (let i = 0; i < this.state.tasks.length; i++) {
       taskArr = this.state.tasks;
-      titles.push(this.state.tasks[i].title);
+      if (this.state.tasks[i]){
+      titles.push(this.state.tasks[i].title)
+      }
     }
-    console.log("titles = ", titles);
     let values = [];
     let rate = [];
     let hours = [];
+    let total = 0;
 
     for (let i = 0; i < taskArr.length; i++) {
+      if (taskArr[i]) {
       let newVal = 0;
       let num1 = parseFloat(taskArr[i].hours);
       let num2 = parseFloat(taskArr[i].rate);
@@ -61,9 +82,12 @@ class Graph extends Component {
       rate.push(num1);
       hours.push(num2);
       values.push(newVal);
+      total = total + newVal;
+      }
     }
 
     this.setState({
+      total,
       chartData: {
         labels: titles,
         fontSize: 25,
@@ -103,27 +127,15 @@ class Graph extends Component {
     });
   };
 
-  getTaskTotal = () => {
-    let hour, rate, total;
-    for (let steak = 0; steak < this.state.tasks.length; steak++) {
-      let current = this.state.tasks[steak];
-      hour = parseInt(current.hours);
-      rate = parseInt(current.rate);
-      console.log(total);
-      total = total + hour * rate;
-    }
-
-    console.log(total);
-  };
 
   render() {
-    // console.log(this.state)
     return (
-      <Container fluid>
+      <div className='chart-container'>
         <div className="chart-flex">
           <div>
-            {this.state.tasks &&
+            {
               this.state.tasks.map((task, i) => (
+                task &&
                 <TaskCardDisplay
                   key={i}
                   task={task.title}
@@ -154,15 +166,17 @@ class Graph extends Component {
               }}
             />
 
-            <div className="overlay">$25</div>
+            <div className="overlay">{this.state.total && '$' + this.state.total}</div>
           </div>
         </div>
         <Row>
           <Col size="md-2">
-            <Link to="/">Home</Link>
+            <Link to="/projects">Back to Projects</Link>
+            <ViewTasksBtn
+                onClick={() => this.handleTaskClick()} />
           </Col>
         </Row>
-      </Container>
+      </div>
     );
   }
 }
