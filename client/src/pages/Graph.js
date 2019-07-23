@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Col, Row } from "../components/Grid";
 import API from "../utils/API";
-import firebase from "../config/fbConfig"
+import firebase from "../config/fbConfig";
 import TaskCardDisplay from "../components/TaskCardDisplay/index";
 import "./Graph/style.css";
-import ViewTasksBtn from '../components/ViewTasksBtn';
+import ViewTasksBtn from "../components/ViewTasksBtn";
 
 import {
   Doughnut
@@ -16,17 +16,29 @@ class Graph extends Component {
   constructor() {
     super();
     this.state = {
-      total: '',
+      total: "",
       chartData: {},
       tasks: [],
       hours: "",
       rate: "",
-      pulledTasks: []
+      pulledTasks: [],
+      projectName: ""
     };
   }
 
   componentDidMount() {
     this.handleRedirect();
+  }
+
+  getProjectName = () => {
+    let id = this.props.match.params.projectId;
+    API.getProject(id).then(res => {
+      let projectName = res.data.projectName;
+      this.setState({
+        projectName
+      });
+      // this.stateState({projectName : res.data.projectName})
+    });
   };
 
   handleTaskClick = id => {
@@ -35,14 +47,15 @@ class Graph extends Component {
   };
 
   handleRedirect = () => {
-    firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth().onAuthStateChanged(user => {
       if (user) {
+        this.getProjectName();
         this.getChartData();
       } else {
-        this.props.history.push('/')
+        this.props.history.push("/");
       }
-    })
-  }
+    });
+  };
   // getTaskNames = () => {
   //   this.state.pulledTasks.map((task, i) => {
   //     API.getTasksWhere(task)
@@ -56,23 +69,27 @@ class Graph extends Component {
   //       });
   //   });
 
-    getTaskNames = () => {
-      let getTaskArr = [];
-      this.state.pulledTasks.map((task, i) => (
-        API.getTasksWhere(task)
-        .then(res => res.data ? getTaskArr.push(res.data) : null))
-        .then(this.setState({tasks: getTaskArr}))
-        .then(res => this.updateChart()))
-    }
+  getTaskNames = () => {
+    let getTaskArr = [];
+    this.state.pulledTasks.map((task, i) =>
+      API.getTasksWhere(task)
+        .then(res => (res.data ? getTaskArr.push(res.data) : null))
+        .then(this.setState({ tasks: getTaskArr }))
+        .then(res => this.updateChart())
+    );
+  };
 
+  handleProjectsClick = () => {
+    this.props.history.push("/projects");
+  };
 
   updateChart = () => {
     let taskArr = [];
     let titles = [];
     for (let i = 0; i < this.state.tasks.length; i++) {
       taskArr = this.state.tasks;
-      if (this.state.tasks[i]){
-      titles.push(this.state.tasks[i].title)
+      if (this.state.tasks[i]) {
+        titles.push(this.state.tasks[i].title);
       }
     }
     let values = [];
@@ -82,14 +99,14 @@ class Graph extends Component {
 
     for (let i = 0; i < taskArr.length; i++) {
       if (taskArr[i]) {
-      let newVal = 0;
-      let num1 = parseFloat(taskArr[i].hours);
-      let num2 = parseFloat(taskArr[i].rate);
-      newVal = num1 * num2;
-      rate.push(num1);
-      hours.push(num2);
-      values.push(newVal);
-      total = total + newVal;
+        let newVal = 0;
+        let num1 = parseFloat(taskArr[i].hours);
+        let num2 = parseFloat(taskArr[i].rate);
+        newVal = num1 * num2;
+        rate.push(num1);
+        hours.push(num2);
+        values.push(newVal);
+        total = total + newVal;
       }
     }
 
@@ -134,22 +151,39 @@ class Graph extends Component {
     });
   };
 
-
   render() {
     return (
-      <div className='chart-container'>
+      <div className="chart-container">
         <div className="chart-flex">
           <div>
-            {
-              this.state.tasks.map((task, i) => (
-                task &&
-                <TaskCardDisplay
-                  key={i}
-                  task={task.title}
-                  rate={task.rate}
-                  hours={task.hours}
-                />
-              ))}
+            {this.state.tasks.map(
+              (task, i) =>
+                task && (
+                  <TaskCardDisplay
+                    key={i}
+                    task={task.title}
+                    rate={task.rate}
+                    hours={task.hours}
+                  />
+                )
+            )}
+            <div className="row">
+          <div className="col-12 text-center">
+            {/* <Link to="/projects"></Link> */}
+            <span
+              onClick={() => this.handleTaskClick()}
+              className="lower-nav-btn"
+            >
+              Edit Tasks →
+            </span>
+            <span
+              onClick={() => this.handleProjectsClick()}
+              className="lower-nav-btn"
+            >
+              ← Back to Projects
+            </span>
+          </div>
+        </div>
           </div>
 
           <div className="App">
@@ -159,8 +193,8 @@ class Graph extends Component {
               height={50}
               options={{
                 title: {
-                  display: this.state.displayTitle,
-                  text: "Project Name is: " + this.state.Project_Name,
+                  display: "top",
+                  text: this.state.projectName,
                   fontSize: 25
                 },
                 legend: {
@@ -173,16 +207,12 @@ class Graph extends Component {
               }}
             />
 
-            <div className="overlay">{this.state.total && '$' + this.state.total}</div>
+            <div className="overlay">
+              {this.state.total && "$" + this.state.total}
+            </div>
           </div>
         </div>
-        <Row>
-          <Col size="md-2">
-            <Link to="/projects">Back to Projects</Link>
-            <ViewTasksBtn
-                onClick={() => this.handleTaskClick()} />
-          </Col>
-        </Row>
+        
       </div>
     );
   }
