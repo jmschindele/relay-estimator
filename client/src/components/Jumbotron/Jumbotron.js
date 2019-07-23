@@ -6,7 +6,7 @@ function Jumbotron() {
   return (
     <div className="container">
       <div className="jumbotron jumbotron-fluid">
-        <h1 className="display-4">CodeName: RELAY [Beta]</h1>
+        <h1 className="display-4">RELAY [Beta]</h1>
         <h2 className="lead">Welcome...</h2>
 
         <p className="about">
