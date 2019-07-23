@@ -119,12 +119,12 @@ class Tasks extends Component {
             )}
           </Col>
         </Row>
-        <Row>
-          <Col size="md-2">
+        <div className='row'>
+          <div className="col-12 text-center">
             <Link to="/projects">Back to Projects</Link>
             <ViewEstimateBtn onClick={() => this.handleEstimateClick()} />
-          </Col>
-        </Row>
+          </div>
+        </div>
       </div>
     );
   }

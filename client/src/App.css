@@ -1,6 +1,7 @@
 body {
   background-image: url("/color-background.png");
-  background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/lghtmesh.png");
+  /* background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/lghtmesh.png"); */
+  background-image: url("https://res.cloudinary.com/dtd8cnede/image/upload/v1563903927/relay%20estimator/color-Background_oi1ur6.png")
 }
 
 .navbar {
