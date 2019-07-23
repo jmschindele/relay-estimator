@@ -4,9 +4,9 @@ import "./App.css";
 import firebase from "./config/fbConfig";
 
 //starting tutorial experiment below this line
-import { Col, Row} from "./components/Grid";
+import { Col, Row } from "./components/Grid";
 import { Nav, Navbar, NavItem } from "react-bootstrap";
-import { Link, withRouter} from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import Routes from "./Routes";
 // function App() {
 class App extends Component {
@@ -27,14 +27,14 @@ class App extends Component {
       console.log(e);
     }
 
-    firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.setState({
           isAuthenticating: false,
-          isAuthenticated: true})
+          isAuthenticated: true
+        });
       }
-    })
-
+    });
 
     this.setState({ isAuthenticating: false });
   }
@@ -70,16 +70,15 @@ class App extends Component {
           <Navbar className="navbar navbar-fluid" collapseOnSelect>
             <div className="container">
               <Link className="nav-link" to="/">
-                <span className='logo'>R</span>
-                RELAY <span id='title-sub'>Estimate</span>
+                <img src="/relay-logo-2.png" alt="logo" class="header-logo" />
+                RELAY <span id="title-sub">Estimate</span>
               </Link>
 
               <Nav className="pull-right">
                 {this.state.isAuthenticated ? (
                   <>
-
                     <Link className="nav-link-3" to="/projects">
-                      Projects / 
+                      Projects /
                     </Link>
 
                     <NavItem className="nav-link-4" onClick={this.handleLogout}>
@@ -90,7 +89,7 @@ class App extends Component {
                   <>
                     <NavItem>
                       <Link className="nav-link-3" to="signin">
-                        Login / 
+                        Login /
                       </Link>
                     </NavItem>
                     <NavItem>
@@ -110,7 +109,7 @@ class App extends Component {
         <SignOutBtn /> */}
             </Col>
           </Row>
-          </>
+        </>
         // </Container>
       )
     );
