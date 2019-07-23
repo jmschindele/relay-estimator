@@ -93,7 +93,7 @@ class TaskCard extends Component {
             <div className="form-row align-items-center">
               <div className="col-6">
                 <label className="sr-only" htmlFor="task-input" />
-                <span className="column-header">Title</span>
+                <span className="title-header">Title</span>
                 <input
                   type="text"
                   className="form-control mb-2"

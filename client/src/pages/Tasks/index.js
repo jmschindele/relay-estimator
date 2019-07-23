@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import { Col, Row } from "../components/Grid";
-import TaskCard from "../components/TaskCard";
-import NewTaskBtn from "../components/NewTaskBtn/index";
-import API from "../utils/API";
-import firebase from "../config/fbConfig";
-import ViewEstimateBtn from "../components/ViewEstimateBtn";
-import { Link } from "react-router-dom";
-import NewTaskCard from "../components/NewTaskCard";
+import { Col, Row } from "../../components/Grid";
+import TaskCard from "../../components/TaskCard";
+import NewTaskBtn from "../../components/NewTaskBtn/index";
+import API from "../../utils/API";
+import firebase from "../../config/fbConfig";
+// import ViewEstimateBtn from "../components/ViewEstimateBtn";
+// import { Link } from "react-router-dom";
+import NewTaskCard from "../../components/NewTaskCard";
+import './style.css'
 
 class Tasks extends Component {
   state = {
@@ -28,6 +29,10 @@ class Tasks extends Component {
     projectId = this.props.match.params.projectId;
     this.props.history.push(`/estimate/${projectId}`);
   };
+
+  handleProjectsClick = () => {
+    this.props.history.push('/projects')
+  }
 
   handleRedirect = () => {
     firebase.auth().onAuthStateChanged(user => {
@@ -96,9 +101,9 @@ class Tasks extends Component {
   render() {
     return (
       <div className="container">
-        <NewTaskBtn onClick={this.appendTaskCard} />
         <Row>
           <Col size="md-12">
+        <NewTaskBtn onClick={this.appendTaskCard} />
             {this.state.newTasks}
             {this.state.tasks.map(
               task =>
@@ -121,8 +126,10 @@ class Tasks extends Component {
         </Row>
         <div className='row'>
           <div className="col-12 text-center">
-            <Link to="/projects">Back to Projects</Link>
-            <ViewEstimateBtn onClick={() => this.handleEstimateClick()} />
+            {/* <Link to="/projects"></Link> */}
+            <span onClick={() => this.handleEstimateClick()} className='lower-nav-btn'>View Your Estimate →</span>
+            <span onClick={() => this.handleProjectsClick()} className='lower-nav-btn'>← Back to Projects</span>
+            {/* <ViewEstimateBtn onClick={() => this.handleEstimateClick()} /> */}
           </div>
         </div>
       </div>

@@ -95,15 +95,7 @@ class Projects extends Component {
         <NewProjectBtn onClick={this.appendProjectCard} />
 
         <div className='row'>
-          {/* {this.state.newProjects.map(newProjects => (
-            <div className='col-4'>
-            <NewProjectCard loadProjects={this.loadProjects} />
-            </div>
-          ))} */}
-          {/* {this.state.newProjects ? <div className='col-4'>{this.state.newProjects}</div> : null} */}
-
           {this.state.newProjects}
-          
           {this.state.projects &&
             this.state.projects.map(
               (project, i) =>

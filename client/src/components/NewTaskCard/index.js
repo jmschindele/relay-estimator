@@ -68,7 +68,7 @@ class NewTaskCard extends Component {
                 <label className="sr-only" htmlFor="task-input">
                   Title
                 </label>
-                <span className="column-header">Title</span>
+                <span className="title-header">Title</span>
                 <input
                   type="text"
                   className="form-control mb-2"
