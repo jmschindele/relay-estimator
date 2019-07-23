@@ -41,17 +41,13 @@ class TaskCard extends Component {
       rate: this.state.rate ? this.state.rate : this.props.rate,
       hours: this.state.hours ? this.state.hours : this.props.hours
     })
-      .then(() => {
-        this.setState({
-          title: "",
-          rate: "",
-          hours: ""
-        });
-        this.props.loadTasks();
-      })
+      .then(() => API.getTasks())
+      .then((res) => this.setState({ tasks: res.data }))
       .catch(err => console.log(err));
   };
 
+
+  
   render() {
     return (
       <>

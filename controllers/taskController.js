@@ -19,12 +19,6 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  // create: function(req, res) {
-  //   db.Task
-  //     .create(req.body)
-  //     .then(dbModel => db.Project.findOneAndUpdate({}, { $push: { tasks: dbModel._id } }, { new: true }))
-  //     .catch(err => res.status(422).json(err));
-  // },
   create: function(req, res) {
     db.Task.create(req.body)
       .then(dbModel => {
@@ -41,11 +35,7 @@ module.exports = {
   },
   update: function(req, res) {
     db.Task.findOneAndUpdate({ _id: req.params.id }, req.body)
-      // , 
-      // {$set:{title: req.body.title,
-      //  rate: req.body.rate,
-      //  hours: 'req.body.hours'}})
-      .then(dbModel => dbModel.update())
+      .then(() => db.Task.findById(req.params.id))
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -58,6 +48,3 @@ module.exports = {
 };
 
 
-// Cat.findOneAndUpdate({age: 17}, {$set:{name:"Naomi"}}, {new: true}, (err, doc) => {
-//   if (err) {
-//       console.log("Something wrong when updating data!");
