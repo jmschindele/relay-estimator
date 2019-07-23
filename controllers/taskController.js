@@ -41,6 +41,11 @@ module.exports = {
   },
   update: function(req, res) {
     db.Task.findOneAndUpdate({ _id: req.params.id }, req.body)
+      // , 
+      // {$set:{title: req.body.title,
+      //  rate: req.body.rate,
+      //  hours: 'req.body.hours'}})
+      .then(dbModel => dbModel.update())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -51,3 +56,8 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   }
 };
+
+
+// Cat.findOneAndUpdate({age: 17}, {$set:{name:"Naomi"}}, {new: true}, (err, doc) => {
+//   if (err) {
+//       console.log("Something wrong when updating data!");

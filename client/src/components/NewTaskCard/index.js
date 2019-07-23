@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import "./style.css";
 import API from "../../utils/API";
 
-class TaskCard extends Component {
+class NewTaskCard extends Component {
   // Setting the component's initial state
   state = {
     title: "",
@@ -33,13 +33,16 @@ class TaskCard extends Component {
     });
   };
 
-  handleTaskUpdate = event => {
+  handleTaskSave = event => {
     event.preventDefault();
-    let id = this.props._id;
-    API.updateTask(id, {
-      title: this.state.title ? this.state.title.trim() : this.props.title,
-      rate: this.state.rate ? this.state.rate : this.props.rate,
-      hours: this.state.hours ? this.state.hours : this.props.hours
+    if (!this.state.rate || !this.state.title || !this.state.hours) {
+      alert("Entries cannot be left blank");
+    }
+    let id = this.props.projectId;
+    API.createTask(id, {
+      title: this.state.title.trim(),
+      rate: this.state.rate,
+      hours: this.state.hours
     })
       .then(() => {
         this.setState({
@@ -68,7 +71,7 @@ class TaskCard extends Component {
                   id="task-input"
                   placeholder="Title"
                   name="title"
-                  value={this.state.title ? this.state.title : this.props.title}
+                  value={this.state.title}
                   onChange={this.handleInputChange}
                 />
               </div>
@@ -82,7 +85,7 @@ class TaskCard extends Component {
                   id="rate-input"
                   placeholder="$000.00"
                   name="rate"
-                  value={this.state.rate ? this.state.rate : this.props.rate}
+                  value={this.state.rate}
                   onChange={this.handleInputChange}
                 />
               </div>
@@ -96,7 +99,7 @@ class TaskCard extends Component {
                   id="hours-input"
                   placeholder="hours"
                   name="hours"
-                  value={this.state.hours ? this.state.hours : this.props.hours}
+                  value={this.state.hours}
                   onChange={this.handleInputChange}
                 />
               </div>
@@ -113,7 +116,7 @@ class TaskCard extends Component {
                   // className="form-control-plaintext"
                   className="form-control mb-2"
                   id="static-total"
-                  value={"$" + this.state.total && "$" + this.state.total}
+                  value={'$' + this.state.total && '$' + this.state.total}
                 />
               </div>
             </div>
@@ -122,7 +125,7 @@ class TaskCard extends Component {
               Edit |
             </Link> */}
             {/* <Link to="#" className="card-link-t"> */}
-            <span className="card-link-t" onClick={this.handleTaskUpdate}>
+            <span className="card-link-t" onClick={this.handleTaskSave}>
               Save
             </span>
             {/* </Link> */}
@@ -132,4 +135,4 @@ class TaskCard extends Component {
     );
   }
 }
-export default TaskCard;
+export default NewTaskCard;

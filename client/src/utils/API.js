@@ -59,14 +59,11 @@ const API = {
     return axios.delete("/api/task/" + id);
   },
 
-  updateTask: function(id) {
-    return axios.put("/api/task/" + id);
+
+  updateTask: function(id, taskData) {
+    return axios.put("/api/task/" + id, taskData);
   },
-  // Saves a book to the database
-  // createTask: function(uid, id,taskData) {
-  //   //id should be the _id of the parent project
-  //   return axios.post("/api/user/"+uid+"/project/"+ id +"task/", taskData);
-  // },
+
   createTask: function(id, taskData) {
     return axios.post("/api/project/"+ id +"/task/", taskData)
   }

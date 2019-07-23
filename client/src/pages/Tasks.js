@@ -7,6 +7,7 @@ import API from "../utils/API";
 import firebase from "../config/fbConfig";
 import ViewEstimateBtn from '../components/ViewEstimateBtn';
 import { Link } from "react-router-dom";
+import NewTaskCard from "../components/NewTaskCard"
 
 class Tasks extends Component {
   state = {
@@ -63,6 +64,7 @@ handleRedirect = () => {
         this.setState({
           tasks
         });
+        console.log('tasks: ',tasks)
       });
     });
   };
@@ -82,7 +84,7 @@ handleRedirect = () => {
 
   appendTaskCard = () => {
     this.setState({
-      newTasks: <TaskCard
+      newTasks: <NewTaskCard
       projectId={this.props.match.params.projectId}
       loadTasks={this.loadTasks}
       />
