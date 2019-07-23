@@ -47,7 +47,7 @@ body {
 .navbar a:hover,
 .navbar a:active,
 .navbar a:focus {
-  color: #c7ea46;
+  color: #d1de44;
   font-family: "Questrial", sans-serif;
   text-decoration: none;
   text-shadow: 1px 1px 3px black;
@@ -63,14 +63,14 @@ body {
 }
 
 .nav-link-3 {
-  color: #c7ea46;
+  color: #d1de44;
   font-family: "Questrial", sans-serif;
   text-decoration: none;
   text-shadow: 1px 1px 3px black;
 }
 
 .nav-link-4 {
-  color: #c7ea46;
+  color: #d1de44;
   font-family: "Questrial", sans-serif;
   text-decoration: none;
   text-shadow: 1px 1px 3px black;
@@ -82,15 +82,23 @@ body {
   margin: 0 auto;
 }
 
-.logo {
+/* .logo {
   border: solid 2px #c7ea46;
   border-radius: 1000px;
   overflow: hidden;
   width: 50px;
   height: 50px;
   float: left;
-}
+} */
 
 #title-sub {
   font-size: 0.5em;
+}
+
+.header-logo {
+  height: 45px;
+  width: auto;
+  margin-right: 25px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
