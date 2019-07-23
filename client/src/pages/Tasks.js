@@ -115,6 +115,7 @@ handleRedirect = () => {
                       title={task.title}
                       rate={task.rate}
                       hours={task.hours}
+                      total={parseInt(task.hours)*parseInt(task.rate)}
                       handleTaskDelete={this.handleTaskDelete}
                       projectId = {this.props.match.params.projectId}
                     />

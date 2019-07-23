@@ -37,7 +37,7 @@ module.exports = {
     db.Task.findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(() => db.Task.findById(req.params.id))
       .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .catch(err => console.log(err));
   },
   remove: function(req, res) {
     db.Task.findById({ _id: req.params.id })

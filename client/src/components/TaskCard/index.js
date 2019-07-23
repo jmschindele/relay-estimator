@@ -15,7 +15,6 @@ class TaskCard extends Component {
   handleInputChange = event => {
     let value = event.target.value;
     const name = event.target.name;
-
     let hours, rate;
 
     //check what name is
@@ -29,9 +28,13 @@ class TaskCard extends Component {
 
     this.setState({
       [name]: value,
-      total: hours && rate ? parseInt(hours) * parseInt(rate) : 0
-    });
-  };
+      total: hours && rate ? parseInt(hours) * parseInt(rate) : hours ? parseInt(hours) * this.props.rate : rate ? parseInt(rate) * this.props.hours : 0
+      })
+  }
+  
+
+
+
 
   handleTaskUpdate = event => {
     event.preventDefault();
@@ -109,7 +112,7 @@ class TaskCard extends Component {
                   // className="form-control-plaintext"
                   className="form-control mb-2"
                   id="static-total"
-                  value={"$" + this.state.total && "$" + this.state.total}
+                  value={this.state.total ? this.state.total : this.props.total}
                 />
               </div>
             </div>
