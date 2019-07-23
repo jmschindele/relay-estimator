@@ -11,8 +11,35 @@ class TaskCard extends Component {
     rate: "",
     hours: "",
     total: 0,
-    hasChanged: false
+    hasChanged: false,
+    titleHasChanged: false,
+    rateHasChanged: false,
+    hoursHasChanged: false
   };
+
+  handleTitleChange = event => {
+    this.setState({
+      title: event.target.value,
+      titleHasChanged: true,
+      hasChanged: true
+    })
+  }
+
+  handleRateChange = event => {
+    this.setState({
+      rate: event.target.value,
+      rateHasChanged: true,
+      hasChanged: true
+    })
+  }
+
+  handleHoursChange = event => {
+    this.setState({
+      hours: event.target.value,
+      hoursHasChanged: true,
+      hasChanged: true
+    })
+  }
 
   handleInputChange = event => {
     let value = event.target.value;
@@ -53,7 +80,7 @@ class TaskCard extends Component {
       .then(() => this.setState({ hasChanged: false }))
       .then(() => API.getTasks())
       .then(res =>
-        this.setState({ title: "", rate: "", hours: "", hasChanged: false })
+        this.setState({ title: "", rate: "", hours: "", hasChanged: false, titleHasChanged: false, rateHasChanged: false, hoursHasChanged: false })
       )
       .catch(err => console.log(err));
   };
@@ -73,8 +100,8 @@ class TaskCard extends Component {
                   id="task-input"
                   placeholder="Title"
                   name="title"
-                  value={this.state.hasChanged ? this.state.title : this.props.title}
-                  onChange={this.handleInputChange}
+                  value={this.state.titleHasChanged ? this.state.title : this.props.title}
+                  onChange={this.handleTitleChange}
                 />
               </div>
               <div className="col-2">
@@ -86,8 +113,8 @@ class TaskCard extends Component {
                   id="rate-input"
                   placeholder="$000.00"
                   name="rate"
-                  value={this.state.hasChanged ? this.state.rate : this.props.rate}
-                  onChange={this.handleInputChange}
+                  value={this.state.rateHasChanged ? this.state.rate : this.props.rate}
+                  onChange={this.handleRateChange}
                 />
               </div>
               <div className="col-2">
@@ -99,8 +126,8 @@ class TaskCard extends Component {
                   id="hours-input"
                   placeholder="hours"
                   name="hours"
-                  value={this.state.hasChanged ? this.state.hours : this.props.hours}
-                  onChange={this.handleInputChange}
+                  value={this.state.hoursHasChanged ? this.state.hours : this.props.hours}
+                  onChange={this.handleHoursChange}
                 />
               </div>
               <div className="col-2">
@@ -118,9 +145,10 @@ class TaskCard extends Component {
                   className="form-control mb-2"
                   id="static-total"
                   value={
-                    this.state.total !== 0
-                      ? "$" + this.state.total
-                      : "$" + this.props.total
+                    !this.state.hoursHasChanged && !this.state.rateHasChanged ? this.props.total :
+                    this.state.hoursHasChanged && !this.state.rateHasChanged ? this.state.hours * this.props.rate :
+                    !this.state.hoursHasChanged && this.state.rateHasChanged ? this.props.hours * this.state.rate :
+                    this.state.hoursHasChanged && this.state.rateHasChanged ? this.state.hours * this.state.rate : null
                   }
                 />
               </div>
