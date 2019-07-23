@@ -195,13 +195,15 @@ class Graph extends Component {
                 title: {
                   display: "top",
                   text: this.state.projectName,
-                  fontSize: 25
+                  fontSize: 75,
+                  fontStyle: 'lighter'
                 },
                 legend: {
                   display: true,
                   position: "bottom",
                   labels: {
-                    fontSize: 30
+                    fontSize: 30,
+                    fontStyle: 'lighter'
                   }
                 }
               }}
