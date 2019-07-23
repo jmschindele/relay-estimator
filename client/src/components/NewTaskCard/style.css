@@ -6,21 +6,33 @@
   border-radius: 5px;
   box-shadow: 0px 0px 15px 1px grey;
   padding: 1rem;
+  position: relative;
+  height: 150px;
 }
 
-.card-link-t {
+/* .card-link-t {
   color: #c7ea46;
   padding: 0.5em 1em;
   border-radius: 5px;
-}
+} */
 
-.card-link-t:hover {
-  background: #68d6c7;
-  border-radius: 5px;
-  cursor: pointer;
-}
 
 #static-total {
   background-color: grey;
   color: whitesmoke;
+}
+
+.save-button {
+  background-image: url('/confirm-small.png');
+  background-size: cover;
+  height: 40px;
+  width: 40px;
+  display: block;
+  float: right;
+  transition: .5s ease-out;
+}
+
+.save-button:hover {
+  background-image: url('/confirm-small-hover.png');
+  cursor: pointer;
 }

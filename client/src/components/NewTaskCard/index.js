@@ -9,7 +9,8 @@ class NewTaskCard extends Component {
     title: "",
     rate: "",
     hours: "",
-    total: 0
+    total: 0,
+    hasChanged: false,
   };
 
   handleInputChange = event => {
@@ -29,7 +30,8 @@ class NewTaskCard extends Component {
 
     this.setState({
       [name]: value,
-      total: hours && rate ? parseInt(hours) * parseInt(rate) : 0
+      total: hours && rate ? parseInt(hours) * parseInt(rate) : 0,
+      hasChanged: true
     });
   };
 
@@ -48,7 +50,8 @@ class NewTaskCard extends Component {
         this.setState({
           title: "",
           rate: "",
-          hours: ""
+          hours: "",
+          hasChanged: false
         });
         this.props.loadTasks();
       })
@@ -65,6 +68,7 @@ class NewTaskCard extends Component {
                 <label className="sr-only" htmlFor="task-input">
                   Title
                 </label>
+                <span className="column-header">Title</span>
                 <input
                   type="text"
                   className="form-control mb-2"
@@ -77,8 +81,8 @@ class NewTaskCard extends Component {
               </div>
               <div className="col-2">
                 <label className="sr-only" htmlFor="rate-input">
-                  <span className="h3">Rate</span>
                 </label>
+                <span className="column-header">Rate</span>
                 <input
                   type="number"
                   className="form-control mb-2"
@@ -93,6 +97,7 @@ class NewTaskCard extends Component {
                 <label className="sr-only" htmlFor="hours-input">
                   Hours
                 </label>
+                <span className="column-header">Hours</span>
                 <input
                   type="number"
                   className="form-control mb-2"
@@ -109,6 +114,7 @@ class NewTaskCard extends Component {
                   className="sr-only"
                   htmlFor="staticTotal"
                 />
+                <span className="column-header">Total</span>
                 <input
                   type="text"
                   readOnly
@@ -121,10 +127,9 @@ class NewTaskCard extends Component {
               </div>
             </div>
 
+            {this.state.hasChanged ? <span className="save-button" onClick={this.handleTaskSave}>
+            </span> : null}
 
-            <span className="card-link-t" onClick={this.handleTaskSave}>
-              Save
-            </span>
 
           </div>
         </div>

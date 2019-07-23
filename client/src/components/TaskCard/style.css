@@ -64,7 +64,8 @@
 }
 
 .save-button:hover {
-  background-image: url('/confirm-small-hover.png')
+  background-image: url('/confirm-small-hover.png');
+  cursor: pointer;
 }
 
 .delete-button-icon {
@@ -74,9 +75,10 @@
   width: 40px;
   display: block;
   float: right;
+  transition: .5s ease;
 }
 
 .delete-button-icon:hover {
   background-image: url('/trash-hover.png');
-  transition: .5s ease;
+  cursor: pointer;
 }
