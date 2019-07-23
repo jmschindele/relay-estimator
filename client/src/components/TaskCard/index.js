@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 import "./style.css";
 import API from "../../utils/API";
-import DeleteBtnIcon from "../DeleteBtnIcon";
+
 
 class TaskCard extends Component {
   // Setting the component's initial state
@@ -10,7 +10,8 @@ class TaskCard extends Component {
     title: "",
     rate: "",
     hours: "",
-    total: 0
+    total: 0,
+    hasChanged: false
   };
 
   handleInputChange = event => {
@@ -29,13 +30,17 @@ class TaskCard extends Component {
 
     this.setState({
       [name]: value,
-      total: hours && rate ? parseInt(hours) * parseInt(rate) : hours ? parseInt(hours) * this.props.rate : rate ? parseInt(rate) * this.props.hours : 0
-      })
-  }
-  
-
-
-
+      total:
+        hours && rate
+          ? parseInt(hours) * parseInt(rate)
+          : hours
+          ? parseInt(hours) * this.props.rate
+          : rate
+          ? parseInt(rate) * this.props.hours
+          : 0,
+      hasChanged: true
+    });
+  };
 
   handleTaskUpdate = event => {
     event.preventDefault();
@@ -45,13 +50,14 @@ class TaskCard extends Component {
       rate: this.state.rate ? this.state.rate : this.props.rate,
       hours: this.state.hours ? this.state.hours : this.props.hours
     })
+      .then(() => this.setState({ hasChanged: false }))
       .then(() => API.getTasks())
-      .then((res) => this.setState({ tasks: res.data }))
+      .then(res =>
+        this.setState({ title: "", rate: "", hours: "", hasChanged: false })
+      )
       .catch(err => console.log(err));
   };
 
-
-  
   render() {
     return (
       <>
@@ -60,7 +66,7 @@ class TaskCard extends Component {
             <div className="form-row align-items-center">
               <div className="col-6">
                 <label className="sr-only" htmlFor="task-input" />
-                <span className='column-header'>Title</span>
+                <span className="column-header">Title</span>
                 <input
                   type="text"
                   className="form-control mb-2"
@@ -72,8 +78,8 @@ class TaskCard extends Component {
                 />
               </div>
               <div className="col-2">
-                <label className="sr-only" htmlFor="rate-input"/>
-                <span className='column-header'>Rate</span>
+                <label className="sr-only" htmlFor="rate-input" />
+                <span className="column-header">Rate</span>
                 <input
                   type="number"
                   className="form-control mb-2"
@@ -86,7 +92,7 @@ class TaskCard extends Component {
               </div>
               <div className="col-2">
                 <label className="sr-only" htmlFor="hours-input" />
-                <span className='column-header'>Hours</span>
+                <span className="column-header">Hours</span>
                 <input
                   type="number"
                   className="form-control mb-2"
@@ -103,7 +109,7 @@ class TaskCard extends Component {
                   className="sr-only"
                   htmlFor="staticTotal"
                 />
-                <span className='column-header'>Total</span>
+                <span className="column-header">Total</span>
                 <input
                   type="text"
                   readOnly
@@ -111,17 +117,30 @@ class TaskCard extends Component {
                   // className="form-control-plaintext"
                   className="form-control mb-2"
                   id="static-total"
-                  value={this.state.total ? '$'+this.state.total : '$'+this.props.total}
+                  value={
+                    this.state.total
+                      ? "$" + this.state.total
+                      : "$" + this.props.total
+                  }
                 />
               </div>
             </div>
-
-            <span className="card-link-t pull-right-save" onClick={this.handleTaskUpdate}>
-              Save
+            {/* { this.state.title && this.state.title !== this.props.title || this.state.rate && this.state.rate !== this.props.rate || this.state.hours && this.state.hours !== this.props.hours ? <>
+            <span className="save-button" onClick={this.handleTaskUpdate}>
             </span>
-            <div className="col-2">
-          <DeleteBtnIcon onClick={() => this.props.handleTaskDelete(this.props._id)}/>
-          </div>
+            </>: <span className='delete-button-icon' onClick={() => this.props.handleTaskDelete(this.props._id)}>
+            </span>
+            } */}
+            {this.state.hasChanged && this.state.hasChanged ? (
+              <>
+                <span className="save-button" onClick={this.handleTaskUpdate} />
+              </>
+            ) : (
+              <span
+                className="delete-button-icon"
+                onClick={() => this.props.handleTaskDelete(this.props._id)}
+              />
+            )}
           </div>
         </div>
       </>

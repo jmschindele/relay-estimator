@@ -51,3 +51,32 @@
   background: linear-gradient(135deg, #303f2f 0%, #102d10 72%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#303f2f', endColorstr='#102d10',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
+
+
+.save-button {
+  background-image: url('/confirm-small.png');
+  background-size: cover;
+  height: 40px;
+  width: 40px;
+  display: block;
+  float: right;
+  transition: .5s ease-out;
+}
+
+.save-button:hover {
+  background-image: url('/confirm-small-hover.png')
+}
+
+.delete-button-icon {
+  background-image: url('/trash.png');
+  background-size: cover;
+  height: 40px;
+  width: 40px;
+  display: block;
+  float: right;
+}
+
+.delete-button-icon:hover {
+  background-image: url('/trash-hover.png');
+  transition: .5s ease;
+}

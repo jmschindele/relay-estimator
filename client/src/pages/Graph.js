@@ -27,7 +27,7 @@ class Graph extends Component {
 
   componentDidMount() {
     this.handleRedirect();
-  }
+  };
 
   handleTaskClick = id => {
     let projectId = this.props.match.params.projectId;
@@ -43,20 +43,27 @@ class Graph extends Component {
       }
     })
   }
-  getTaskNames = () => {
-    this.state.pulledTasks.map((task, i) => {
-      API.getTasksWhere(task)
-        .then(res => {
-          this.setState({
-            tasks: this.state.tasks.concat(res.data)
-          });
-        })
-        .then(res => {
-          this.updateChart();
-        });
-    });
+  // getTaskNames = () => {
+  //   this.state.pulledTasks.map((task, i) => {
+  //     API.getTasksWhere(task)
+  //       .then(res => {
+  //         this.setState({
+  //           tasks: this.state.tasks.concat(res.data)
+  //         });
+  //       })
+  //       .then(res => {
+  //         this.updateChart();
+  //       });
+  //   });
 
-  };
+    getTaskNames = () => {
+      let getTaskArr = [];
+      this.state.pulledTasks.map((task, i) => (
+        API.getTasksWhere(task)
+        .then(res => res.data ? getTaskArr.push(res.data) : null))
+        .then(this.setState({tasks: getTaskArr}))
+        .then(res => this.updateChart()))
+    }
 
 
   updateChart = () => {

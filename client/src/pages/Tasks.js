@@ -1,13 +1,12 @@
 import React, { Component } from "react";
-import { Col, Row} from "../components/Grid";
-import TaskCardDisplay from "../components/TaskCardDisplay";
+import { Col, Row } from "../components/Grid";
 import TaskCard from "../components/TaskCard";
 import NewTaskBtn from "../components/NewTaskBtn/index";
 import API from "../utils/API";
 import firebase from "../config/fbConfig";
-import ViewEstimateBtn from '../components/ViewEstimateBtn';
+import ViewEstimateBtn from "../components/ViewEstimateBtn";
 import { Link } from "react-router-dom";
-import NewTaskCard from "../components/NewTaskCard"
+import NewTaskCard from "../components/NewTaskCard";
 
 class Tasks extends Component {
   state = {
@@ -25,30 +24,31 @@ class Tasks extends Component {
     this.handleRedirect();
   }
 
-handleEstimateClick = projectId => {
-  projectId = this.props.match.params.projectId;
-  this.props.history.push(`/estimate/${projectId}`)
-}
+  handleEstimateClick = projectId => {
+    projectId = this.props.match.params.projectId;
+    this.props.history.push(`/estimate/${projectId}`);
+  };
 
-
-handleRedirect = () => {
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      this.loadTasks()
-    } else {
-      this.props.history.push('/')
-    }
-  })
-}
+  handleRedirect = () => {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.loadTasks();
+      } else {
+        this.props.history.push("/");
+      }
+    });
+  };
 
   loadTasks = () => {
-
     let id = this.props.match.params.projectId;
-    
     API.getTasks(id)
       .then(res => {
-        
-        this.setState({ pulledTasks: res.data.tasks, hours: "", rate: "", newTasks: null });
+        this.setState({
+          pulledTasks: res.data.tasks,
+          hours: "",
+          rate: "",
+          newTasks: null
+        });
         this.getTaskNames();
       })
       .catch(err => console.log(err));
@@ -57,21 +57,16 @@ handleRedirect = () => {
   getTaskNames = () => {
     let tasks = [];
     this.state.pulledTasks.map((task, i) => {
-      
       API.getTasksWhere(task).then(res => {
         tasks.push(res.data);
-        
-        this.setState({
-          tasks
-        });
-        console.log('tasks: ',tasks)
+        this.setState({tasks});
       });
+      return tasks;
     });
   };
 
   deleteTask = id => {
-    API.deleteTask(id)
-      .catch(err => console.log(err));
+    API.deleteTask(id).catch(err => console.log(err));
   };
 
   handleInputChange = event => {
@@ -83,10 +78,12 @@ handleRedirect = () => {
 
   appendTaskCard = () => {
     this.setState({
-      newTasks: <NewTaskCard
-      projectId={this.props.match.params.projectId}
-      loadTasks={this.loadTasks}
-      />
+      newTasks: (
+        <NewTaskCard
+          projectId={this.props.match.params.projectId}
+          loadTasks={this.loadTasks}
+        />
+      )
     });
   };
 
@@ -97,9 +94,8 @@ handleRedirect = () => {
   };
 
   render() {
-    
     return (
-      <div className='container'>
+      <div className="container">
         <NewTaskBtn onClick={this.appendTaskCard} />
         <Row>
           <Col size="md-12">
@@ -107,18 +103,18 @@ handleRedirect = () => {
             {this.state.tasks.map(
               task =>
                 task && (
-                  <>
+                  <div key={task._id}>
                     <TaskCard
                       key={task._id}
                       _id={task._id}
                       title={task.title}
                       rate={task.rate}
                       hours={task.hours}
-                      total={parseInt(task.hours)*parseInt(task.rate)}
+                      total={parseInt(task.hours) * parseInt(task.rate)}
                       handleTaskDelete={this.handleTaskDelete}
-                      projectId = {this.props.match.params.projectId}
+                      projectId={this.props.match.params.projectId}
                     />
-                  </>
+                  </div>
                 )
             )}
           </Col>
@@ -126,11 +122,10 @@ handleRedirect = () => {
         <Row>
           <Col size="md-2">
             <Link to="/projects">Back to Projects</Link>
-            <ViewEstimateBtn
-                onClick={() => this.handleEstimateClick()} />
+            <ViewEstimateBtn onClick={() => this.handleEstimateClick()} />
           </Col>
         </Row>
-      </ div>
+      </div>
     );
   }
 }

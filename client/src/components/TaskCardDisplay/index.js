@@ -1,24 +1,15 @@
 import React from "react";
 // import { Link } from "react-router-dom";
 import "./style.css";
-import DeleteBtnIcon from "../DeleteBtnIcon";
+
 
 function TaskCardDisplay(props) {
   return (
     <div className="card-tcd">
       <div className="task-card-body">
         <div className="row">
-          <div className="col-2" />
-          <div className="col-8 task-title">
-            <div className="text-center mx-auto">
+          <div className="col-12 task-title">
               <span>{props.task}</span>
-            </div>
-          </div>
-          <div className="col-2">
-            {props.handleTaskDelete ? 
-            <DeleteBtnIcon onClick={() => props.handleTaskDelete(props._id)} />
-            :
-            null }
           </div>
         </div>
         <br />
