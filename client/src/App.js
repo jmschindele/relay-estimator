@@ -70,7 +70,7 @@ class App extends Component {
           <Navbar className="navbar navbar-fluid" collapseOnSelect>
             <div className="container">
               <Link className="nav-link" to="/">
-                <img src="/relay-logo-2.png" alt="logo" class="header-logo" />
+                <img src="/relay-logo-2.png" alt="logo" className="header-logo" />
                 RELAY <span id="title-sub">Estimate</span>
               </Link>
 
