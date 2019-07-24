@@ -1,4 +1,4 @@
-# CodeName: Relay
+# Relay Estimator
 
     Relay (BETA) is a project estimator designed for freelance developers
     &designers in mind. It is simple to use and can be applied to any industry
