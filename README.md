@@ -1,37 +1,78 @@
-# CodeName: Relay
+# Relay Estimator
 
-    Relay (BETA) is a project estimator designed for freelance developers
-    &designers in mind. It is simple to use and can be applied to any industry
-    in which an estimation for a project/task/service is required. Users are
-    able to setup/edit projects and specific tasks for each project, and provide
-    cost estimations to potential clients. Please visit the deployed link and
-    take it for a test drive.
+Relay Estimator is a project estimating tool designed with freelance developers & designers in mind. Users are able to setup/edit projects and specific tasks for each project, and are provided cost estimate summarys to potential clients. Please visit the deployed link and take it for a test drive.
 
-    Utlized: React, HTML5, CSS, React-Bootstrap, Javascript ES6, Node.js,
-    MongoDB, Express, REST API's, ChartJS,
+## Technologies 
+React, HTML5, CSS, React-Bootstrap, Javascript ES6, Node.js, MongoDB, Express, RESTful API's, ChartJS, Firebase Authentication
 
 ## Deployed URL: https://salty-reef-43633.herokuapp.com/
+* If You do not wish to register to test the application, the following credentials may be used:
+ Username: test@test.com
+ Password: test123
+ 
+## Getting Start
+  1. New User
+  2. Established User
+    1. Create a new project
+    2. Create new tasks
+    3. Edit Tasks
+    4. View a Project
+    
+## New User
+ * As a first time user, you will need to register to begin using the application.
+ * Navigate to the top right of the screen and select Sign Up to begin the process.
+ * After clicking the sign up button, you will be presented a form that will prompt you to enter your name, email address and to select a password.
+ * Once the forms are completed, click register to be logged in and redirected to the homepage.
 
-### New/Registered User
+## Established User
+  * Navigate to the top right of the screen and click the sign in button.
+    *If you have logged in and been active within the past 24 hours, Firebase Authentication will persist your login.
+  * Enter your username and password into the form and click "sign in."
+  * You will be redirected to the projects page which will display all current projects you have.
+  
+### Create a New Project
+   * To create a new project, click the "+ project" button in the top left.
+   * A new blank project will be added to the page, with a form left blank for a title.
+   * Add a title to the project and click "save".
+   * The project will be added to the list of your current projects.
 
-- Arrives at the site and clicks the Signup/Login Link on the right side of the Navigation Bar.
+ ### Delete a Project
+  * Navigate to the projects page.
+  * Hover over the project that is going to be deleted.
+  * Click the delete button to delete the project.
+  
+### Create New Tasks
+   * Begin creating new tasks by selecting the project you want to add tasks to from the project screen and clicking the edit button that appears on hover.
+   * You will be redirected to the tasks page.
+   * Click on the "+ task" button to add a task.
+   * Once the fields on the new task form have been modified, a green arrow with a checkmark will appear in the lower right corner of the task row. Click the checkmark to save the task.
 
-- For first time users, complete all necessary fields, name, email, and password, followed by clicking "Register" Button. Returning users may login with the username and password after clicking the "Login" Button.
-
-- Once authenticated, the user will be taken to the Project Page. The user will then have the option of adding one or multiple projects.
-
-- Once a project has been added, the user may add an any number of tasks to a specific project.
-
-- Each task can be given a descriptive title along with an hourly estimated length of time to complete set task as well an estimated rate of the task.
-
-- Once the user has provided all information for a project, the application renders the data calculates a total estimated cost and displays a visual doughnut chart listing the tasks and costs.
-
-- The list of tasks and doughnut chart is available by clicking the Graph/Estimate link on the Navigation Bar.
-
-- The Estimate/Graph page provides the user the capability of printing the page to a pdf and emailing the total project estimation to a potential client
+ 
+### Edit a Task
+   * Edit a task by navigating to the tasks screen. 
+   * All the tasks on this screen will be displayed as forms.
+   * Begin editing a task by changing the text in the populated forms.
+   * Once a change has been made, the trash can icon in the lower right corner will change to a checkmark. 
+   * Click the check mark to save the changes.
+   * The icon will change back to a trash can and the changes will have been successfully saved.
+   
+### Delete a Task
+   * Delete a task by navigating to the tasks screen.
+   * Locate the task that is going to be delted.
+   * Click on the trash can icon in the lower right corner to delete the task.
+   
+### View an Estimate
+ * If you are on the projects page, hover over the project you want to view and click the "view" button.
+ * If you are on the tasks page, click the "View Estimate" button.
+ * You will now be viewing the estimate for your project.
+ * The totals of all the tasks you have carried in your estimate will be displayed at the chart.
+ * Each task with a summary of hours and rate will be displayed on the left hand side of the page.
+ * The chart on the right hand side of the page is generated by the tasks and is color coded to show where the largest spending items are.
+ 
 
 ### Future Improvements
 
-- Adding a 3rd party email service such as Sendgrid for "Forget Password" and other authentication capabilities and emailing the client the estimate.
-
-- Adding a print to pdf functionality and button. This applies to emailing the client an estimate above.
+* Adding a 3rd party email service such as Sendgrid for "Forget Password" and other authentication capabilities and emailing the client the estimate.
+* Adding a print to pdf functionality and button. This applies to emailing the client an estimate above.
+* Responsiveness updates, including collapsing navbar items and chart display.
+* Adding description fields to tasks and projects to incorporate additional information.
