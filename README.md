@@ -10,7 +10,7 @@ React, HTML5, CSS, React-Bootstrap, Javascript ES6, Node.js, MongoDB, Express, R
  Username: test@test.com
  Password: test123
  
-## Getting Start
+## Getting Started
   1. New User
   2. Established User
     1. Create a new project
